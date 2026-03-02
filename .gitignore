@@ -1,0 +1,17 @@
+gitignore
+# macOS system files
+.DS_Store
+
+# Windows system files
+Thumbs.db
+
+# Build artifacts
+build/
+.gradle/
+
+# Environment variables
+.env*
+
+# IDE configuration files
+.vscode/
+.idea/
