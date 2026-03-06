@@ -110,3 +110,85 @@ insert into time_slot VALUES ('4365', '6', 14, 00, 15, 15);
 insert into time_slot VALUES ('4366', '6', 15, 30, 16, 45);
 insert into time_slot VALUES ('4367', '6', 17, 00, 18, 15);
 insert into time_slot VALUES ('4368', '6', 18, 30, 19, 45);
+
+-- Students Data
+insert into student VALUES (00000000, 'Izuku Midoriya', 'Civil Engineering', 0);
+insert into student VALUES (00000001, 'Tanjiro Kamado', 'Electrical Engineering', 14);
+insert into student VALUES (00000002, 'Subaru Natsuki', 'Biology', 119);
+insert into student VALUES (00000003, 'Naofumi Iwatani', 'Chemistry', 22);
+insert into student VALUES (00000004, 'Kazuma Satou', 'Physics', 28);
+insert into student VALUES (00000005, 'Shinra Kusakabe', 'Earth Sciences', 60);
+insert into student VALUES (00000006, 'Yuji Itadori', 'Computer Science', 15);
+insert into student VALUES (00000007, 'Eren Jaeger', 'Math', 29);
+insert into student VALUES (00000008, 'Shirou Emiya', 'Chemical Engineering', 45);
+insert into student VALUES (00000009, 'Loid Forger', 'Mechanical Engineering', 24);
+insert into student VALUES (00000010, 'Kazuto Kirigaya', 'Biomedical Engineering', 30);
+insert into student VALUES (00000011, 'Ken Takakura', 'Plastics Engineering', 106);
+insert into student VALUES (00000012, 'Mirio Togata', 'Civil Engineering', 26);
+insert into student VALUES (00000013, 'Obanai Iguro', 'Electrical Engineering', 0);
+insert into student VALUES (00000014, 'Otto Suwen', 'Biology', 28);
+insert into student VALUES (00000015, 'Lalatina Dustiness', 'Physics', 7);
+insert into student VALUES (00000016, 'Yuta Okkotsu', 'Computer Science', 29);
+insert into student VALUES (00000017, 'Pieck Finger', 'Math', 18);
+insert into student VALUES (00000018, 'Artoria Pendragon', 'Chemical Engineering', 9);
+insert into student VALUES (00000019, 'Yuri Briar', 'Mechanical Engineering', 11);
+insert into student VALUES (00000020, 'Maki Oze', 'Plastics Engineering', 27);
+insert into student VALUES (00000021, 'Keigo Takami', 'Civil Engineering', 29);
+insert into student VALUES (00000022, 'Tengen Uzui', 'Electrical Engineering', 41);
+insert into student VALUES (00000023, 'Crusch Karsten', 'Biology', 23);
+insert into student VALUES (00000024, 'Motoyasu Kitamura', 'Chemistry', 4);
+insert into student VALUES (00000025, 'Aoi Todo', 'Computer Science', 26);
+insert into student VALUES (00000026, 'Armin Arlelt', 'Math', 0);
+insert into student VALUES (00000027, 'Illyasviel Einzbern', 'Chemical Engineering', 32);
+insert into student VALUES (00000028, 'Viktor Licht', 'Biomedical Engineering', 5);
+insert into student VALUES (00000029, 'Cid Kagenou', 'Plastics Engineering', 13);
+
+-- Instructors Data
+insert into instructor VALUES (00000000, 'Shota Aizawa', 'Civil Engineering', 8900000);
+insert into instructor VALUES (00000001, 'Giyu Tomioka', 'Electrical Engineering', 24600000);
+insert into instructor VALUES (00000002, 'Shinobu Kocho', 'Biology', 18600000);
+insert into instructor VALUES (00000003, 'Toshinori Yagi', 'Chemistry', 25300000);
+insert into instructor VALUES (00000004, 'Mitsuri Kanroji', 'Physics', 28900000);
+insert into instructor VALUES (00000005, 'Akitaru Obi', 'Earth Sciences', 2900000);
+insert into instructor VALUES (00000006, 'Satoru Gojo', 'Computer Science', 26300000);
+insert into instructor VALUES (00000007, 'Levi Ackermann', 'Math', 22800000);
+insert into instructor VALUES (00000008, 'Taiga Fujimura', 'Chemical Engineering', 21800000);
+insert into instructor VALUES (00000009, 'Sylvia Sherwood', 'Mechanical Engineering', 23100000);
+insert into instructor VALUES (00000010, 'Hizashi Yamada', 'Biomedical Engineering', 5700000);
+insert into instructor VALUES (00000011, 'Seiko Ayase', 'Plastics Engineering', 23600000);
+
+-- Undergraduate Students Data
+insert into undergraduate VALUES (00000000, 1, 'Civil Engineering');
+insert into undergraduate VALUES (00000001, 1, 'Electrical Engineering');
+insert into undergraduate VALUES (00000002, 4, 'Biology');
+insert into undergraduate VALUES (00000004, 2, 'Physics');
+insert into undergraduate VALUES (00000005, 3, 'Earth Sciences');
+insert into undergraduate VALUES (00000006, 1, 'Computer Science');
+insert into undergraduate VALUES (00000007, 2, 'Math');
+insert into undergraduate VALUES (00000008, 2, 'Chemical Engineering');
+insert into undergraduate VALUES (00000010, 2, 'Biomedical Engineering');
+insert into undergraduate VALUES (00000011, 4, 'Plastics Engineering');
+
+-- Master Students Data
+insert into master VALUES (00000003);
+insert into master VALUES (00000012);
+insert into master VALUES (00000013);
+insert into master VALUES (00000014);
+insert into master VALUES (00000015);
+insert into master VALUES (00000016);
+insert into master VALUES (00000017);
+insert into master VALUES (00000018);
+insert into master VALUES (00000019);
+insert into master VALUES (00000020);
+
+-- PhD Students Data
+insert into phd VALUES (00000009, 'Adaptive Micro-Actuation Systems for Precision Robotic Manipulation in Unstructured Environments.', TRUE);
+insert into phd VALUES (00000021, 'Aerodynamic Optimization of High-Rise Structures for Extreme Wind Environments.', TRUE);
+insert into phd VALUES (00000022, 'Advanced Acoustic Signal Processing for High-Precision Environmental Detection Systems.', FALSE);
+insert into phd VALUES (00000023, 'Adaptive Ecosystem Dynamics in Temperate Forest Biomes under Environmental Stress.', FALSE);
+insert into phd VALUES (00000024, 'Synthesis and Structural Characterization of High-Strength Transition Metal Alloys for Reactive Applications.', FALSE);
+insert into phd VALUES (00000025, 'Adaptive Deep Learning Architectures for Real-Time Strategic Decision Making in Dynamic Environments.', FALSE);
+insert into phd VALUES (00000026, 'Game-Theoretic Modeling of Strategic Decision-Making in Multi-Agent Conflict Systems.', FALSE);
+insert into phd VALUES (00000027, 'Design and Synthesis of Multi-Functional Polymer Matrices for Adaptive Chemical Systems.', FALSE);
+insert into phd VALUES (00000028, 'Electrophysiological Modeling of High-Energy Bioelectrical Phenomena in Human Tissue.', FALSE);
+insert into phd VALUES (00000029, 'Synthesis and Mechanical Characterization of High-Performance Thermoplastic Polymer Composites.', FALSE);
