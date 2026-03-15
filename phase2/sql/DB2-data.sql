@@ -192,3 +192,21 @@ insert into phd VALUES (00000026, 'Game-Theoretic Modeling of Strategic Decision
 insert into phd VALUES (00000027, 'Design and Synthesis of Multi-Functional Polymer Matrices for Adaptive Chemical Systems.', FALSE);
 insert into phd VALUES (00000028, 'Electrophysiological Modeling of High-Energy Bioelectrical Phenomena in Human Tissue.', FALSE);
 insert into phd VALUES (00000029, 'Synthesis and Mechanical Characterization of High-Performance Thermoplastic Polymer Composites.', FALSE);
+
+-- Course Data
+insert into course VALUES (00000000, 'Introduction to Engineering for Civil', 'Civil Engineering', 2)
+insert into course VALUES (00000001, 'Introduction to ECE', 'Electrical Engineering', 2)
+insert into course VALUES (00000002, 'Principles of Biology I', 'Biology', 3)
+insert into course VALUES (00000003, 'Principles of Biology I Laboratory', 'Biology', 1)
+insert into course VALUES (00000004, 'Chemistry I', 'Chemistry', 3)
+insert into course VALUES (00000005, 'Chemistry I Lab', 'Chemistry', 1)
+insert into course VALUES (00000006, 'Physics I', 'Physics', 4)
+insert into course VALUES (00000007, 'Physics I Lab', 'Physics', 2)
+insert into course VALUES (00000008, 'Environmental Science Seminar', 'Earth Sciences', 1)
+insert into course VALUES (00000009, 'Computing I', 'Computer Science', 3)
+insert into course VALUES (00000010, 'Computing I Lab', 'Computer Science', 1)
+insert into course VALUES (00000011, 'Calculus I', 'Math', 4)
+insert into course VALUES (00000012, 'Principles of Chemical Engineering', 'Chemical Engineering', 3)
+insert into course VALUES (00000013, 'Introduction to Mechanical Engineering', 'Mechanical Engineering', 1)
+insert into course VALUES (00000014, 'Biomedical Engineering Application Programming', 'Biomedical Engineering', 3)
+insert into course VALUES (00000015, 'Introduction to Plastic Engineering', 'Plastics Engineering', 2)
