@@ -267,3 +267,18 @@ insert into advising VALUES (00000028, 00000010);
 insert into advising VALUES (00000011, 00000011);
 insert into advising VALUES (00000020, 00000011);
 insert into advising VALUES (00000029, 00000011);
+
+-- Section Data
+insert into section VALUES (00000011, 00000000, 'Spring', 2026, 'Olney', '519', 4363, 40);
+
+-- Teaches Data
+insert into teaches VALUES (00000007, 00000011, 00000000, 'Spring', 2026);
+
+-- teacher_assistant data
+insert into teacher_assistant VALUES (00000017, 00000011, 00000000, 'Spring', 2026);
+
+-- grader data
+insert into grader VALUES (00000007, 00000011, 00000000, 'Spring', 2026);
+
+-- course evaluation data
+insert into course_evaluation VALUES (00000019, 00000011, 00000000, 'Spring', 2026, 2, 'Too much memorisation and strict grading');
