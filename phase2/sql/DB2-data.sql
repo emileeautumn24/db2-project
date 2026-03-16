@@ -194,19 +194,44 @@ insert into phd VALUES (00000028, 'Electrophysiological Modeling of High-Energy 
 insert into phd VALUES (00000029, 'Synthesis and Mechanical Characterization of High-Performance Thermoplastic Polymer Composites.', FALSE);
 
 -- Course Data
-insert into course VALUES (00000000, 'Introduction to Engineering for Civil', 'Civil Engineering', 2)
-insert into course VALUES (00000001, 'Introduction to ECE', 'Electrical Engineering', 2)
-insert into course VALUES (00000002, 'Principles of Biology I', 'Biology', 3)
-insert into course VALUES (00000003, 'Principles of Biology I Laboratory', 'Biology', 1)
-insert into course VALUES (00000004, 'Chemistry I', 'Chemistry', 3)
-insert into course VALUES (00000005, 'Chemistry I Lab', 'Chemistry', 1)
-insert into course VALUES (00000006, 'Physics I', 'Physics', 4)
-insert into course VALUES (00000007, 'Physics I Lab', 'Physics', 2)
-insert into course VALUES (00000008, 'Environmental Science Seminar', 'Earth Sciences', 1)
-insert into course VALUES (00000009, 'Computing I', 'Computer Science', 3)
-insert into course VALUES (00000010, 'Computing I Lab', 'Computer Science', 1)
-insert into course VALUES (00000011, 'Calculus I', 'Math', 4)
-insert into course VALUES (00000012, 'Principles of Chemical Engineering', 'Chemical Engineering', 3)
-insert into course VALUES (00000013, 'Introduction to Mechanical Engineering', 'Mechanical Engineering', 1)
-insert into course VALUES (00000014, 'Biomedical Engineering Application Programming', 'Biomedical Engineering', 3)
-insert into course VALUES (00000015, 'Introduction to Plastic Engineering', 'Plastics Engineering', 2)
+insert into course VALUES (00000000, 'Introduction to Engineering for Civil', 'Civil Engineering', 2);
+insert into course VALUES (00000001, 'Introduction to ECE', 'Electrical Engineering', 2);
+insert into course VALUES (00000002, 'Principles of Biology I', 'Biology', 3);
+insert into course VALUES (00000003, 'Principles of Biology I Laboratory', 'Biology', 1);
+insert into course VALUES (00000004, 'Chemistry I', 'Chemistry', 3);
+insert into course VALUES (00000005, 'Chemistry I Lab', 'Chemistry', 1);
+insert into course VALUES (00000006, 'Physics I', 'Physics', 4);
+insert into course VALUES (00000007, 'Physics I Lab', 'Physics', 2);
+insert into course VALUES (00000008, 'Environmental Science Seminar', 'Earth Sciences', 1);
+insert into course VALUES (00000009, 'Computing I', 'Computer Science', 3);
+insert into course VALUES (00000010, 'Computing I Lab', 'Computer Science', 1);
+insert into course VALUES (00000011, 'Calculus I', 'Math', 4);
+insert into course VALUES (00000012, 'Principles of Chemical Engineering', 'Chemical Engineering', 3);
+insert into course VALUES (00000013, 'Introduction to Mechanical Engineering', 'Mechanical Engineering', 1);
+insert into course VALUES (00000014, 'Biomedical Engineering Application Programming', 'Biomedical Engineering', 3);
+insert into course VALUES (00000018, 'Principles of Biology II', 'Biology', 3);
+insert into course VALUES (00000019, 'Principles of Biology II Laboratory', 'Biology', 1);
+insert into course VALUES (00000020, 'Chemistry II', 'Chemistry', 3);
+insert into course VALUES (00000021, 'Chemistry II Lab', 'Chemistry', 1);
+insert into course VALUES (00000022, 'Physics II', 'Physics', 4);
+insert into course VALUES (00000023, 'Physics II Lab', 'Physics', 2);
+insert into course VALUES (00000025, 'Computing II', 'Computer Science', 3);
+insert into course VALUES (00000026, 'Computing II Lab', 'Computer Science', 1);
+insert into course VALUES (00000027, 'Calculus II', 'Math', 4);
+insert into course VALUES (00000028, 'Calculus III', 'Math', 4);
+insert into course VALUES (00000029, 'Computing III', 'Computer Science', 3);
+insert into course VALUES (00000030, 'Computing III Lab', 'Computer Science', 1);
+
+-- Prereq Data
+insert into prereq VALUES (00000028, 00000027);
+insert into prereq VALUES (00000027, 00000011);
+insert into prereq VALUES (00000026, 00000010);
+insert into prereq VALUES (00000025, 00000009);
+insert into prereq VALUES (00000023, 00000007);
+insert into prereq VALUES (00000022, 00000006);
+insert into prereq VALUES (00000021, 00000005);
+insert into prereq VALUES (00000020, 00000004);
+insert into prereq VALUES (00000019, 00000003);
+insert into prereq VALUES (00000018, 00000002);
+insert into prereq VALUES (00000029, 00000025);
+insert into prereq VALUES (00000030, 00000026);
