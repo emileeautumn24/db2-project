@@ -66,6 +66,49 @@ insert into department VALUES ('Mechanical Engineering', 'Dandeneau', 111112);
 insert into department VALUES ('Biomedical Engineering', 'Falmouth', 111112);
 insert into department VALUES ('Plastics Engineering', 'Ball', 222221);
 
+-- Course Data
+insert into course VALUES (00000000, 'Introduction to Engineering for Civil', 'Civil Engineering', 2);
+insert into course VALUES (00000001, 'Introduction to ECE', 'Electrical Engineering', 2);
+insert into course VALUES (00000002, 'Principles of Biology I', 'Biology', 3);
+insert into course VALUES (00000003, 'Principles of Biology I Laboratory', 'Biology', 1);
+insert into course VALUES (00000004, 'Chemistry I', 'Chemistry', 3);
+insert into course VALUES (00000005, 'Chemistry I Lab', 'Chemistry', 1);
+insert into course VALUES (00000006, 'Physics I', 'Physics', 4);
+insert into course VALUES (00000007, 'Physics I Lab', 'Physics', 2);
+insert into course VALUES (00000008, 'Environmental Science Seminar', 'Earth Sciences', 1);
+insert into course VALUES (00000009, 'Computing I', 'Computer Science', 3);
+insert into course VALUES (00000010, 'Computing I Lab', 'Computer Science', 1);
+insert into course VALUES (00000011, 'Calculus I', 'Math', 4);
+insert into course VALUES (00000012, 'Principles of Chemical Engineering', 'Chemical Engineering', 3);
+insert into course VALUES (00000013, 'Introduction to Mechanical Engineering', 'Mechanical Engineering', 1);
+insert into course VALUES (00000014, 'Biomedical Engineering Application Programming', 'Biomedical Engineering', 3);
+insert into course VALUES (00000018, 'Principles of Biology II', 'Biology', 3);
+insert into course VALUES (00000019, 'Principles of Biology II Laboratory', 'Biology', 1);
+insert into course VALUES (00000020, 'Chemistry II', 'Chemistry', 3);
+insert into course VALUES (00000021, 'Chemistry II Lab', 'Chemistry', 1);
+insert into course VALUES (00000022, 'Physics II', 'Physics', 4);
+insert into course VALUES (00000023, 'Physics II Lab', 'Physics', 2);
+insert into course VALUES (00000025, 'Computing II', 'Computer Science', 3);
+insert into course VALUES (00000026, 'Computing II Lab', 'Computer Science', 1);
+insert into course VALUES (00000027, 'Calculus II', 'Math', 4);
+insert into course VALUES (00000028, 'Calculus III', 'Math', 4);
+insert into course VALUES (00000029, 'Computing III', 'Computer Science', 3);
+insert into course VALUES (00000030, 'Computing III Lab', 'Computer Science', 1);
+
+-- Instructors Data
+insert into instructor VALUES (00000000, 'Shota Aizawa', 'Civil Engineering', 8900000);
+insert into instructor VALUES (00000001, 'Giyu Tomioka', 'Electrical Engineering', 24600000);
+insert into instructor VALUES (00000002, 'Shinobu Kocho', 'Biology', 18600000);
+insert into instructor VALUES (00000003, 'Toshinori Yagi', 'Chemistry', 25300000);
+insert into instructor VALUES (00000004, 'Mitsuri Kanroji', 'Physics', 28900000);
+insert into instructor VALUES (00000005, 'Akitaru Obi', 'Earth Sciences', 2900001);
+insert into instructor VALUES (00000006, 'Satoru Gojo', 'Computer Science', 26300000);
+insert into instructor VALUES (00000007, 'Levi Ackermann', 'Math', 22800000);
+insert into instructor VALUES (00000008, 'Taiga Fujimura', 'Chemical Engineering', 21800000);
+insert into instructor VALUES (00000009, 'Sylvia Sherwood', 'Mechanical Engineering', 23100000);
+insert into instructor VALUES (00000010, 'Hizashi Yamada', 'Biomedical Engineering', 5700000);
+insert into instructor VALUES (00000011, 'Seiko Ayase', 'Plastics Engineering', 23600000);
+
 -- Timeslot Data
 -- first digit: Credits
 -- second digit: Frequency
@@ -111,6 +154,88 @@ insert into time_slot VALUES ('4366', '6', 15, 30, 16, 45);
 insert into time_slot VALUES ('4367', '6', 17, 00, 18, 15);
 insert into time_slot VALUES ('4368', '6', 18, 30, 19, 45);
 
+-- Section Data
+insert into section VALUES (00000003, 00000001, 'Spring', 2026, 'Shah', '301', '3281', 50);
+insert into section VALUES (00000025, 00000002, 'Spring', 2026, 'Shah', '303', '3284', 50);
+insert into section VALUES (00000008, 00000002, 'Spring', 2026, 'Shah', '305', '4363', 70);
+insert into section VALUES (00000006, 00000000, 'Spring', 2026, 'Falmouth', '209', '4367', 56);
+insert into section VALUES (00000004, 00000001, 'Spring', 2026, 'Falmouth', '309', '3274', 52);
+insert into section VALUES (00000012, 00000000, 'Spring', 2026, 'Falmouth', '309', '4362', 52);
+insert into section VALUES (00000012, 00000001, 'Spring', 2026, 'Falmouth', '311', '3273', 44);
+insert into section VALUES (00000019, 00000000, 'Spring', 2026, 'Falmouth', '313', '3283', 52);
+insert into section VALUES (00000010, 00000001, 'Spring', 2026, 'Olney', '218', '4365', 60);
+insert into section VALUES (00000026, 00000001, 'Spring', 2026, 'Olney', '517', '3365', 60);
+insert into section VALUES (00000023, 00000000, 'Spring', 2026, 'Olney', '204', '3361', 60);
+insert into section VALUES (00000004, 00000002, 'Spring', 2026, 'Olney', '218', '4367', 60);
+insert into section VALUES (00000018, 00000001, 'Spring', 2026, 'Olney', '204', '3366', 60);
+insert into section VALUES (00000008, 00000000, 'Spring', 2026, 'Olney', '218', '4365', 60);
+insert into section VALUES (00000028, 00000000, 'Spring', 2026, 'Ball', '210', '4363', 168);
+insert into section VALUES (00000012, 00000002, 'Spring', 2026, 'Ball', '210', '3274', 168);
+insert into section VALUES (00000018, 00000002, 'Spring', 2026, 'Ball', '314', '3273', 70);
+insert into section VALUES (00000007, 00000001, 'Spring', 2026, 'Ball', '214', '3284', 140);
+insert into section VALUES (00000011, 00000002, 'Spring', 2026, 'Olsen', '104', '3282', 60);
+insert into section VALUES (00000023, 00000002, 'Spring', 2026, 'Olsen', '104', '3272', 60);
+insert into section VALUES (00000003, 00000002, 'Spring', 2026, 'Olsen', '503', '3272', 103);
+insert into section VALUES (00000008, 00000001, 'Spring', 2026, 'Olsen', '102', '3364', 88);
+insert into section VALUES (00000029, 00000001, 'Spring', 2026, 'Olsen', '300', '4365', 100);
+insert into section VALUES (00000010, 00000002, 'Spring', 2026, 'Olsen', '104', '3281', 60);
+insert into section VALUES (00000001, 00000000, 'Spring', 2026, 'Olsen', '102', '4362', 88);
+insert into section VALUES (00000002, 00000000, 'Spring', 2026, 'Olsen', '102', '4364', 88);
+insert into section VALUES (00000020, 00000000, 'Spring', 2026, 'Olsen', '300', '4365', 100);
+insert into section VALUES (00000002, 00000001, 'Spring', 2026, 'Olsen', '102', '3271', 88);
+insert into section VALUES (00000004, 00000000, 'Spring', 2026, 'Olsen', '300', '4364', 100);
+insert into section VALUES (00000000, 00000000, 'Spring', 2026, 'Shah', '301', '4361', 50);
+insert into section VALUES (00000022, 00000000, 'Spring', 2026, 'Ball', '313', '4365', 20);
+insert into section VALUES (00000009, 00000000, 'Spring', 2026, 'Shah', '305', '3122', 70);
+insert into section VALUES (00000027, 00000000, 'Spring', 2026, 'Shah', '302', '4361', 40);
+insert into section VALUES (00000013, 00000000, 'Spring', 2026, 'Olsen', '405', '3284', 49);
+insert into section VALUES (00000014, 00000000, 'Spring', 2026, 'Falmouth', '309', '3273', 52);
+insert into section VALUES (00000021, 00000000, 'Spring', 2026, 'Shah', '208', '3191', 20);
+insert into section VALUES (00000005, 00000002, 'Spring', 2026, 'Falmouth', '313', '4363', 52);
+
+-- Teaches Data (instructor_id, course_id, section_id, 'spring', 2026)
+-- Civil engineering
+insert into teaches VALUES (00000000, 00000000, 00000000, 'Spring', 2026);
+-- Electrical Engineering
+insert into teaches VALUES (00000001, 00000001, 00000000, 'Spring', 2026);
+-- Biology
+insert into teaches VALUES (00000002, 00000002, 00000000, 'Spring', 2026);
+insert into teaches VALUES (00000002, 00000003, 00000001, 'Spring', 2026);
+insert into teaches VALUES (00000002, 00000018, 00000001, 'Spring', 2026);
+insert into teaches VALUES (00000002, 00000019, 00000000, 'Spring', 2026);
+-- Physics
+insert into teaches VALUES (00000004, 00000006, 00000000, 'Spring', 2026);
+insert into teaches VALUES (00000004, 00000007, 00000001, 'Spring', 2026);
+insert into teaches VALUES (00000004, 00000022, 00000000, 'Spring', 2026);
+insert into teaches VALUES (00000004, 00000023, 00000000, 'Spring', 2026);
+-- Earth Sciences
+insert into teaches VALUES (00000005, 00000008, 00000000, 'Spring', 2026);
+insert into teaches VALUES (00000005, 00000008, 00000001, 'Spring', 2026);
+-- Computer Science
+insert into teaches VALUES (00000006, 00000009, 00000000, 'Spring', 2026);
+insert into teaches VALUES (00000006, 00000010, 00000001, 'Spring', 2026);
+insert into teaches VALUES (00000006, 00000010, 00000002, 'Spring', 2026);
+insert into teaches VALUES (00000006, 00000025, 00000002, 'Spring', 2026);
+insert into teaches VALUES (00000006, 00000026, 00000001, 'Spring', 2026);
+insert into teaches VALUES (00000006, 00000029, 00000001, 'Spring', 2026);
+-- Math
+insert into teaches VALUES (00000007, 00000011, 00000002, 'Spring', 2026);
+insert into teaches VALUES (00000007, 00000027, 00000000, 'Spring', 2026);
+insert into teaches VALUES (00000007, 00000028, 00000000, 'Spring', 2026);
+-- Chemical Engineering
+insert into teaches VALUES (00000008, 00000012, 00000000, 'Spring', 2026);
+insert into teaches VALUES (00000008, 00000012, 00000001, 'Spring', 2026);
+insert into teaches VALUES (00000008, 00000012, 00000002, 'Spring', 2026);
+-- Mechanical Engineering
+insert into teaches VALUES (00000009, 00000013, 00000000, 'Spring', 2026);
+-- Biomedical Engineering
+insert into teaches VALUES (00000010, 00000014, 00000000, 'Spring', 2026);
+-- Chemistry
+insert into teaches VALUES (00000003, 00000004, 00000001, 'Spring', 2026);
+insert into teaches VALUES (00000003, 00000004, 00000000, 'Spring', 2026);
+insert into teaches VALUES (00000003, 00000020, 00000000, 'Spring', 2026);
+insert into teaches VALUES (00000003, 00000021, 00000000, 'Spring', 2026);
+
 -- Students Data
 insert into student VALUES (00000000, 'Izuku Midoriya', 'Civil Engineering', 0);
 insert into student VALUES (00000001, 'Tanjiro Kamado', 'Electrical Engineering', 14);
@@ -129,9 +254,7 @@ insert into student VALUES (00000013, 'Obanai Iguro', 'Electrical Engineering', 
 insert into student VALUES (00000014, 'Otto Suwen', 'Biology', 28);
 insert into student VALUES (00000015, 'Lalatina Dustiness', 'Physics', 7);
 insert into student VALUES (00000016, 'Yuta Okkotsu', 'Computer Science', 29);
-
 insert into student VALUES (00000017, 'Pieck Finger', 'Math', 18);
-
 insert into student VALUES (00000018, 'Artoria Pendragon', 'Chemical Engineering', 9);
 insert into student VALUES (00000019, 'Yuri Briar', 'Mechanical Engineering', 11);
 insert into student VALUES (00000020, 'Maki Oze', 'Plastics Engineering', 27);
@@ -145,19 +268,105 @@ insert into student VALUES (00000027, 'Illyasviel Einzbern', 'Chemical Engineeri
 insert into student VALUES (00000028, 'Viktor Licht', 'Biomedical Engineering', 5);
 insert into student VALUES (00000029, 'Cid Kagenou', 'Plastics Engineering', 13);
 
--- Instructors Data
-insert into instructor VALUES (00000000, 'Shota Aizawa', 'Civil Engineering', 8900000);
-insert into instructor VALUES (00000001, 'Giyu Tomioka', 'Electrical Engineering', 24600000);
-insert into instructor VALUES (00000002, 'Shinobu Kocho', 'Biology', 18600000);
-insert into instructor VALUES (00000003, 'Toshinori Yagi', 'Chemistry', 25300000);
-insert into instructor VALUES (00000004, 'Mitsuri Kanroji', 'Physics', 28900000);
-insert into instructor VALUES (00000005, 'Akitaru Obi', 'Earth Sciences', 2900000);
-insert into instructor VALUES (00000006, 'Satoru Gojo', 'Computer Science', 26300000);
-insert into instructor VALUES (00000007, 'Levi Ackermann', 'Math', 22800000);
-insert into instructor VALUES (00000008, 'Taiga Fujimura', 'Chemical Engineering', 21800000);
-insert into instructor VALUES (00000009, 'Sylvia Sherwood', 'Mechanical Engineering', 23100000);
-insert into instructor VALUES (00000010, 'Hizashi Yamada', 'Biomedical Engineering', 5700000);
-insert into instructor VALUES (00000011, 'Seiko Ayase', 'Plastics Engineering', 23600000);
+-- Takes Data
+insert into takes VALUES (00000000, 00000000, 00000000, 'Spring', 2026, 81);
+insert into takes VALUES (00000001, 00000001, 00000000, 'Spring', 2026, 71);
+insert into takes VALUES (00000002, 00000002, 00000001, 'Spring', 2026, 65);
+insert into takes VALUES (00000002, 00000003, 00000001, 'Spring', 2026, 98);
+insert into takes VALUES (00000002, 00000018, 00000002, 'Spring', 2026, 80);
+insert into takes VALUES (00000002, 00000019, 00000000, 'Spring', 2026, 90);
+insert into takes VALUES (00000004, 00000006, 00000000, 'Spring', 2026, 71);
+insert into takes VALUES (00000004, 00000007, 00000001, 'Spring', 2026, 70);
+insert into takes VALUES (00000005, 00000008, 00000000, 'Spring', 2026, 62);
+insert into takes VALUES (00000006, 00000009, 00000000, 'Spring', 2026, 72);
+insert into takes VALUES (00000006, 00000010, 00000001, 'Spring', 2026, 74);
+insert into takes VALUES (00000007, 00000011, 00000002, 'Spring', 2026, 95);
+insert into takes VALUES (00000008, 00000012, 00000002, 'Spring', 2026, 87);
+insert into takes VALUES (00000010, 00000014, 00000000, 'Spring', 2026, 67);
+insert into takes VALUES (00000011, 00000004, 00000001, 'Spring', 2026, 81);
+insert into takes VALUES (00000011, 00000005, 00000002, 'Spring', 2026, 74);
+insert into takes VALUES (00000017, 00000011, 00000002, 'Spring', 2026, 99);
+
+-- Advising Data
+insert into advising VALUES (00000000, 00000000);
+insert into advising VALUES (00000012, 00000000);
+insert into advising VALUES (00000021, 00000000);
+insert into advising VALUES (00000001, 00000001);
+insert into advising VALUES (00000013, 00000001);
+insert into advising VALUES (00000022, 00000001);
+insert into advising VALUES (00000002, 00000002);
+insert into advising VALUES (00000014, 00000002);
+insert into advising VALUES (00000023, 00000002);
+insert into advising VALUES (00000003, 00000003);
+insert into advising VALUES (00000024, 00000003);
+insert into advising VALUES (00000004, 00000004);
+insert into advising VALUES (00000015, 00000004);
+insert into advising VALUES (00000005, 00000005);
+insert into advising VALUES (00000006, 00000006);
+insert into advising VALUES (00000016, 00000006);
+insert into advising VALUES (00000025, 00000006);
+insert into advising VALUES (00000007, 00000007);
+insert into advising VALUES (00000017, 00000007);
+insert into advising VALUES (00000026, 00000007);
+insert into advising VALUES (00000008, 00000008);
+insert into advising VALUES (00000018, 00000008);
+insert into advising VALUES (00000027, 00000008);
+insert into advising VALUES (00000009, 00000009);
+insert into advising VALUES (00000019, 00000009);
+insert into advising VALUES (00000010, 00000010);
+insert into advising VALUES (00000028, 00000010);
+insert into advising VALUES (00000011, 00000011);
+insert into advising VALUES (00000020, 00000011);
+insert into advising VALUES (00000029, 00000011);
+
+-- Prereq Data
+insert into prereq VALUES (00000028, 00000027);
+insert into prereq VALUES (00000027, 00000011);
+insert into prereq VALUES (00000026, 00000010);
+insert into prereq VALUES (00000025, 00000009);
+insert into prereq VALUES (00000023, 00000007);
+insert into prereq VALUES (00000022, 00000006);
+insert into prereq VALUES (00000021, 00000005);
+insert into prereq VALUES (00000020, 00000004);
+insert into prereq VALUES (00000019, 00000003);
+insert into prereq VALUES (00000018, 00000002);
+insert into prereq VALUES (00000029, 00000025);
+insert into prereq VALUES (00000030, 00000026);
+
+-- teacher_assistant data (student_id(phd only), course_id, section_id, semester, year),
+insert into teacher_assistant VALUES (00000009, 00000013, 00000000, 'Spring', 2026);
+insert into teacher_assistant VALUES (00000021, 00000000, 00000000, 'Spring', 2026);
+insert into teacher_assistant VALUES (00000022, 00000001, 00000000, 'Spring', 2026);
+insert into teacher_assistant VALUES (00000023, 00000002, 00000000, 'Spring', 2026);
+insert into teacher_assistant VALUES (00000024, 00000004, 00000000, 'Spring', 2026);
+insert into teacher_assistant VALUES (00000025, 00000009, 00000000, 'Spring', 2026);
+insert into teacher_assistant VALUES (00000026, 00000011, 00000002, 'Spring', 2026);
+insert into teacher_assistant VALUES (00000027, 00000012, 00000000, 'Spring', 2026);
+insert into teacher_assistant VALUES (00000028, 00000014, 00000000, 'Spring', 2026);
+insert into teacher_assistant VALUES (00000029, 00000005, 00000002, 'Spring', 2026);
+
+-- grader data (undergraduate and master students only)
+-- Undergraduate
+insert into grader VALUES (00000000, 00000000, 00000000, 'Spring', 2026);
+insert into grader VALUES (00000001, 00000001, 00000000, 'Spring', 2026);
+insert into grader VALUES (00000002, 00000018, 00000001, 'Spring', 2026);
+insert into grader VALUES (00000004, 00000004, 00000001, 'Spring', 2026);
+insert into grader VALUES (00000005, 00000006, 00000000, 'Spring', 2026);
+insert into grader VALUES (00000006, 00000009, 00000000, 'Spring', 2026);
+insert into grader VALUES (00000007, 00000027, 00000000, 'Spring', 2026);
+insert into grader VALUES (00000008, 00000012, 00000001, 'Spring', 2026);
+insert into grader VALUES (00000010, 00000014, 00000000, 'Spring', 2026);
+insert into grader VALUES (00000011, 00000028, 00000000, 'Spring', 2026);
+-- Masters
+insert into grader VALUES (00000012, 00000002, 00000000, 'Spring', 2026);
+insert into grader VALUES (00000013, 00000003, 00000001, 'Spring', 2026);
+insert into grader VALUES (00000014, 00000019, 00000000, 'Spring', 2026);
+insert into grader VALUES (00000015, 00000005, 00000002, 'Spring', 2026);
+insert into grader VALUES (00000016, 00000007, 00000001, 'Spring', 2026);
+insert into grader VALUES (00000017, 00000011, 00000002, 'Spring', 2026);
+insert into grader VALUES (00000018, 00000012, 00000000, 'Spring', 2026);
+insert into grader VALUES (00000019, 00000012, 00000002, 'Spring', 2026);
+insert into grader VALUES (00000020, 00000013, 00000000, 'Spring', 2026);
 
 -- Undergraduate Students Data
 insert into undergraduate VALUES (00000000, 1, 'Civil Engineering');
@@ -195,204 +404,18 @@ insert into phd VALUES (00000027, 'Design and Synthesis of Multi-Functional Poly
 insert into phd VALUES (00000028, 'Electrophysiological Modeling of High-Energy Bioelectrical Phenomena in Human Tissue.', FALSE);
 insert into phd VALUES (00000029, 'Synthesis and Mechanical Characterization of High-Performance Thermoplastic Polymer Composites.', FALSE);
 
--- Course Data
-insert into course VALUES (00000000, 'Introduction to Engineering for Civil', 'Civil Engineering', 2);
-insert into course VALUES (00000001, 'Introduction to ECE', 'Electrical Engineering', 2);
-insert into course VALUES (00000002, 'Principles of Biology I', 'Biology', 3);
-insert into course VALUES (00000003, 'Principles of Biology I Laboratory', 'Biology', 1);
-insert into course VALUES (00000004, 'Chemistry I', 'Chemistry', 3);
-insert into course VALUES (00000005, 'Chemistry I Lab', 'Chemistry', 1);
-insert into course VALUES (00000006, 'Physics I', 'Physics', 4);
-insert into course VALUES (00000007, 'Physics I Lab', 'Physics', 2);
-insert into course VALUES (00000008, 'Environmental Science Seminar', 'Earth Sciences', 1);
-insert into course VALUES (00000009, 'Computing I', 'Computer Science', 3);
-insert into course VALUES (00000010, 'Computing I Lab', 'Computer Science', 1);
-insert into course VALUES (00000011, 'Calculus I', 'Math', 4);
-insert into course VALUES (00000012, 'Principles of Chemical Engineering', 'Chemical Engineering', 3);
-insert into course VALUES (00000013, 'Introduction to Mechanical Engineering', 'Mechanical Engineering', 1);
-insert into course VALUES (00000014, 'Biomedical Engineering Application Programming', 'Biomedical Engineering', 3);
-insert into course VALUES (00000018, 'Principles of Biology II', 'Biology', 3);
-insert into course VALUES (00000019, 'Principles of Biology II Laboratory', 'Biology', 1);
-insert into course VALUES (00000020, 'Chemistry II', 'Chemistry', 3);
-insert into course VALUES (00000021, 'Chemistry II Lab', 'Chemistry', 1);
-insert into course VALUES (00000022, 'Physics II', 'Physics', 4);
-insert into course VALUES (00000023, 'Physics II Lab', 'Physics', 2);
-insert into course VALUES (00000025, 'Computing II', 'Computer Science', 3);
-insert into course VALUES (00000026, 'Computing II Lab', 'Computer Science', 1);
-insert into course VALUES (00000027, 'Calculus II', 'Math', 4);
-insert into course VALUES (00000028, 'Calculus III', 'Math', 4);
-insert into course VALUES (00000029, 'Computing III', 'Computer Science', 3);
-insert into course VALUES (00000030, 'Computing III Lab', 'Computer Science', 1);
+-- Discussion Data
+insert into discussion VALUES (00000001, 00000001, 00000000, 'Spring', 2026, 'Why does electricity flow with such gentle but relentless determination?');
+insert into discussion VALUES (00000002, 00000002, 00000001, 'Spring', 2026, 'I already understood cell death on a deeply personal level, but I am confused on the other material.');
+insert into discussion VALUES (00000002, 00000003, 00000001, 'Spring', 2026, 'I will just start over from the beginning after knocking some things over.');
+insert into discussion VALUES (00000002, 00000018, 00000002, 'Spring', 2026, 'Do organisms that die repeatedly in the same environment ever develop any kind of meaningful adaptation?');
+insert into discussion VALUES (00000002, 00000019, 00000000, 'Spring', 2026, 'Was returning to a previous checkpoint an accepted scientific methodology?');
+insert into discussion VALUES (00000004, 00000006, 00000000, 'Spring', 2026, 'Which elective stat I could dump to boost my grade?');
+insert into discussion VALUES (00000004, 00000007, 00000001, 'Spring', 2026, 'Why is the experiment so tedious?');
+insert into discussion VALUES (00000005, 00000008, 00000000, 'Spring', 2026, 'I had firsthand experience with combustion dynamics that no peer-reviewed study could adequately replicate.');
+insert into discussion VALUES (00000007, 00000011, 00000002, 'Spring', 2026, 'I would master derivatives no matter the cost and that freedom from failing this course was something I would secure for myself with my own two hands, even if it took every hour of the weekend.');
+insert into discussion VALUES (00000008, 00000012, 00000002, 'Spring', 2026, 'Was mastering the math itself a form of justice?');
 
--- Prereq Data
-insert into prereq VALUES (00000028, 00000027);
-insert into prereq VALUES (00000027, 00000011);
-insert into prereq VALUES (00000026, 00000010);
-insert into prereq VALUES (00000025, 00000009);
-insert into prereq VALUES (00000023, 00000007);
-insert into prereq VALUES (00000022, 00000006);
-insert into prereq VALUES (00000021, 00000005);
-insert into prereq VALUES (00000020, 00000004);
-insert into prereq VALUES (00000019, 00000003);
-insert into prereq VALUES (00000018, 00000002);
-insert into prereq VALUES (00000029, 00000025);
-insert into prereq VALUES (00000030, 00000026);
-
--- Advising Table
-insert into advising VALUES (00000000, 00000000);
-insert into advising VALUES (00000012, 00000000);
-insert into advising VALUES (00000021, 00000000);
-insert into advising VALUES (00000001, 00000001);
-insert into advising VALUES (00000013, 00000001);
-insert into advising VALUES (00000022, 00000001);
-insert into advising VALUES (00000002, 00000002);
-insert into advising VALUES (00000014, 00000002);
-insert into advising VALUES (00000023, 00000002);
-insert into advising VALUES (00000003, 00000003);
-insert into advising VALUES (00000024, 00000003);
-insert into advising VALUES (00000004, 00000004);
-insert into advising VALUES (00000015, 00000004);
-insert into advising VALUES (00000005, 00000005);
-insert into advising VALUES (00000006, 00000006);
-insert into advising VALUES (00000016, 00000006);
-insert into advising VALUES (00000025, 00000006);
-insert into advising VALUES (00000007, 00000007);
-insert into advising VALUES (00000017, 00000007);
-insert into advising VALUES (00000026, 00000007);
-insert into advising VALUES (00000008, 00000008);
-insert into advising VALUES (00000018, 00000008);
-insert into advising VALUES (00000027, 00000008);
-insert into advising VALUES (00000009, 00000009);
-insert into advising VALUES (00000019, 00000009);
-insert into advising VALUES (00000010, 00000010);
-insert into advising VALUES (00000028, 00000010);
-insert into advising VALUES (00000011, 00000011);
-insert into advising VALUES (00000020, 00000011);
-insert into advising VALUES (00000029, 00000011);
-
--- Section Data
-insert into section VALUES (00000003, 00000001, 'Spring', 2026, 'Shah', '301', '3281', 50);
-insert into section VALUES (00000025, 00000002, 'Spring', 2026, 'Shah', '303', '3284', 50);
-insert into section VALUES (00000008, 00000002, 'Spring', 2026, 'Shah', '305', '4363', 70);
-insert into section VALUES (00000006, 00000000, 'Spring', 2026, 'Falmouth', '209', '4367', 56);
-insert into section VALUES (00000004, 00000001, 'Spring', 2026, 'Falmouth', '309', '3274', 52);
-insert into section VALUES (00000012, 00000000, 'Spring', 2026, 'Falmouth', '309', '4362', 52);
-insert into section VALUES (00000012, 00000001, 'Spring', 2026, 'Falmouth', '311', '3273', 44);
-insert into section VALUES (00000019, 00000000, 'Spring', 2026, 'Falmouth', '313', '3283', 52);
-insert into section VALUES (00000010, 00000001, 'Spring', 2026, 'Olney', '218', '4365', 60);
-insert into section VALUES (00000026, 00000001, 'Spring', 2026, 'Olney', '517', '3365', 60);
-insert into section VALUES (00000023, 00000000, 'Spring', 2026, 'Olney', '204', '3361', 60);
-insert into section VALUES (00000004, 00000002, 'Spring', 2026, 'Olney', '218', '4367', 60);
-insert into section VALUES (00000018, 00000001, 'Spring', 2026, 'Olney', '204', '3366', 60);
-insert into section VALUES (00000008, 00000000, 'Spring', 2026, 'Olney', '218', '4365', 60);
-insert into section VALUES (00000028, 00000000, 'Spring', 2026, 'Ball', '210', '4363', 168);
-insert into section VALUES (00000012, 00000002, 'Spring', 2026, 'Ball', '210', '3274', 168);
-insert into section VALUES (00000018, 00000002, 'Spring', 2026, 'Ball', '314', '3273', 70);
-insert into section VALUES (00000007, 00000001, 'Spring', 2026, 'Ball', '214', '3284', 140);
-insert into section VALUES (00000011, 00000002, 'Spring', 2026, 'Olsen', '104', '3282', 60);
-insert into section VALUES (00000023, 00000002, 'Spring', 2026, 'Olsen', '104', '3272', 60);
-insert into section VALUES (00000003, 00000002, 'Spring', 2026, 'Olsen', '503', '3272', 103);
-insert into section VALUES (00000008, 00000001, 'Spring', 2026, 'Olsen', '102', '3364', 88);
-insert into section VALUES (00000029, 00000001, 'Spring', 2026, 'Olsen', '300', '4365', 100);
-insert into section VALUES (00000010, 00000002, 'Spring', 2026, 'Olsen', '104', '3281', 60);
-insert into section VALUES (00000001, 00000000, 'Spring', 2026, 'Olsen', '102', '4362', 88);
-insert into section VALUES (00000002, 00000000, 'Spring', 2026, 'Olsen', '102', '4364', 88);
-insert into section VALUES (00000020, 00000000, 'Spring', 2026, 'Olsen', '300', '4365', 100);
-insert into section VALUES (00000002, 00000001, 'Spring', 2026, 'Olsen', '102', '3271', 88);
-insert into section VALUES (00000004, 00000000, 'Spring', 2026, 'Olsen', '300', '4364', 100);
-
--- Takes Data
-insert into takes VALUES (00000001, 00000001, 00000000, 'Spring', 2026, 71);
-insert into takes VALUES (00000002, 00000002, 00000001, 'Spring', 2026, 65);
-insert into takes VALUES (00000002, 00000003, 00000001, 'Spring', 2026, 98);
-insert into takes VALUES (00000002, 00000018, 00000002, 'Spring', 2026, 80);
-insert into takes VALUES (00000002, 00000019, 00000000, 'Spring', 2026, 90);
-insert into takes VALUES (00000004, 00000006, 00000002, 'Spring', 2026, 71);
-insert into takes VALUES (00000004, 00000007, 00000001, 'Spring', 2026, 70);
-insert into takes VALUES (00000005, 00000008, 00000000, 'Spring', 2026, 62);
-insert into takes VALUES (00000007, 00000011, 00000002, 'Spring', 2026, 95);
-insert into takes VALUES (00000008, 00000012, 00000002, 'Spring', 2026, 87);
-insert into takes VALUES (00000017, 00000011, 00000002, 'Spring', 2026, 99);
-
--- Teaches Data (instructor_id, course_id, section_id, 'spring', 2026)
-
--- Civil engineering
-insert into teaches VALUES (00000000, 00000000, 00000000, 'Spring', 2026);
--- Electrical Engineering
-insert into teaches VALUES (00000001, 00000001, 00000000, 'Spring', 2026);
--- Biology
-insert into teaches VALUES (00000002, 00000002, 00000000, 'Spring', 2026);
-insert into teaches VALUES (00000002, 00000003, 00000000, 'Spring', 2026);
-insert into teaches VALUES (00000002, 00000018, 00000001, 'Spring', 2026);
-insert into teaches VALUES (00000002, 00000019, 00000000, 'Spring', 2026);
--- Physics
-insert into teaches VALUES (00000004, 00000006, 00000000, 'Spring', 2026);
-insert into teaches VALUES (00000004, 00000007, 00000001, 'Spring', 2026);
-insert into teaches VALUES (00000004, 00000022, 00000000, 'Spring', 2026);
-insert into teaches VALUES (00000004, 00000023, 00000000, 'Spring', 2026);
--- Earth Sciences
-insert into teaches VALUES (00000005, 00000008, 00000000, 'Spring', 2026);
-insert into teaches VALUES (00000005, 00000008, 00000001, 'Spring', 2026);
--- Computer Science
-insert into teaches VALUES (00000006, 00000009, 00000000, 'Spring', 2026);
-insert into teaches VALUES (00000006, 00000010, 00000001, 'Spring', 2026);
-insert into teaches VALUES (00000006, 00000010, 00000002, 'Spring', 2026);
-insert into teaches VALUES (00000006, 00000025, 00000002, 'Spring', 2026);
-insert into teaches VALUES (00000006, 00000026, 00000001, 'Spring', 2026);
-insert into teaches VALUES (00000006, 00000029, 00000001, 'Spring', 2026);
--- Math
-insert into teaches VALUES (00000007, 00000011, 00000002, 'Spring', 2026);
-insert into teaches VALUES (00000007, 00000027, 00000000, 'Spring', 2026);
-insert into teaches VALUES (00000007, 00000028, 00000000, 'Spring', 2026);
--- Chemical Engineering
-insert into teaches VALUES (00000008, 00000012, 00000000, 'Spring', 2026);
-insert into teaches VALUES (00000008, 00000012, 00000001, 'Spring', 2026);
-insert into teaches VALUES (00000008, 00000012, 00000002, 'Spring', 2026);
--- Mechanical Engineering
-insert into teaches VALUES (00000009, 00000013, 00000000, 'Spring', 2026);
--- Biomedical Engineering
-insert into teaches VALUES (00000010, 00000014, 00000000, 'Spring', 2026);
--- Chemistry
-insert into teaches VALUES (00000003, 00000004, 00000001, 'Spring', 2026);
-insert into teaches VALUES (00000003, 00000004, 00000000, 'Spring', 2026);
-insert into teaches VALUES (00000003, 00000020, 00000000, 'Spring', 2026);
-insert into teaches VALUES (00000003, 00000021, 00000000, 'Spring', 2026);
-
--- teacher_assistant data (student_id(phd only), course_id, section_id, semester, year),
-insert into teacher_assistant VALUES (00000009, 00000013, 00000000, 'Spring', 2026);
-insert into teacher_assistant VALUES (00000021, 00000000, 00000000, 'Spring', 2026);
-insert into teacher_assistant VALUES (00000022, 00000001, 00000000, 'Spring', 2026);
-insert into teacher_assistant VALUES (00000023, 00000002, 00000000, 'Spring', 2026);
-insert into teacher_assistant VALUES (00000024, 00000004, 00000000, 'Spring', 2026);
-insert into teacher_assistant VALUES (00000025, 00000009, 00000000, 'Spring', 2026);
-insert into teacher_assistant VALUES (00000026, 00000011, 00000000, 'Spring', 2026);
-insert into teacher_assistant VALUES (00000027, 00000012, 00000000, 'Spring', 2026);
-insert into teacher_assistant VALUES (00000028, 00000014, 00000000, 'Spring', 2026);
-insert into teacher_assistant VALUES (00000029, 00000011, 00000011, 'Spring', 2026);
-
--- grader data (undergraduate and master students only)
--- Undergraduate
-insert into grader VALUES (00000000, 00000000, 00000000, 'Spring', 2026);
-insert into grader VALUES (00000001, 00000001, 00000000, 'Spring', 2026);
-insert into grader VALUES (00000002, 00000018, 00000001, 'Spring', 2026);
-insert into grader VALUES (00000004, 00000004, 00000001, 'Spring', 2026);
-insert into grader VALUES (00000005, 00000006, 00000000, 'Spring', 2026);
-insert into grader VALUES (00000006, 00000009, 00000000, 'Spring', 2026);
-insert into grader VALUES (00000007, 00000027, 00000000, 'Spring', 2026);
-insert into grader VALUES (00000008, 00000012, 00000001, 'Spring', 2026);
-insert into grader VALUES (00000010, 00000014, 00000000, 'Spring', 2026);
-insert into grader VALUES (00000011, 00000028, 00000000, 'Spring', 2026);
-
--- Masters
-insert into grader VALUES (00000012, 00000002, 00000000, 'Spring', 2026);
-insert into grader VALUES (00000013, 00000003, 00000001, 'Spring', 2026);
-insert into grader VALUES (00000014, 00000019, 00000000, 'Spring', 2026);
-insert into grader VALUES (00000015, 00000005, 00000000, 'Spring', 2026);
-insert into grader VALUES (00000016, 00000007, 00000001, 'Spring', 2026);
-insert into grader VALUES (00000017, 00000011, 00000002, 'Spring', 2026);
-insert into grader VALUES (00000018, 00000012, 00000000, 'Spring', 2026);
-insert into grader VALUES (00000019, 00000012, 00000002, 'Spring', 2026);
-insert into grader VALUES (00000020, 00000013, 00000000, 'Spring', 2026);
 
 -- course evalution 
 insert into course_evaluation VALUES (00000000, 00000003, 00000001, 'Spring', 2026, 5, 'Great intro course. Lab work was very practical.');
@@ -425,15 +448,3 @@ insert into course_evaluation VALUES (00000026, 00000020, 00000000, 'Spring', 20
 insert into course_evaluation VALUES (00000027, 00000002, 00000001, 'Spring', 2026, 4, 'Well-structured labs that mirrored the lecture content.');
 insert into course_evaluation VALUES (00000028, 00000004, 00000000, 'Spring', 2026, 3, 'A standard chemistry class with no major surprises.');
 insert into course_evaluation VALUES (00000029, 00000011, 00000002, 'Spring', 2026, 5, 'Highly effective teaching methods. Really enjoyed it.');
-
--- Discussion Data
-insert into discussion VALUES (00000001, 00000001, 00000000, 'Spring', 2026, 'Why does electricity flow with such gentle but relentless determination?');
-insert into discussion VALUES (00000002, 00000002, 00000001, 'Spring', 2026, 'I already understood cell death on a deeply personal level, but I am confused on the other material.');
-insert into discussion VALUES (00000002, 00000003, 00000001, 'Spring', 2026, 'I will just start over from the beginning after knocking some things over.');
-insert into discussion VALUES (00000002, 00000018, 00000002, 'Spring', 2026, 'Do organisms that die repeatedly in the same environment ever develop any kind of meaningful adaptation?');
-insert into discussion VALUES (00000002, 00000019, 00000000, 'Spring', 2026, 'Was returning to a previous checkpoint an accepted scientific methodology?');
-insert into discussion VALUES (00000004, 00000006, 00000002, 'Spring', 2026, 'Which elective stat I could dump to boost my grade?');
-insert into discussion VALUES (00000004, 00000007, 00000001, 'Spring', 2026, 'Why is the experiment so tedious?');
-insert into discussion VALUES (00000005, 00000008, 00000000, 'Spring', 2026, 'I had firsthand experience with combustion dynamics that no peer-reviewed study could adequately replicate.');
-insert into discussion VALUES (00000007, 00000011, 00000002, 'Spring', 2026, 'I would master derivatives no matter the cost and that freedom from failing this course was something I would secure for myself with my own two hands, even if it took every hour of the weekend.');
-insert into discussion VALUES (00000008, 00000012, 00000002, 'Spring', 2026, 'Was mastering the math itself a form of justice?');
