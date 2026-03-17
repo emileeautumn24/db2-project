@@ -401,7 +401,9 @@ insert into student VALUES (00000013, 'Obanai Iguro', 'Electrical Engineering', 
 insert into student VALUES (00000014, 'Otto Suwen', 'Biology', 28);
 insert into student VALUES (00000015, 'Lalatina Dustiness', 'Physics', 7);
 insert into student VALUES (00000016, 'Yuta Okkotsu', 'Computer Science', 29);
+
 insert into student VALUES (00000017, 'Pieck Finger', 'Math', 18);
+
 insert into student VALUES (00000018, 'Artoria Pendragon', 'Chemical Engineering', 9);
 insert into student VALUES (00000019, 'Yuri Briar', 'Mechanical Engineering', 11);
 insert into student VALUES (00000020, 'Maki Oze', 'Plastics Engineering', 27);
@@ -572,26 +574,114 @@ insert into section VALUES (00000002, 00000001, 'Spring', 2026, 'Olsen', '102', 
 insert into section VALUES (00000004, 00000000, 'Spring', 2026, 'Olsen', '300', '4364', 100);
 
 
--- Teaches Data
-insert into teaches VALUES (00000007, 00000011, 00000000, 'Spring', 2026);
+-- Teaches Data (instructor_id, course_id, section_id, 'spring', 2026)
 
--- teacher_assistant data
-insert into teacher_assistant VALUES (00000017, 00000011, 00000000, 'Spring', 2026);
+-- Civil engineering
+insert into teaches VALUES (00000000, 00000000, 00000000, 'Spring', 2026);
+-- Electrical Engineering
+insert into teaches VALUES (00000001, 00000001, 00000000, 'Spring', 2026);
+-- Biology
+insert into teaches VALUES (00000002, 00000002, 00000000, 'Spring', 2026);
+insert into teaches VALUES (00000002, 00000003, 00000000, 'Spring', 2026);
+insert into teaches VALUES (00000002, 00000018, 00000001, 'Spring', 2026);
+insert into teaches VALUES (00000002, 00000019, 00000000, 'Spring', 2026);
+-- Physics
+insert into teaches VALUES (00000004, 00000006, 00000000, 'Spring', 2026);
+insert into teaches VALUES (00000004, 00000007, 00000001, 'Spring', 2026);
+insert into teaches VALUES (00000004, 00000022, 00000000, 'Spring', 2026);
+insert into teaches VALUES (00000004, 00000023, 00000000, 'Spring', 2026);
+-- Earth Sciences
+insert into teaches VALUES (00000005, 00000008, 00000000, 'Spring', 2026);
+insert into teaches VALUES (00000005, 00000008, 00000001, 'Spring', 2026);
+-- Computer Science
+insert into teaches VALUES (00000006, 00000009, 00000000, 'Spring', 2026);
+insert into teaches VALUES (00000006, 00000010, 00000001, 'Spring', 2026);
+insert into teaches VALUES (00000006, 00000010, 00000002, 'Spring', 2026);
+insert into teaches VALUES (00000006, 00000025, 00000002, 'Spring', 2026);
+insert into teaches VALUES (00000006, 00000026, 00000001, 'Spring', 2026);
+insert into teaches VALUES (00000006, 00000029, 00000001, 'Spring', 2026);
+-- Math
+insert into teaches VALUES (00000007, 00000011, 00000002, 'Spring', 2026);
+insert into teaches VALUES (00000007, 00000027, 00000000, 'Spring', 2026);
+insert into teaches VALUES (00000007, 00000028, 00000000, 'Spring', 2026);
+-- Chemical Engineering
+insert into teaches VALUES (00000008, 00000012, 00000000, 'Spring', 2026);
+insert into teaches VALUES (00000008, 00000012, 00000001, 'Spring', 2026);
+insert into teaches VALUES (00000008, 00000012, 00000002, 'Spring', 2026);
+-- Mechanical Engineering
+insert into teaches VALUES (00000009, 00000013, 00000000, 'Spring', 2026);
+-- Biomedical Engineering
+insert into teaches VALUES (00000010, 00000014, 00000000, 'Spring', 2026);
+-- Chemistry
+insert into teaches VALUES (00000003, 00000004, 00000001, 'Spring', 2026);
+insert into teaches VALUES (00000003, 00000004, 00000000, 'Spring', 2026);
+insert into teaches VALUES (00000003, 00000020, 00000000, 'Spring', 2026);
+insert into teaches VALUES (00000003, 00000021, 00000000, 'Spring', 2026);
 
--- grader data
-insert into grader VALUES (00000007, 00000011, 00000000, 'Spring', 2026);
+-- teacher_assistant data (student_id(phd only), course_id, section_id, semester, year),
+insert into teacher_assistant VALUES (00000009, 00000013, 00000000, 'Spring', 2026);
+insert into teacher_assistant VALUES (00000021, 00000000, 00000000, 'Spring', 2026);
+insert into teacher_assistant VALUES (00000022, 00000001, 00000000, 'Spring', 2026);
+insert into teacher_assistant VALUES (00000023, 00000002, 00000000, 'Spring', 2026);
+insert into teacher_assistant VALUES (00000024, 00000004, 00000000, 'Spring', 2026);
+insert into teacher_assistant VALUES (00000025, 00000009, 00000000, 'Spring', 2026);
+insert into teacher_assistant VALUES (00000026, 00000011, 00000000, 'Spring', 2026);
+insert into teacher_assistant VALUES (00000027, 00000012, 00000000, 'Spring', 2026);
+insert into teacher_assistant VALUES (00000028, 00000014, 00000000, 'Spring', 2026);
+insert into teacher_assistant VALUES (00000029, 00000011, 00000011, 'Spring', 2026);
 
--- course evaluation data
-insert into course_evaluation VALUES (00000019, 00000011, 00000000, 'Spring', 2026, 2, 'Too much memorisation and strict grading');
+-- grader data (undergraduate and master students only)
+-- Undergraduate
+insert into grader VALUES (00000000, 00000000, 00000000, 'Spring', 2026);
+insert into grader VALUES (00000001, 00000001, 00000000, 'Spring', 2026);
+insert into grader VALUES (00000002, 00000018, 00000001, 'Spring', 2026);
+insert into grader VALUES (00000004, 00000004, 00000001, 'Spring', 2026);
+insert into grader VALUES (00000005, 00000006, 00000000, 'Spring', 2026);
+insert into grader VALUES (00000006, 00000009, 00000000, 'Spring', 2026);
+insert into grader VALUES (00000007, 00000027, 00000000, 'Spring', 2026);
+insert into grader VALUES (00000008, 00000012, 00000001, 'Spring', 2026);
+insert into grader VALUES (00000010, 00000014, 00000000, 'Spring', 2026);
+insert into grader VALUES (00000011, 00000028, 00000000, 'Spring', 2026);
 
--- Teaches Data
-insert into teaches VALUES (00000007, 00000011, 00000000, 'Spring', 2026);
+-- Masters
+insert into grader VALUES (00000012, 00000002, 00000000, 'Spring', 2026);
+insert into grader VALUES (00000013, 00000003, 00000001, 'Spring', 2026);
+insert into grader VALUES (00000014, 00000019, 00000000, 'Spring', 2026);
+insert into grader VALUES (00000015, 00000005, 00000000, 'Spring', 2026);
+insert into grader VALUES (00000016, 00000007, 00000001, 'Spring', 2026);
+insert into grader VALUES (00000017, 00000011, 00000002, 'Spring', 2026);
+insert into grader VALUES (00000018, 00000012, 00000000, 'Spring', 2026);
+insert into grader VALUES (00000019, 00000012, 00000002, 'Spring', 2026);
+insert into grader VALUES (00000020, 00000013, 00000000, 'Spring', 2026);
 
--- teacher_assistant data
-insert into teacher_assistant VALUES (00000017, 00000011, 00000000, 'Spring', 2026);
-
--- grader data
-insert into grader VALUES (00000007, 00000011, 00000000, 'Spring', 2026);
-
--- course evaluation data
-insert into course_evaluation VALUES (00000019, 00000011, 00000000, 'Spring', 2026, 2, 'Too much memorisation and strict grading');
+-- course evalution 
+insert into course_evaluation VALUES (00000000, 00000003, 00000001, 'Spring', 2026, 5, 'Great intro course. Lab work was very practical.');
+insert into course_evaluation VALUES (00000001, 00000025, 00000002, 'Spring', 2026, 4, 'Coding projects were challenging but rewarding.');
+insert into course_evaluation VALUES (00000002, 00000008, 00000002, 'Spring', 2026, 3, 'Interesting lectures but the textbook is mandatory.');
+insert into course_evaluation VALUES (00000003, 00000006, 00000000, 'Spring', 2026, 5, 'Excellent demonstrations and clear explanations.');
+insert into course_evaluation VALUES (00000004, 00000004, 00000001, 'Spring', 2026, 2, 'Lectures were a bit hard to follow at times.');
+insert into course_evaluation VALUES (00000005, 00000012, 00000000, 'Spring', 2026, 4, 'Well organized course with helpful weekly summaries.');
+insert into course_evaluation VALUES (00000006, 00000012, 00000001, 'Spring', 2026, 4, 'Section 1 was very interactive. Good group projects.');
+insert into course_evaluation VALUES (00000007, 00000019, 00000000, 'Spring', 2026, 1, 'Material was much harder than the prerequisite suggested.');
+insert into course_evaluation VALUES (00000008, 00000010, 00000001, 'Spring', 2026, 5, 'Highly recommended for anyone in the department.');
+insert into course_evaluation VALUES (00000009, 00000026, 00000001, 'Spring', 2026, 3, 'A standard course. The workload is manageable.');
+insert into course_evaluation VALUES (00000010, 00000023, 00000000, 'Spring', 2026, 4, 'Very detailed syllabus and fair exam questions.');
+insert into course_evaluation VALUES (00000011, 00000004, 00000002, 'Spring', 2026, 2, 'The midterm exam was significantly harder than the homework.');
+insert into course_evaluation VALUES (00000012, 00000018, 00000001, 'Spring', 2026, 5, 'One of the best professors I have had so far.');
+insert into course_evaluation VALUES (00000013, 00000008, 00000000, 'Spring', 2026, 3, 'Decent course content, but the lab equipment is old.');
+insert into course_evaluation VALUES (00000014, 00000028, 00000000, 'Spring', 2026, 5, 'Foundational knowledge that is essential for my major.');
+insert into course_evaluation VALUES (00000015, 00000012, 00000002, 'Spring', 2026, 4, 'The practical examples really helped bridge the theory.');
+insert into course_evaluation VALUES (00000016, 00000018, 00000002, 'Spring', 2026, 3, 'Very fast-paced. Hard to keep up if you miss one class.');
+insert into course_evaluation VALUES (00000017, 00000007, 00000001, 'Spring', 2026, 5, 'The best lab experience of my undergraduate career.');
+insert into course_evaluation VALUES (00000018, 00000011, 00000002, 'Spring', 2026, 4, 'Complex topics made simple through great visualization.');
+insert into course_evaluation VALUES (00000019, 00000023, 00000002, 'Spring', 2026, 2, 'Way too much homework for a 3-credit course.');
+insert into course_evaluation VALUES (00000020, 00000003, 00000002, 'Spring', 2026, 5, 'The teaching style is very engaging and inclusive.');
+insert into course_evaluation VALUES (00000021, 00000008, 00000001, 'Spring', 2026, 4, 'Learned a lot of practical skills for my future career.');
+insert into course_evaluation VALUES (00000022, 00000029, 00000001, 'Spring', 2026, 3, 'The material was okay, but the classroom was too small.');
+insert into course_evaluation VALUES (00000023, 00000010, 00000002, 'Spring', 2026, 5, 'Fantastic online resources provided by the department.');
+insert into course_evaluation VALUES (00000024, 00000001, 00000000, 'Spring', 2026, 4, 'A solid introduction to the field of study.');
+insert into course_evaluation VALUES (00000025, 00000002, 00000000, 'Spring', 2026, 1, 'Difficulty reaching the professor during office hours.');
+insert into course_evaluation VALUES (00000026, 00000020, 00000000, 'Spring', 2026, 5, 'Absolutely fascinating topic. I wish there was a part 2.');
+insert into course_evaluation VALUES (00000027, 00000002, 00000001, 'Spring', 2026, 4, 'Well-structured labs that mirrored the lecture content.');
+insert into course_evaluation VALUES (00000028, 00000004, 00000000, 'Spring', 2026, 3, 'A standard chemistry class with no major surprises.');
+insert into course_evaluation VALUES (00000029, 00000011, 00000002, 'Spring', 2026, 5, 'Highly effective teaching methods. Really enjoyed it.');
