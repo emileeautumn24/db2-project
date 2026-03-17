@@ -573,6 +573,18 @@ insert into section VALUES (00000020, 00000000, 'Spring', 2026, 'Olsen', '300', 
 insert into section VALUES (00000002, 00000001, 'Spring', 2026, 'Olsen', '102', '3271', 88);
 insert into section VALUES (00000004, 00000000, 'Spring', 2026, 'Olsen', '300', '4364', 100);
 
+-- Takes Table
+insert into takes VALUES (00000001, 00000001, 00000000, 'Spring', 2026, 71);
+insert into takes VALUES (00000002, 00000002, 00000001, 'Spring', 2026, 65);
+insert into takes VALUES (00000002, 00000003, 00000001, 'Spring', 2026, 98);
+insert into takes VALUES (00000002, 00000018, 00000002, 'Spring', 2026, 80);
+insert into takes VALUES (00000002, 00000019, 00000000, 'Spring', 2026, 90);
+insert into takes VALUES (00000004, 00000006, 00000002, 'Spring', 2026, 71);
+insert into takes VALUES (00000004, 00000007, 00000001, 'Spring', 2026, 70);
+insert into takes VALUES (00000005, 00000008, 00000000, 'Spring', 2026, 62);
+insert into takes VALUES (00000007, 00000011, 00000002, 'Spring', 2026, 95);
+insert into takes VALUES (00000008, 00000012, 00000002, 'Spring', 2026, 87);
+insert into takes VALUES (00000017, 00000011, 00000002, 'Spring', 2026, 99);
 
 -- Teaches Data (instructor_id, course_id, section_id, 'spring', 2026)
 
