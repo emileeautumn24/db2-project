@@ -269,23 +269,23 @@ insert into student VALUES (00000028, 'Viktor Licht', 'Biomedical Engineering', 
 insert into student VALUES (00000029, 'Cid Kagenou', 'Plastics Engineering', 13);
 
 -- Takes Data
-insert into takes VALUES (00000000, 00000000, 00000000, 'Spring', 2026, 81);
-insert into takes VALUES (00000001, 00000001, 00000000, 'Spring', 2026, 71);
-insert into takes VALUES (00000002, 00000002, 00000001, 'Spring', 2026, 65);
-insert into takes VALUES (00000002, 00000003, 00000001, 'Spring', 2026, 98);
-insert into takes VALUES (00000002, 00000018, 00000002, 'Spring', 2026, 80);
-insert into takes VALUES (00000002, 00000019, 00000000, 'Spring', 2026, 90);
-insert into takes VALUES (00000004, 00000006, 00000000, 'Spring', 2026, 71);
-insert into takes VALUES (00000004, 00000007, 00000001, 'Spring', 2026, 70);
-insert into takes VALUES (00000005, 00000008, 00000000, 'Spring', 2026, 62);
-insert into takes VALUES (00000006, 00000009, 00000000, 'Spring', 2026, 72);
-insert into takes VALUES (00000006, 00000010, 00000001, 'Spring', 2026, 74);
-insert into takes VALUES (00000007, 00000011, 00000002, 'Spring', 2026, 95);
-insert into takes VALUES (00000008, 00000012, 00000002, 'Spring', 2026, 87);
-insert into takes VALUES (00000010, 00000014, 00000000, 'Spring', 2026, 67);
-insert into takes VALUES (00000011, 00000004, 00000001, 'Spring', 2026, 81);
-insert into takes VALUES (00000011, 00000005, 00000002, 'Spring', 2026, 74);
-insert into takes VALUES (00000017, 00000011, 00000002, 'Spring', 2026, 99);
+insert into takes VALUES (00000000, 00000000, 00000000, 'Spring', 2026, 'B-');
+insert into takes VALUES (00000001, 00000001, 00000000, 'Spring', 2026, 'C-');
+insert into takes VALUES (00000002, 00000002, 00000001, 'Spring', 2026, 'D');
+insert into takes VALUES (00000002, 00000003, 00000001, 'Spring', 2026, 'A');
+insert into takes VALUES (00000002, 00000018, 00000002, 'Spring', 2026, 'B-');
+insert into takes VALUES (00000002, 00000019, 00000000, 'Spring', 2026, 'A-');
+insert into takes VALUES (00000004, 00000006, 00000000, 'Spring', 2026, 'C-');
+insert into takes VALUES (00000004, 00000007, 00000001, 'Spring', 2026, 'C-');
+insert into takes VALUES (00000005, 00000008, 00000000, 'Spring', 2026, 'D');
+insert into takes VALUES (00000006, 00000009, 00000000, 'Spring', 2026, 'C-');
+insert into takes VALUES (00000006, 00000010, 00000001, 'Spring', 2026, 'C');
+insert into takes VALUES (00000007, 00000011, 00000002, 'Spring', 2026, 'A');
+insert into takes VALUES (00000008, 00000012, 00000002, 'Spring', 2026, 'B+');
+insert into takes VALUES (00000010, 00000014, 00000000, 'Spring', 2026, 'D+');
+insert into takes VALUES (00000011, 00000004, 00000001, 'Spring', 2026, 'B-');
+insert into takes VALUES (00000011, 00000005, 00000002, 'Spring', 2026, 'C');
+insert into takes VALUES (00000017, 00000011, 00000002, 'Spring', 2026, 'A');
 
 -- Advising Data
 insert into advising VALUES (00000000, 00000000);
