@@ -1,0 +1,44 @@
+<html lang="en">
+<head>
+    <title>Advising</title>
+</head>
+<body>
+<h2>Advising</h2>
+
+<form action="advising.php" method="post">
+    <table style="border: 0">
+        <tr>
+            <td>Instructor ID</td>
+            <td>
+                <input type="text" id="instructor" name="instructor_id"/>
+            </td>
+        </tr>
+        <tr>
+            <td>Student ID</td>
+            <td>
+                <input type="text" id="student" name="student_id"/>
+            </td>
+        </tr>
+        <tr>
+            <td>My advisee is a/an: </td>
+            <td>
+                <input type="radio" id="undergrad" name="typeSelector" value="UNDERGRAD"/>
+                <label for="undergrad">Undergrad</label>
+                <input type="radio" id="ms" name="typeSelector" value="MS"/>
+                <label for="ms">MS</label>
+                <input type="radio" id="phd" name="typeSelector" value="PHD"/>
+                <label for="phd">PhD</label>
+            </td>
+        </tr>
+        <tr><td></td></tr>
+        <tr>
+            <td colspan="2" style="align-items: center">
+                <input type="submit" value="View Advisee Info" id="viewButton"/>
+            </td>
+        </tr>
+    </table>
+</form>
+
+</body>
+</html>
+
