@@ -1,0 +1,109 @@
+<?php /** @noinspection SqlNoDataSourceInspection */
+
+$student_id = $_POST['student_id'];
+
+// checks connection
+$connection = mysqli_connect('localhost', 'root', '')
+or die ('Could not connect: ' . mysqli_error($connection));
+
+// checks if database exists
+$db = mysqli_select_db($connection, 'db2') or die ('Could not select database');
+
+// get student and instructor names for display
+$query0 = 'SELECT S.name AS s_name FROM student S WHERE S.student_id = ' . $student_id;
+$result0 = mysqli_query($connection, $query0) or die ('Query #0 failed: ' . mysqli_error($connection));
+
+if ($row = mysqli_fetch_array($result0, MYSQLI_ASSOC)) {
+    echo '<strong>Student ID: </strong>' . $student_id . '<br>';
+    echo '<strong>Student Name: </strong>' . $row["s_name"] . '<br><br>';
+}
+
+mysqli_free_result($result0);
+
+// gets list of courses the student had taken
+$query1 = 'SELECT C.title FROM course C, takes T, student S WHERE S.student_id = ' . $student_id . ' AND S.student_id = T.student_id AND T.course_id = C.course_id';
+$result1 = mysqli_query($connection, $query1) or die ('Query #1 failed: ' . mysqli_error($connection));
+
+echo '<strong><u>Courses Taken</u></strong><br>';
+
+while ($row = mysqli_fetch_array($result1, MYSQLI_ASSOC)) {
+    echo $row["title"];
+    echo '<br>';
+}
+echo '<br>';
+
+mysqli_free_result($result1);
+
+// gets grades of courses the student had taken
+$cumulative_gpa = 0.0;
+$taken_courses = 0.0;
+
+$query2 = 'SELECT T.grade, C.credits FROM takes T, student S, course C WHERE S.student_id = ' . $student_id . ' AND S.student_id = T.student_id AND T.course_id = C.course_id';
+$result2 = mysqli_query($connection, $query2) or die ('Query #2 failed: ' . mysqli_error($connection));
+
+echo '<strong><u>Cumulative GPA</u></strong><br>';
+
+// calculate GPA
+while ($row = mysqli_fetch_array($result2, MYSQLI_ASSOC)) {
+    switch ($row["grade"]) {
+        case 'A':
+            $cumulative_gpa = $cumulative_gpa + (4.0 * $row["credits"]);
+            break;
+        case 'A-':
+            $cumulative_gpa = $cumulative_gpa + (3.7 * $row["credits"]);
+            break;
+        case 'B+':
+            $cumulative_gpa = $cumulative_gpa + (3.3 * $row["credits"]);
+            break;
+        case 'B':
+            $cumulative_gpa = $cumulative_gpa + (3.0 * $row["credits"]);
+            break;
+        case 'B-':
+            $cumulative_gpa = $cumulative_gpa + (2.7 * $row["credits"]);
+            break;
+        case 'C+':
+            $cumulative_gpa = $cumulative_gpa + (2.3 * $row["credits"]);
+            break;
+        case 'C':
+            $cumulative_gpa = $cumulative_gpa + (2.0 * $row["credits"]);
+            break;
+        case 'C-':
+            $cumulative_gpa = $cumulative_gpa + (1.7 * $row["credits"]);
+            break;
+        case 'D+':
+            $cumulative_gpa = $cumulative_gpa + (1.3 * $row["credits"]);
+            break;
+        case 'D':
+            $cumulative_gpa = $cumulative_gpa + (1.0 * $row["credits"]);
+            break;
+        default:
+        $cumulative_gpa = 0.0;
+    }
+    $taken_courses = $taken_courses + (4.0 * $row["credits"]);
+}
+
+if ($taken_courses > 0.0) {
+    $cumulative_gpa /= $taken_courses;
+    $cumulative_gpa *= 4.0;
+}
+
+echo $cumulative_gpa;
+echo '<br><br>';
+
+mysqli_free_result($result2);
+
+// display total credits earned
+$credits_earned = 0;
+$query3 = 'SELECT S.total_credit FROM student S WHERE S.student_id = ' . $student_id;
+$result3 = mysqli_query($connection, $query3) or die ('Query #3 failed: ' . mysqli_error($connection));
+if ($row = mysqli_fetch_array($result3, MYSQLI_ASSOC)) {
+    $credits_earned = $row["total_credit"];
+}
+
+echo '<strong><u>Total Credits Earned</u></strong><br>';
+echo $credits_earned;
+
+mysqli_free_result($result3);
+mysqli_close($connection);
+
+?>
