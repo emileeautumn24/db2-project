@@ -1,0 +1,80 @@
+<html lang="en">
+<head>
+    <title>Discussion Board</title>
+</head>
+<body>
+<h2>Discussion Board</h2>
+
+<form action="discussion_board.php" method="post">
+    <table style="border: 0">
+        <tr>
+            <td>Student ID</td>
+            <td>
+                <input type="text" id="student" name="student_id"/>
+            </td>
+        </tr>
+        <tr>
+            <td>Course ID</td>
+            <td>
+                <input type="text" id="course" name="course_id"/>
+            </td>
+        </tr>
+        <tr>
+            <td>Section ID</td>
+            <td>
+                <input type="text" id="section" name="section_id"/>
+            </td>
+        </tr>
+        <tr>
+            <td>Semester</td>
+            <td>
+                <input type="text" id="semester" name="semester_name"/>
+            </td>
+        </tr>
+        <tr>
+            <td>Year</td>
+            <td>
+                <input type="text" id="year" name="year_num"/>
+            </td>
+        </tr>
+        <tr>
+            <td>Post Text</td>
+            <td>
+                <input type="text" id="post" name="post_text"/>
+            </td>
+        </tr>
+        <tr><td></td></tr>
+        <tr>
+            <td>Student ID to Delete Posts From (TA/GRADER ONLY)</td>
+            <td>
+                <input type="text" id="student_delete" name="student_delete_id"/>
+            </td>
+        </tr>
+        <tr>
+            <td>You are a/an: </td>
+            <td>
+                <input type="radio" id="student_button" name="typeSelector" value="STUDENT"/>
+                <label for="student_button">Student</label>
+                <input type="radio" id="ta" name="typeSelector" value="TA"/>
+                <label for="ta">TA</label>
+                <input type="radio" id="grader" name="typeSelector" value="GRADER"/>
+                <label for="grader">Grader</label>
+            </td>
+        </tr>
+        <tr><td></td></tr>
+        <tr>
+            <td colspan="2" style="align-items: center">
+                <input type="submit" value="Post/Reply" id="postButton" name="post_btn"/>
+            </td>
+        </tr>
+        <tr><td></td></tr>
+        <tr>
+            <td colspan="2" style="align-items: center">
+                <input type="submit" value="Delete Posts (TA/GRADER ONLY)" id="deleteButton" name="del_btn"/>
+            </td>
+        </tr>
+    </table>
+</form>
+
+</body>
+</html>
