@@ -154,7 +154,7 @@ insert into time_slot VALUES ('4366', '6', 15, 30, 16, 45);
 insert into time_slot VALUES ('4367', '6', 17, 00, 18, 15);
 insert into time_slot VALUES ('4368', '6', 18, 30, 19, 45);
 
--- Section Data
+-- Section Data 
 insert into section VALUES (00000003, 00000001, 'Spring', 2026, 'Shah', '301', '3281', 50);
 insert into section VALUES (00000025, 00000002, 'Spring', 2026, 'Shah', '303', '3284', 50);
 insert into section VALUES (00000008, 00000002, 'Spring', 2026, 'Shah', '305', '4363', 70);
