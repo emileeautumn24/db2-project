@@ -1,0 +1,24 @@
+<html lang="en">
+<head>
+    <title>Admin - Create Section</title>
+</head>
+<body>
+    <h2>Create New Course Section</h2>
+    <form action="create_section.php" method="POST">
+        <table>
+            <tr><td>Course ID:</td><td><input type="text" name="course_id" required></td></tr>
+            <tr><td>Section ID:</td><td><input type="text" name="section_id" required></td></tr>
+            <tr><td>Instructor ID:</td><td><input type="text" name="instructor_id" required></td></tr>
+            <tr><td>Classroom ID:</td><td><input type="text" name="classroom_id" required></td></tr>
+            <tr><td>Time Slot ID:</td><td><input type="text" name="time_slot_id" required></td></tr>
+            <tr><td>Semester:</td><td><input type="text" name="semester" value="Spring" required></td></tr>
+            <tr><td>Year:</td><td><input type="number" name="year" value="2026" required></td></tr>
+            <tr>
+                <td colspan="2">
+                    <input type="submit" value="Create Section">
+                </td>
+            </tr>
+        </table>
+    </form>
+</body>
+</html>

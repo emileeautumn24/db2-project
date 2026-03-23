@@ -1,0 +1,32 @@
+<html lang="en">
+<head>
+    <title>Instructor Teaching Records</title>
+</head>
+<body>
+    <h2>Instructor Teaching Records</h2>
+    <p>Enter an Instructor ID to see all taught sections, or enter a Course and Section ID to view a specific class roster.</p>
+    
+    <form action="instructor_records.php" method="POST">
+        <table style="border: 0">
+            <tr>
+                <td>Instructor ID:</td>
+                <td><input type="text" name="instructor_id" required></td>
+            </tr>
+            <tr>
+                <td>Course ID (Optional):</td>
+                <td><input type="text" name="course_id"></td>
+            </tr>
+            <tr>
+                <td>Section ID (Optional):</td>
+                <td><input type="text" name="section_id"></td>
+            </tr>
+            <tr><td><br></td></tr>
+            <tr>
+                <td colspan="2">
+                    <input type="submit" value="View Records">
+                </td>
+            </tr>
+        </table>
+    </form>
+</body>
+</html>
