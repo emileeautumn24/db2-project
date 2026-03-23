@@ -1,0 +1,59 @@
+<html lang="en">
+<head>
+    <title>TA Assignments</title>
+</head>
+<body>
+<h2>TA Assignments</h2>
+
+<form action="ta_assignments.php" method="post">
+    <table style="border: 0">
+        <tr>
+            <td>ID of prospective TA</td>
+            <td>
+                <input type="text" id="prospective_TA" name="prospective_TA_id"/>
+            </td>
+        </tr>
+        <tr>
+            <td>Course ID</td>
+            <td>
+                <input type="text" id="course_num" name="course_id"/>
+            </td>
+        </tr>
+        <tr>
+            <td>Section ID</td>
+            <td>
+                <input type="text" id="section_num" name="section_id"/>
+            </td>
+        </tr>
+        <tr>
+            <td>Year</td>
+            <td>
+                <input type="text" id="year" name="year_id"/>
+            </td>
+        </tr>
+        <tr>
+            <td>Semester</td>
+            <td>
+                <input type="radio" id="winter" name="typeSelector" value="WINTER"/>
+                <label for="winter">Winter</label>
+                <input type="radio" id="spring" name="typeSelector" value="SPRING"/>
+                <label for="spring">Spring</label>
+                <input type="radio" id="summer" name="typeSelector" value="SUMMER"/>
+                <label for="summer">Summer</label>
+                <input type="radio" id="fall" name="typeSelector" value="FALL"/>
+                <label for="fall">Fall</label>
+            </td>
+        </tr>
+
+        <tr><td></td></tr>
+        <tr>
+            <td colspan="2" style="align-items: center">
+                <input type="submit" value="Assign TA To Course" id="viewButton"/>
+            </td>
+        </tr>
+    </table>
+</form>
+
+</body>
+</html>
+
