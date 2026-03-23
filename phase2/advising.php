@@ -20,6 +20,8 @@ if ($row = mysqli_fetch_array($result0, MYSQLI_ASSOC)) {
     echo '<strong>Instructor Name: </strong>' . $row["i_name"] . '<br><br>';
     echo '<strong>Student ID: </strong>' . $student_id . '<br>';
     echo '<strong>Student Name: </strong>' . $row["s_name"] . '<br><br>';
+} else {
+    die ('Instructor ID ' . $instructor_id . ' may not have Student ID ' . $student_id. ' as their advisee.');
 }
 
 mysqli_free_result($result0);
@@ -103,18 +105,24 @@ if ($type === 'UNDERGRAD') {
     $result3 = mysqli_query($connection, $query3) or die ('Query #3 failed: ' . mysqli_error($connection));
     if ($row = mysqli_fetch_array($result3, MYSQLI_ASSOC)) {
         $remaining_credits = 120 - $row["total_credit"];
+    } else {
+        die ('Student ID ' . $student_id. ' is not an undergrad.');
     }
 } elseif ($type === 'MS') {
     $query3 = 'SELECT S.total_credit FROM advising A, student S, master M WHERE A.instructor_id = ' . $instructor_id . ' AND A.student_id = ' . $student_id . ' AND A.student_id = S.student_id AND A.student_id = M.student_id AND S.student_id = M.student_id';
     $result3 = mysqli_query($connection, $query3) or die ('Query #3 failed: ' . mysqli_error($connection));
     if ($row = mysqli_fetch_array($result3, MYSQLI_ASSOC)) {
         $remaining_credits = 30 - $row["total_credit"];
+    } else {
+        die ('Student ID ' . $student_id. ' is not an MS.');
     }
 } elseif ($type === 'PHD') {
     $query3 = 'SELECT S.total_credit FROM advising A, student S, phd P WHERE A.instructor_id = ' . $instructor_id . ' AND A.student_id = ' . $student_id . ' AND A.student_id = S.student_id AND A.student_id = P.student_id AND S.student_id = P.student_id';
     $result3 = mysqli_query($connection, $query3) or die ('Query #3 failed: ' . mysqli_error($connection));
     if ($row = mysqli_fetch_array($result3, MYSQLI_ASSOC)) {
         $remaining_credits = 42 - $row["total_credit"];
+    } else {
+        die ('Student ID ' . $student_id. ' is not a PhD.');
     }
 } else {
     die('Please select a student type.');

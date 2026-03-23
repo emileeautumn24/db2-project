@@ -16,6 +16,8 @@ $result0 = mysqli_query($connection, $query0) or die ('Query #0 failed: ' . mysq
 if ($row = mysqli_fetch_array($result0, MYSQLI_ASSOC)) {
     echo '<strong>Student ID: </strong>' . $student_id . '<br>';
     echo '<strong>Student Name: </strong>' . $row["s_name"] . '<br><br>';
+} else {
+    die ('Student ID ' . $student_id . ' does not exist.');
 }
 
 mysqli_free_result($result0);

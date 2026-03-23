@@ -23,6 +23,8 @@ $query0 = "SELECT C.title FROM course C WHERE C.course_id = " . $course_id;
 $result0 = mysqli_query($connection, $query0) or die ("Query #0 failed: " . mysqli_error($connection));
 if ($row = mysqli_fetch_array($result0, MYSQLI_ASSOC)) {
     echo "<strong>Course: </strong>" . $row["title"] . "<br>";
+} else {
+    die ("Course ID " . $course_id . " does not exist.");
 }
 echo "<strong>Section ID: </strong>" . $section_id . "<br>";
 echo "<strong>" . $semester_name . " " . $year_num . "</strong><br>";
@@ -39,8 +41,14 @@ if (isset($_POST["post_btn"])) {
     $query1 = "INSERT INTO discussion SELECT " . $student_id . ", " . $course_id . ", " . $section_id .
     ", '" . $semester_name . "', " . $year_num . ", '" . $safe_post_text . "' FROM takes T WHERE T.student_id = " . $student_id .
     " AND T.course_id = " . $course_id . " AND T.section_id = " . $section_id . " AND T.semester = '" . $semester_name .
-    "' AND T.year = " . $year_num . " LIMIT 1";
+    "' AND T.year = " . $year_num . " AND NOT EXISTS ( SELECT 1 FROM discussion D WHERE D.student_id = " .
+    $student_id . " AND D.course_id = " . $course_id . " AND D.section_id = " . $section_id ." AND D.semester = '" .
+    $semester_name . "' AND D.year = " . $year_num . " ) LIMIT 1";
     $result1 = mysqli_query($connection, $query1) or die ("Query #1 failed: " . mysqli_error($connection));
+    $was_inserted = mysqli_affected_rows($connection) > 0;
+    if (!$was_inserted) {
+        die ("Insertion failed.");
+    }
 
     // display posts/replies from discussion after inserting new post/reply
     $query2 = "SELECT S.name, D.content FROM student S, discussion D, takes T WHERE D.course_id = " . $course_id .
@@ -64,6 +72,10 @@ if (isset($_POST["post_btn"])) {
         "AND EXISTS ( SELECT 1 FROM teacher_assistant TA WHERE TA.student_id = " . $student_id .
         " AND D.course_id = TA.course_id AND D.section_id = TA.section_id AND D.semester = TA.semester AND D.year = TA.year )";
         $result3 = mysqli_query($connection, $query3) or die ("Query #3 failed: " . mysqli_error($connection));
+        $was_deleted = mysqli_affected_rows($connection) > 0;
+        if (!$was_deleted) {
+            die ("Deletion failed.");
+        }
     } elseif ($type == "GRADER") {
         // delete specific post from discussion if Grader is the grader of their specific class and section
         $query3 = "DELETE D FROM discussion D WHERE D.student_id = " . $student_delete_id . " AND D.course_id = " . $course_id .
@@ -72,6 +84,10 @@ if (isset($_POST["post_btn"])) {
         "AND EXISTS ( SELECT 1 FROM grader G WHERE G.student_id = " . $student_id .
         " AND D.course_id = G.course_id AND D.section_id = G.section_id AND D.semester = G.semester AND D.year = G.year )";
         $result3 = mysqli_query($connection, $query3) or die ("Query #3 failed: " . mysqli_error($connection));
+        $was_deleted = mysqli_affected_rows($connection) > 0;
+        if (!$was_deleted) {
+            die ("Deletion failed.");
+        }
     } else {
         die("Please select either TA or Grader for deleting posts.");
     }
