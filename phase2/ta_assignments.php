@@ -23,23 +23,21 @@ if (isset($_POST["submit"])) {
     $queryResult = mysqli_query($connection, $checkQuery) or die ('Input check failed: ' . mysqli_error($connection));
     mysqli_free_result($queryResult);
 
-    // check class section size in range [5, 10]
-    // for TA: check range [10, inf)
+    // check class section size in range (10, inf)
     $checkEnroll = "SELECT count(*) AS count from takes t WHERE t.course_id = " . $course_id . " AND t.section_id = " . $section_id . " AND t.semester " . $semester_name . " AND t.year = " . $year_id; 
     $enrollResult = mysqli_query($connection, $checkEnroll) or die ('Enrollment check failed: ' . mysqli_error($connection));
     if ($row = mysqli_fetch_array($enrollResult, MYSQLI_ASSOC)) {
         if ($row["count"] > 10) {
             // check student type
-            // TA: must be doctoral student
-            // grader: master/undergrad who got an A- or better in this course
+            // must be doctoral student
             $checkDoctoral = "SELECT s.student_id FROM phd s WHERE s.student_id = " . $TA_id;
             // if not correct student type, throw error
             $doctoralResult = mysqli_query($connection, $checkDoctoral) or die ('Student type eligibilty check failed: ' . mysqli_error($connection));
             mysqli_free_result($doctoralResult);
 
-            // check if TA or grader is already TA/grading a section
+            // check if TA is already TA for a section
             $checkAlreadyTA = "SELECT student_id FROM teacher_assistant WHERE student_id = " . $TA_id;
-            // if TA/grader is already TA/grading a section, throw error
+            // if TA is already TA for a section, throw error
             $AlreadyTAResult = mysqli_query($connection, $AlreadyTAResult) or die ('Already TA/grader eligibility check failed ' . mysqli_error($connection));
             mysqli_free_result($AlreadyTAResult)
             
