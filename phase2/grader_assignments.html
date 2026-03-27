@@ -10,37 +10,37 @@
         <tr>
             <td>ID of prospective Grader</td>
             <td>
-                <input type="text" id="grader" name="grader_id" required/>
+                <input type="text" id="grader" name="grader_id"/>
             </td>
         </tr>
         <tr>
             <td>Course ID</td>
             <td>
-                <input type="text" id="course" name="course_id" required/>
+                <input type="text" id="course" name="course_id"/>
             </td>
         </tr>
         <tr>
             <td>Section ID</td>
             <td>
-                <input type="text" id="section" name="section_id" required/>
+                <input type="text" id="section" name="section_id"/>
             </td>
         </tr>
         <tr>
             <td>Year</td>
             <td>
-                <input type="text" id="year" name="year_id" required/>
+                <input type="text" id="year" name="year_id"/>
             </td>
         </tr>
         <tr>
             <td>Semester</td>
             <td>
-                <input type="radio" id="winter" name="typeSelector" value="WINTER"/>
+                <input type="radio" id="winter" name="semesterSelector" value="Winter"/>
                 <label for="winter">Winter</label>
-                <input type="radio" id="spring" name="typeSelector" value="SPRING"/>
+                <input type="radio" id="spring" name="semesterSelector" value="Spring"/>
                 <label for="spring">Spring</label>
-                <input type="radio" id="summer" name="typeSelector" value="SUMMER"/>
+                <input type="radio" id="summer" name="semesterSelector" value="Summer"/>
                 <label for="summer">Summer</label>
-                <input type="radio" id="fall" name="typeSelector" value="FALL"/>
+                <input type="radio" id="fall" name="semesterSelector" value="Fall"/>
                 <label for="fall">Fall</label>
             </td>
         </tr>
@@ -48,7 +48,7 @@
         <tr><td></td></tr>
         <tr>
             <td colspan="2" style="align-items: center">
-                <input type="submit" value="Assign Grader To Course" id="viewButton"/>
+                <input type="submit" value="Assign Grader To Course" id="viewButton" name="view_btn"/>
             </td>
         </tr>
     </table>
