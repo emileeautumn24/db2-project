@@ -192,6 +192,7 @@ insert into section VALUES (00000013, 00000000, 'Spring', 2026, 'Olsen', '405', 
 insert into section VALUES (00000014, 00000000, 'Spring', 2026, 'Falmouth', '309', '3273', 15);
 insert into section VALUES (00000021, 00000000, 'Spring', 2026, 'Shah', '208', '3191', 15);
 insert into section VALUES (00000005, 00000002, 'Spring', 2026, 'Falmouth', '313', '4363', 15);
+insert into section VALUES (00000009, 00000001, 'Spring', 2026, 'Shah', '305', '3284', 15);
 
 -- Teaches Data (instructor_id, course_id, section_id, 'spring', 2026)
 -- Civil engineering
@@ -213,6 +214,7 @@ insert into teaches VALUES (00000005, 00000008, 00000000, 'Spring', 2026);
 insert into teaches VALUES (00000005, 00000008, 00000001, 'Spring', 2026);
 -- Computer Science
 insert into teaches VALUES (00000006, 00000009, 00000000, 'Spring', 2026);
+insert into teaches VALUES (00000006, 00000009, 00000001, 'Spring', 2026);
 insert into teaches VALUES (00000006, 00000010, 00000001, 'Spring', 2026);
 insert into teaches VALUES (00000006, 00000010, 00000002, 'Spring', 2026);
 insert into teaches VALUES (00000006, 00000025, 00000002, 'Spring', 2026);
@@ -267,6 +269,18 @@ insert into student VALUES (00000026, 'Armin Arlelt', 'Math', 0);
 insert into student VALUES (00000027, 'Illyasviel Einzbern', 'Chemical Engineering', 32);
 insert into student VALUES (00000028, 'Viktor Licht', 'Biomedical Engineering', 5);
 insert into student VALUES (00000029, 'Cid Kagenou', 'Plastics Engineering', 13);
+insert into student VALUES (00000030, 'Shido Itsuka', 'Computer Science', 17);
+insert into student VALUES (00000031, 'Megumi Fushiguro', 'Computer Science', 34);
+insert into student VALUES (00000032, 'Nobara Kugisaki', 'Computer Science', 12);
+insert into student VALUES (00000033, 'Arata Nitta', 'Computer Science', 0);
+insert into student VALUES (00000034, 'Maki Zenin', 'Computer Science', 106);
+insert into student VALUES (00000035, 'Toge Inumaki', 'Computer Science', 54);
+insert into student VALUES (00000036, 'Mai Zenin', 'Computer Science', 70);
+insert into student VALUES (00000037, 'Kokichi Muta', 'Computer Science', 88);
+insert into student VALUES (00000038, 'Kasumi Miwa', 'Computer Science', 17);
+insert into student VALUES (00000039, 'Kinji Hakari', 'Computer Science', 95);
+insert into student VALUES (00000040, 'Kirara Hoshi', 'Computer Science', 96);
+insert into student VALUES (00000041, 'Noritoshi Kamo', 'Computer Science', 7);
 
 -- Takes Data
 insert into takes VALUES (00000000, 00000000, 00000000, 'Spring', 2026, 'B-');
@@ -286,6 +300,17 @@ insert into takes VALUES (00000010, 00000014, 00000000, 'Spring', 2026, 'D+');
 insert into takes VALUES (00000011, 00000004, 00000001, 'Spring', 2026, 'B-');
 insert into takes VALUES (00000011, 00000005, 00000002, 'Spring', 2026, 'C');
 insert into takes VALUES (00000017, 00000011, 00000002, 'Spring', 2026, 'A');
+insert into takes VALUES (00000031, 00000009, 00000001, 'Spring', 2026, 'A-');
+insert into takes VALUES (00000032, 00000009, 00000001, 'Spring', 2026, 'F');
+insert into takes VALUES (00000033, 00000009, 00000001, 'Spring', 2026, 'D+');
+insert into takes VALUES (00000034, 00000009, 00000001, 'Spring', 2026, 'C+');
+insert into takes VALUES (00000035, 00000009, 00000001, 'Spring', 2026, 'D');
+insert into takes VALUES (00000036, 00000009, 00000001, 'Spring', 2026, 'B');
+insert into takes VALUES (00000037, 00000009, 00000001, 'Spring', 2026, 'B+');
+insert into takes VALUES (00000038, 00000009, 00000001, 'Spring', 2026, 'A');
+insert into takes VALUES (00000039, 00000009, 00000001, 'Spring', 2026, 'F');
+insert into takes VALUES (00000040, 00000009, 00000001, 'Spring', 2026, 'B');
+insert into takes VALUES (00000041, 00000009, 00000001, 'Spring', 2026, 'B-');
 
 -- Advising Data
 insert into advising VALUES (00000000, 00000000);
@@ -318,6 +343,18 @@ insert into advising VALUES (00000028, 00000010);
 insert into advising VALUES (00000011, 00000011);
 insert into advising VALUES (00000020, 00000011);
 insert into advising VALUES (00000029, 00000011);
+insert into advising VALUES (00000030, 00000006);
+insert into advising VALUES (00000031, 00000006);
+insert into advising VALUES (00000032, 00000006);
+insert into advising VALUES (00000033, 00000006);
+insert into advising VALUES (00000034, 00000006);
+insert into advising VALUES (00000035, 00000006);
+insert into advising VALUES (00000036, 00000006);
+insert into advising VALUES (00000037, 00000006);
+insert into advising VALUES (00000038, 00000006);
+insert into advising VALUES (00000039, 00000006);
+insert into advising VALUES (00000040, 00000006);
+insert into advising VALUES (00000041, 00000006);
 
 -- Prereq Data
 insert into prereq VALUES (00000028, 00000027);
@@ -379,6 +416,17 @@ insert into undergraduate VALUES (00000007, 2, 'Math');
 insert into undergraduate VALUES (00000008, 2, 'Chemical Engineering');
 insert into undergraduate VALUES (00000010, 2, 'Biomedical Engineering');
 insert into undergraduate VALUES (00000011, 4, 'Plastics Engineering');
+insert into undergraduate VALUES (00000031, 2, 'Computer Science');
+insert into undergraduate VALUES (00000032, 1, 'Computer Science');
+insert into undergraduate VALUES (00000033, 1, 'Computer Science');
+insert into undergraduate VALUES (00000034, 4, 'Computer Science');
+insert into undergraduate VALUES (00000035, 2, 'Computer Science');
+insert into undergraduate VALUES (00000036, 3, 'Computer Science');
+insert into undergraduate VALUES (00000037, 4, 'Computer Science');
+insert into undergraduate VALUES (00000038, 1, 'Computer Science');
+insert into undergraduate VALUES (00000039, 4, 'Computer Science');
+insert into undergraduate VALUES (00000040, 4, 'Computer Science');
+insert into undergraduate VALUES (00000041, 1, 'Computer Science');
 
 -- Master Students Data
 insert into master VALUES (00000003);
@@ -403,6 +451,7 @@ insert into phd VALUES (00000026, 'Game-Theoretic Modeling of Strategic Decision
 insert into phd VALUES (00000027, 'Design and Synthesis of Multi-Functional Polymer Matrices for Adaptive Chemical Systems.', FALSE);
 insert into phd VALUES (00000028, 'Electrophysiological Modeling of High-Energy Bioelectrical Phenomena in Human Tissue.', FALSE);
 insert into phd VALUES (00000029, 'Synthesis and Mechanical Characterization of High-Performance Thermoplastic Polymer Composites.', FALSE);
+insert into phd VALUES (00000030, 'Emotional State Classification in Human-Spirit Interaction: A Machine Learning Approach to Affective Computing.', FALSE);
 
 -- Discussion Data
 insert into discussion VALUES (00000001, 00000001, 00000000, 'Spring', 2026, 'Why does electricity flow with such gentle but relentless determination?');
