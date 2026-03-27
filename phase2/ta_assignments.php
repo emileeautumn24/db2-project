@@ -50,7 +50,7 @@ if ($row = mysqli_fetch_array($enrollResult, MYSQLI_ASSOC)) {
         // if we get here, all checks passed
         // insert into TA table
         $assignTA = "INSERT INTO teacher_assistant VALUES (" . $TA_id . ", " . $course_id . ", " . $section_id . ", '" . $semester_name . "', " . $year_id . ")";
-        $assignTAResult = mysqli_query($connection, $assignTA) or die ('Already TA/grader eligibility check failed ' . mysqli_error($connection));
+        $assignTAResult = mysqli_query($connection, $assignTA) or die ('Inserting TA failed ' . mysqli_error($connection));
     } else {
         die("Error: Section enrollment is too low (must be more than 10 students).");
     }
