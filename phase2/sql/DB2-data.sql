@@ -193,6 +193,7 @@ insert into section VALUES (00000014, 00000000, 'Spring', 2026, 'Falmouth', '309
 insert into section VALUES (00000021, 00000000, 'Spring', 2026, 'Shah', '208', '3191', 15);
 insert into section VALUES (00000005, 00000002, 'Spring', 2026, 'Falmouth', '313', '4363', 15);
 insert into section VALUES (00000009, 00000001, 'Spring', 2026, 'Shah', '305', '3284', 15);
+insert into section VALUES (00000011, 00000001, 'Spring', 2026, 'Olsen', '104', '3285', 15);
 
 -- Teaches Data (instructor_id, course_id, section_id, 'spring', 2026)
 -- Civil engineering
@@ -221,6 +222,7 @@ insert into teaches VALUES (00000006, 00000025, 00000002, 'Spring', 2026);
 insert into teaches VALUES (00000006, 00000026, 00000001, 'Spring', 2026);
 insert into teaches VALUES (00000006, 00000029, 00000001, 'Spring', 2026);
 -- Math
+insert into teaches VALUES (00000007, 00000011, 00000001, 'Spring', 2026);
 insert into teaches VALUES (00000007, 00000011, 00000002, 'Spring', 2026);
 insert into teaches VALUES (00000007, 00000027, 00000000, 'Spring', 2026);
 insert into teaches VALUES (00000007, 00000028, 00000000, 'Spring', 2026);
@@ -281,6 +283,12 @@ insert into student VALUES (00000038, 'Kasumi Miwa', 'Computer Science', 17);
 insert into student VALUES (00000039, 'Kinji Hakari', 'Computer Science', 95);
 insert into student VALUES (00000040, 'Kirara Hoshi', 'Computer Science', 96);
 insert into student VALUES (00000041, 'Noritoshi Kamo', 'Computer Science', 7);
+insert into student VALUES (00000042, 'Mikasa Ackermann', 'Math', 30);
+insert into student VALUES (00000043, 'Reiner Braun', 'Math', 35);
+insert into student VALUES (00000044, 'Annie Leonhart', 'Math', 15);
+insert into student VALUES (00000045, 'Jean Kirschtein', 'Math', 100);
+insert into student VALUES (00000046, 'Hitch Dreyse', 'Math', 84);
+insert into student VALUES (00000047, 'Historia Reiss', 'Math', 106);
 
 -- Takes Data
 insert into takes VALUES (00000000, 00000000, 00000000, 'Spring', 2026, 'B-');
@@ -311,6 +319,12 @@ insert into takes VALUES (00000038, 00000009, 00000001, 'Spring', 2026, 'A');
 insert into takes VALUES (00000039, 00000009, 00000001, 'Spring', 2026, 'F');
 insert into takes VALUES (00000040, 00000009, 00000001, 'Spring', 2026, 'B');
 insert into takes VALUES (00000041, 00000009, 00000001, 'Spring', 2026, 'B-');
+insert into takes VALUES (00000042, 00000011, 00000002, 'Spring', 2026, 'A');
+insert into takes VALUES (00000043, 00000011, 00000001, 'Spring', 2026, 'F');
+insert into takes VALUES (00000044, 00000011, 00000001, 'Spring', 2026, 'F');
+insert into takes VALUES (00000045, 00000011, 00000001, 'Spring', 2026, 'A');
+insert into takes VALUES (00000046, 00000011, 00000001, 'Spring', 2026, 'C');
+insert into takes VALUES (00000047, 00000011, 00000001, 'Spring', 2026, 'B');
 
 -- Advising Data
 insert into advising VALUES (00000000, 00000000);
@@ -355,6 +369,12 @@ insert into advising VALUES (00000038, 00000006);
 insert into advising VALUES (00000039, 00000006);
 insert into advising VALUES (00000040, 00000006);
 insert into advising VALUES (00000041, 00000006);
+insert into advising VALUES (00000042, 00000007);
+insert into advising VALUES (00000043, 00000007);
+insert into advising VALUES (00000044, 00000007);
+insert into advising VALUES (00000045, 00000007);
+insert into advising VALUES (00000046, 00000007);
+insert into advising VALUES (00000047, 00000007);
 
 -- Prereq Data
 insert into prereq VALUES (00000028, 00000027);
@@ -427,6 +447,12 @@ insert into undergraduate VALUES (00000038, 1, 'Computer Science');
 insert into undergraduate VALUES (00000039, 4, 'Computer Science');
 insert into undergraduate VALUES (00000040, 4, 'Computer Science');
 insert into undergraduate VALUES (00000041, 1, 'Computer Science');
+insert into undergraduate VALUES (00000042, 2, 'Math');
+insert into undergraduate VALUES (00000043, 2, 'Math');
+insert into undergraduate VALUES (00000044, 1, 'Math');
+insert into undergraduate VALUES (00000045, 4, 'Math');
+insert into undergraduate VALUES (00000046, 3, 'Math');
+insert into undergraduate VALUES (00000047, 4, 'Math');
 
 -- Master Students Data
 insert into master VALUES (00000003);
