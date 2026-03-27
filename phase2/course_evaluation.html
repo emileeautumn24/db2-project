@@ -8,6 +8,10 @@
 <form action="course_evaluation.php" method="post">
     <table style="border: 0">
         <tr>
+            <td>Student ID:</td>
+            <td><input type="text" id="student_id" name="student_id" required/></td>
+        </tr>
+        <tr>
             <td>Course ID</td>
             <td>
                 <input type="text" id="course_num" name="course_id" required/>
@@ -28,30 +32,24 @@
         <tr>
             <td>Semester</td>
             <td>
-                <input type="radio" id="winter" name="semesterSelector" value="WINTER"/>
+                <input type="radio" id="winter" name="semesterSelector" value="Winter"/>
                 <label for="winter">Winter</label>
-                <input type="radio" id="spring" name="semesterSelector" value="SPRING"/>
+                <input type="radio" id="spring" name="semesterSelector" value="Spring"/>
                 <label for="spring">Spring</label>
-                <input type="radio" id="summer" name="semesterSelector" value="SUMMER"/>
+                <input type="radio" id="summer" name="semesterSelector" value="Summer"/>
                 <label for="summer">Summer</label>
-                <input type="radio" id="fall" name="semesterSelector" value="FALL"/>
+                <input type="radio" id="fall" name="semesterSelector" value="Fall"/>
                 <label for="fall">Fall</label>
             </td>
         </tr>
         <tr>
             <td>Rate the course from 1 to 5 Stars</td>
             <td>
-                <input type="radio" id="1_star" name="rateSelector" value="1STAR"/>
-                <label for="1_star">1 Star</label>
-                <input type="radio" id="2_star" name="rateSelector" value="2STAR"/>
-                <label for="2_star">2 Star</label>
-                <input type="radio" id="3_star" name="rateSelector" value="3STAR"/>
-                <label for="3_star">3 Star</label>
-                <input type="radio" id="4_star" name="rateSelector" value="4STAR"/>
-                <label for="4_star">4 Star</label>
-                <input type="radio" id="5_star" name="rateSelector" value="5STAR"/>
-                <label for="5_star">5 Star</label>
-
+                <input type="radio" name="rateSelector" value="1" required/> 1
+                <input type="radio" name="rateSelector" value="2"/> 2
+                <input type="radio" name="rateSelector" value="3"/> 3
+                <input type="radio" name="rateSelector" value="4"/> 4
+                <input type="radio" name="rateSelector" value="5"/> 5
             </td>
         </tr>
                 <tr>
@@ -63,7 +61,7 @@
         <tr><td></td></tr>
         <tr>
             <td colspan="2" style="align-items: center">
-                <input type="submit" value="Assign Grader To Course" id="viewButton"/>
+                <input type="submit" value="Submit and view your grade" id="viewButton"/>
             </td>
         </tr>
     </table>
