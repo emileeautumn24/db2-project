@@ -15,7 +15,7 @@ or die ("Could not connect: " . mysqli_error($connection));
 $db = mysqli_select_db($connection, "db2") or die ("Could not select database");
 
 // username is ID, password is full name with spaces, exactly how it's entered in the system
-// check if Post/Reply button or Delete button was clicked
+// check if log in button, forgot username button, or forgot password button is clicked
 if (isset($_POST["log_btn"])) {
     // Log In was clicked
 
