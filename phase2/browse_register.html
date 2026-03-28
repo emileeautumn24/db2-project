@@ -8,20 +8,44 @@
         <table style="border: 0">
             <tr>
                 <td>Student ID:</td>
-                <td><input type="text" name="student_id" required></td>
+                <td><input type="text" name="student_id"></td>
             </tr>
             <tr>
-                <td>Course ID (Optional):</td>
+                <td>Course ID (For Enrolling):</td>
                 <td><input type="text" name="course_id"></td>
             </tr>
             <tr>
-                <td>Section ID (Optional):</td>
+                <td>Section ID (For Enrolling):</td>
                 <td><input type="text" name="section_id"></td>
+            </tr>
+            <tr>
+                <td>Year:</td>
+                <td>
+                    <input type="text" id="year" name="year_id"/>
+                </td>
+            </tr>
+            <tr>
+                <td>Semester:</td>
+                <td>
+                    <input type="radio" id="winter" name="semesterSelector" value="Winter"/>
+                    <label for="winter">Winter</label>
+                    <input type="radio" id="spring" name="semesterSelector" value="Spring"/>
+                    <label for="spring">Spring</label>
+                    <input type="radio" id="summer" name="semesterSelector" value="Summer"/>
+                    <label for="summer">Summer</label>
+                    <input type="radio" id="fall" name="semesterSelector" value="Fall"/>
+                    <label for="fall">Fall</label>
+                </td>
             </tr>
             <tr><td><br></td></tr>
             <tr>
                 <td colspan="2">
-                    <input type="submit" value="View Course Offerings">
+                    <input type="submit" value="View Course Offerings" name="view_btn">
+                </td>
+            </tr>
+                <tr>
+                <td colspan="2">
+                    <input type="submit" value="Enroll" name="enroll_btn">
                 </td>
             </tr>
         </table>
