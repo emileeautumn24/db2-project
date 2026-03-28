@@ -56,4 +56,4 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 mysqli_close($connection);
 ?>
 
-echo "<br><br><a href='instructor_records.html'>[ Back to Search ]</a>";
+<br><br><a href='instructor_records.html'>[ Back to Search ]</a>
