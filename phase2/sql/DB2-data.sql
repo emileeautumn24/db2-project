@@ -108,6 +108,7 @@ insert into instructor VALUES (00000008, 'Taiga Fujimura', 'Chemical Engineering
 insert into instructor VALUES (00000009, 'Sylvia Sherwood', 'Mechanical Engineering', 23100000);
 insert into instructor VALUES (00000010, 'Hizashi Yamada', 'Biomedical Engineering', 5700000);
 insert into instructor VALUES (00000011, 'Seiko Ayase', 'Plastics Engineering', 23600000);
+insert into instructor VALUES (00000012, 'Utahime Iori', 'Computer Science', 24300000);
 
 -- Timeslot Data
 -- first digit: Credits
