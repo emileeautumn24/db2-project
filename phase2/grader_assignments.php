@@ -56,6 +56,7 @@ if ($row = mysqli_fetch_array($enrollResult, MYSQLI_ASSOC)) {
             // insert into grader table
             $assignGrader = "INSERT INTO grader VALUES (" . $grader_id . ", " . $course_id . ", " . $section_id . ", '" . $semester_name . "', " . $year_id . ")";
             $assignGraderResult = mysqli_query($connection, $assignGrader) or die ('Inserting grader failed ' . mysqli_error($connection));
+            echo "Grader successfully assigned!";
         } else {
             die("Error: Student has grade B+ or below and cannot be assigned as a grader.");
         }
