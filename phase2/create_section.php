@@ -38,7 +38,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     // 3. INSERT the new section
     $query_sec = "INSERT INTO section (course_id, section_id, semester, year, building, room_number, time_slot_id, capacity) 
-                  VALUES ('$cid', '$sid', '$sem', $year, '$bld', '$room', '$tid', $capacity)";
+                  VALUES ('$cid', '$sid', '$sem', $year, '$bld', '$room', '$tid', 15)";
 
     if (mysqli_query($conn, $query_sec)) {
         // 4. Link the instructor in the teaches table
