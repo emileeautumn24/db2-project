@@ -19,6 +19,10 @@ Group 9
 
 `Emilee Autumn`<br>`Billy Chin`<br>`Zaniab Nadeem`
 
+<br><br>
+
+Demo: [Video](https://www.youtube.com/watch?v=kQFlepceiVM)
+
 ## Installation & Setup
 
 To run this project locally, we'll need XAMPP.
