@@ -2,6 +2,17 @@
 
 ## Project Overview
 
+For Phase 2 of our Database II project, our team built a functional web interface similar to SiS (Student Information System) to manage a university's daily operations. This project is a functional Relational Database Management System (RDBMS) developed for the University of Massachusetts Lowell, transitioning our conceptual E/R modeling into a full-stack implementation using MySQL and PHP. 
+
+We focused heavily on "Business Logic", the administrative rules that keep a university running. We ensured that our PHP scripts don't just "input data," but actively enforce critical constraints such as instructor overbooking, classroom capacity limits, and student enrollment verification before allowing access to course evaluations or the discussion board.
+
+The system provides a web-based interface for three distinct user roles:
+* Administrators
+* Instructors 
+* Students 
+
+Key features include a constraint-based course scheduler (enforcing consecutive instructor time slots), a grade-locked course evaluation system, and a moderated discussion board for active sections.
+
 ## Team Members
 
 Group 9
@@ -44,8 +55,7 @@ Use the following credentials and inputs to verify the system's requirements:
 
 | Task | Feature | Test Cases / Inputs | Outcome |
 | :--- | :--- | :--- | :--- |
-| **1** | **Accounts and login** | User: `00000000` / Pass: `Izuku Midoriya` | You're logged in! Welcome Izuku Midoriya!
-Student ID: 0. |
+| **1** | **Accounts and login** | User: `00000000` / Pass: `Izuku Midoriya` | `You're logged in! Welcome Izuku Midoriya!`<br>`Student ID: 0.` |
 | **2** | **Create course Section** | Course: `5`, Section: `98`, Inst: `0`, Building: `Shah` Room Number: `301`, Time Slot: `3112` | `Success! Section Created`<br>`Successfully created Section 98 for Course 5.` |
 | **3** | **Advising** | Student ID: `6`, Instructor ID: `6` (Undergrad) |`Instructor ID: 6`<br>`Instructor Name: Satoru Gojo`<br>`Student ID: 6`<br>`Student Name: Yuji Itadori`<br>`Courses Taken`<br>`Computing I Lab`<br>`Computing I`<br>`Cumulative GPA: 1.775`<br>`Remaining Credits to Graduate:105` |
 | **4** | **Browse and Register** | Student: `00000042`, Course: `27`, Section: `0`, Spring 2026 | Student successfully enrolled!. |
@@ -58,4 +68,9 @@ Student ID: 0. |
 
 ## Notes
 
+* We used `intval()` and `abs()` in PHP to calculate the distance between Time Slot IDs. This ensures that if an instructor teaches two classes, they are back-to-back, preventing "gaps" in their schedule as required by Task 2.
+
+* In our `.php` files we used `die()` statements and `mysqli_error()` extensively. We did this so that if a query fails (like a student trying to register for a full class), the system gives a clear reason why instead of just a blank screen.
+
+* Our `DB2-data.sql` contains custom-made records for students and instructors. We made sure to include edge cases, like students with enough credits to graduate and others who are just starting.
 
