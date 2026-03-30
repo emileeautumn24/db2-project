@@ -54,7 +54,7 @@ insert into classroom VALUES ('Shah', '310', 52);
 
 -- Department Data
 insert into department VALUES ('Civil Engineering', 'Shah', 111111);
-insert into department VALUES ('Electrical Engineering', 'Ball', 222222);
+insert into department VALUES ('Elec Engineering', 'Ball', 222222);
 insert into department VALUES ('Biology', 'Olsen', 333333);
 insert into department VALUES ('Chemistry', 'Olney', 444444);
 insert into department VALUES ('Physics', 'Olney', 555555);
@@ -62,13 +62,13 @@ insert into department VALUES ('Earth Sciences', 'Olney', 666666);
 insert into department VALUES ('Computer Science', 'Dandeneau', 777777);
 insert into department VALUES ('Math', 'Southwick', 888888);
 insert into department VALUES ('Chemical Engineering', 'Southwick', 999999);
-insert into department VALUES ('Mechanical Engineering', 'Dandeneau', 111112);
-insert into department VALUES ('Biomedical Engineering', 'Falmouth', 111112);
+insert into department VALUES ('Mech Engineering', 'Dandeneau', 111112);
+insert into department VALUES ('Biomed Engineering', 'Falmouth', 111112);
 insert into department VALUES ('Plastics Engineering', 'Ball', 222221);
 
 -- Course Data
 insert into course VALUES (00000000, 'Introduction to Engineering for Civil', 'Civil Engineering', 2);
-insert into course VALUES (00000001, 'Introduction to ECE', 'Electrical Engineering', 2);
+insert into course VALUES (00000001, 'Introduction to ECE', 'Elec Engineering', 2);
 insert into course VALUES (00000002, 'Principles of Biology I', 'Biology', 3);
 insert into course VALUES (00000003, 'Principles of Biology I Laboratory', 'Biology', 1);
 insert into course VALUES (00000004, 'Chemistry I', 'Chemistry', 3);
@@ -80,8 +80,8 @@ insert into course VALUES (00000009, 'Computing I', 'Computer Science', 3);
 insert into course VALUES (00000010, 'Computing I Lab', 'Computer Science', 1);
 insert into course VALUES (00000011, 'Calculus I', 'Math', 4);
 insert into course VALUES (00000012, 'Principles of Chemical Engineering', 'Chemical Engineering', 3);
-insert into course VALUES (00000013, 'Introduction to Mechanical Engineering', 'Mechanical Engineering', 1);
-insert into course VALUES (00000014, 'Biomedical Engineering Application Programming', 'Biomedical Engineering', 3);
+insert into course VALUES (00000013, 'Introduction to Mech Engineering', 'Mech Engineering', 1);
+insert into course VALUES (00000014, 'Biomed Engineering Application Programming', 'Biomed Engineering', 3);
 insert into course VALUES (00000018, 'Principles of Biology II', 'Biology', 3);
 insert into course VALUES (00000019, 'Principles of Biology II Laboratory', 'Biology', 1);
 insert into course VALUES (00000020, 'Chemistry II', 'Chemistry', 3);
@@ -97,7 +97,7 @@ insert into course VALUES (00000030, 'Computing III Lab', 'Computer Science', 1)
 
 -- Instructors Data
 insert into instructor VALUES (00000000, 'Shota Aizawa', 'Civil Engineering', 8900000);
-insert into instructor VALUES (00000001, 'Giyu Tomioka', 'Electrical Engineering', 24600000);
+insert into instructor VALUES (00000001, 'Giyu Tomioka', 'Elec Engineering', 24600000);
 insert into instructor VALUES (00000002, 'Shinobu Kocho', 'Biology', 18600000);
 insert into instructor VALUES (00000003, 'Toshinori Yagi', 'Chemistry', 25300000);
 insert into instructor VALUES (00000004, 'Mitsuri Kanroji', 'Physics', 28900000);
@@ -105,8 +105,8 @@ insert into instructor VALUES (00000005, 'Akitaru Obi', 'Earth Sciences', 290000
 insert into instructor VALUES (00000006, 'Satoru Gojo', 'Computer Science', 26300000);
 insert into instructor VALUES (00000007, 'Levi Ackermann', 'Math', 22800000);
 insert into instructor VALUES (00000008, 'Taiga Fujimura', 'Chemical Engineering', 21800000);
-insert into instructor VALUES (00000009, 'Sylvia Sherwood', 'Mechanical Engineering', 23100000);
-insert into instructor VALUES (00000010, 'Hizashi Yamada', 'Biomedical Engineering', 5700000);
+insert into instructor VALUES (00000009, 'Sylvia Sherwood', 'Mech Engineering', 23100000);
+insert into instructor VALUES (00000010, 'Hizashi Yamada', 'Biomed Engineering', 5700000);
 insert into instructor VALUES (00000011, 'Seiko Ayase', 'Plastics Engineering', 23600000);
 insert into instructor VALUES (00000012, 'Utahime Iori', 'Computer Science', 24300000);
 
@@ -199,7 +199,7 @@ insert into section VALUES (00000011, 00000001, 'Spring', 2026, 'Olsen', '104', 
 -- Teaches Data (instructor_id, course_id, section_id, 'spring', 2026)
 -- Civil engineering
 insert into teaches VALUES (00000000, 00000000, 00000000, 'Spring', 2026);
--- Electrical Engineering
+-- Elec Engineering
 insert into teaches VALUES (00000001, 00000001, 00000000, 'Spring', 2026);
 -- Biology
 insert into teaches VALUES (00000002, 00000002, 00000000, 'Spring', 2026);
@@ -231,9 +231,9 @@ insert into teaches VALUES (00000007, 00000028, 00000000, 'Spring', 2026);
 insert into teaches VALUES (00000008, 00000012, 00000000, 'Spring', 2026);
 insert into teaches VALUES (00000008, 00000012, 00000001, 'Spring', 2026);
 insert into teaches VALUES (00000008, 00000012, 00000002, 'Spring', 2026);
--- Mechanical Engineering
+-- Mech Engineering
 insert into teaches VALUES (00000009, 00000013, 00000000, 'Spring', 2026);
--- Biomedical Engineering
+-- Biomed Engineering
 insert into teaches VALUES (00000010, 00000014, 00000000, 'Spring', 2026);
 -- Chemistry
 insert into teaches VALUES (00000003, 00000004, 00000001, 'Spring', 2026);
@@ -243,7 +243,7 @@ insert into teaches VALUES (00000003, 00000021, 00000000, 'Spring', 2026);
 
 -- Students Data
 insert into student VALUES (00000000, 'Izuku Midoriya', 'Civil Engineering', 0);
-insert into student VALUES (00000001, 'Tanjiro Kamado', 'Electrical Engineering', 14);
+insert into student VALUES (00000001, 'Tanjiro Kamado', 'Elec Engineering', 14);
 insert into student VALUES (00000002, 'Subaru Natsuki', 'Biology', 119);
 insert into student VALUES (00000003, 'Naofumi Iwatani', 'Chemistry', 22);
 insert into student VALUES (00000004, 'Kazuma Satou', 'Physics', 28);
@@ -251,26 +251,26 @@ insert into student VALUES (00000005, 'Shinra Kusakabe', 'Earth Sciences', 60);
 insert into student VALUES (00000006, 'Yuji Itadori', 'Computer Science', 15);
 insert into student VALUES (00000007, 'Eren Jaeger', 'Math', 29);
 insert into student VALUES (00000008, 'Shirou Emiya', 'Chemical Engineering', 45);
-insert into student VALUES (00000009, 'Loid Forger', 'Mechanical Engineering', 24);
-insert into student VALUES (00000010, 'Kazuto Kirigaya', 'Biomedical Engineering', 30);
+insert into student VALUES (00000009, 'Loid Forger', 'Mech Engineering', 24);
+insert into student VALUES (00000010, 'Kazuto Kirigaya', 'Biomed Engineering', 30);
 insert into student VALUES (00000011, 'Ken Takakura', 'Plastics Engineering', 106);
 insert into student VALUES (00000012, 'Mirio Togata', 'Civil Engineering', 26);
-insert into student VALUES (00000013, 'Obanai Iguro', 'Electrical Engineering', 0);
+insert into student VALUES (00000013, 'Obanai Iguro', 'Elec Engineering', 0);
 insert into student VALUES (00000014, 'Otto Suwen', 'Biology', 28);
 insert into student VALUES (00000015, 'Lalatina Dustiness', 'Physics', 7);
 insert into student VALUES (00000016, 'Yuta Okkotsu', 'Computer Science', 29);
 insert into student VALUES (00000017, 'Pieck Finger', 'Math', 18);
 insert into student VALUES (00000018, 'Artoria Pendragon', 'Chemical Engineering', 9);
-insert into student VALUES (00000019, 'Yuri Briar', 'Mechanical Engineering', 11);
+insert into student VALUES (00000019, 'Yuri Briar', 'Mech Engineering', 11);
 insert into student VALUES (00000020, 'Maki Oze', 'Plastics Engineering', 27);
 insert into student VALUES (00000021, 'Keigo Takami', 'Civil Engineering', 29);
-insert into student VALUES (00000022, 'Tengen Uzui', 'Electrical Engineering', 41);
+insert into student VALUES (00000022, 'Tengen Uzui', 'Elec Engineering', 41);
 insert into student VALUES (00000023, 'Crusch Karsten', 'Biology', 23);
 insert into student VALUES (00000024, 'Motoyasu Kitamura', 'Chemistry', 4);
 insert into student VALUES (00000025, 'Aoi Todo', 'Computer Science', 26);
 insert into student VALUES (00000026, 'Armin Arlelt', 'Math', 0);
 insert into student VALUES (00000027, 'Illyasviel Einzbern', 'Chemical Engineering', 32);
-insert into student VALUES (00000028, 'Viktor Licht', 'Biomedical Engineering', 5);
+insert into student VALUES (00000028, 'Viktor Licht', 'Biomed Engineering', 5);
 insert into student VALUES (00000029, 'Cid Kagenou', 'Plastics Engineering', 13);
 insert into student VALUES (00000030, 'Shido Itsuka', 'Computer Science', 17);
 insert into student VALUES (00000031, 'Megumi Fushiguro', 'Computer Science', 34);
@@ -428,14 +428,14 @@ insert into grader VALUES (00000020, 00000013, 00000000, 'Spring', 2026);
 
 -- Undergraduate Students Data
 insert into undergraduate VALUES (00000000, 1, 'Civil Engineering');
-insert into undergraduate VALUES (00000001, 1, 'Electrical Engineering');
+insert into undergraduate VALUES (00000001, 1, 'Elec Engineering');
 insert into undergraduate VALUES (00000002, 4, 'Biology');
 insert into undergraduate VALUES (00000004, 2, 'Physics');
 insert into undergraduate VALUES (00000005, 3, 'Earth Sciences');
 insert into undergraduate VALUES (00000006, 1, 'Computer Science');
 insert into undergraduate VALUES (00000007, 2, 'Math');
 insert into undergraduate VALUES (00000008, 2, 'Chemical Engineering');
-insert into undergraduate VALUES (00000010, 2, 'Biomedical Engineering');
+insert into undergraduate VALUES (00000010, 2, 'Biomed Engineering');
 insert into undergraduate VALUES (00000011, 4, 'Plastics Engineering');
 insert into undergraduate VALUES (00000031, 2, 'Computer Science');
 insert into undergraduate VALUES (00000032, 1, 'Computer Science');
