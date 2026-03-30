@@ -25,7 +25,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     }
     $capacity = $room_data['capacity'];
 
-    // 2. Check if the instructor already has 2 classes (Project Requirement)
+    // 2. Check if the instructor already has 2 classes 
     $inst_query = "SELECT s.time_slot_id FROM teaches t 
                    JOIN section s ON t.course_id = s.course_id AND t.section_id = s.section_id 
                    AND t.semester = s.semester AND t.year = s.year
@@ -34,6 +34,19 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     
     if (mysqli_num_rows($inst_res) >= 2) {
         die("Error: Instructor $iid is already teaching 2 sections.");
+    }
+
+    // Check if this time slot is already used by 2 sections
+    $slot_query = "SELECT COUNT(*) as total FROM section 
+                   WHERE time_slot_id = '$tid' 
+                   AND semester = '$sem' 
+                   AND year = $year";
+    
+    $slot_res = mysqli_query($conn, $slot_query);
+    $slot_data = mysqli_fetch_assoc($slot_res);
+
+    if ($slot_data['total'] >= 2) {
+        die("Error: Time slot '$tid' is already full. (Maximum 2 sections per slot allowed).");
     }
 
     // 3. INSERT the new section
