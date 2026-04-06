@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/loginFragment">
+
+    <fragment
+        android:id="@+id/loginFragment"
+        android:name="com.database2.android.studentinfo.loginFragment"
+        android:label="fragment_login"
+        tools:layout="@layout/fragment_login" >
+        <action
+            android:id="@+id/action_loginFragment_to_mainMenuFragment"
+            app:destination="@id/mainMenuFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/mainMenuFragment"
+        android:name="com.database2.android.studentinfo.mainMenuFragment"
+        android:label="fragment_main_menu"
+        tools:layout="@layout/fragment_main_menu" >
+        <action
+            android:id="@+id/action_mainMenuFragment_to_discussionFragment"
+            app:destination="@id/discussionFragment" />
+        <action
+            android:id="@+id/action_mainMenuFragment_to_registerFragment"
+            app:destination="@id/registerFragment" />
+        <action
+            android:id="@+id/action_mainMenuFragment_to_transcriptFragment"
+            app:destination="@id/transcriptFragment" />
+        <action
+            android:id="@+id/action_mainMenuFragment_to_evaluationFragment"
+            app:destination="@id/evaluationFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/discussionFragment"
+        android:name="com.database2.android.studentinfo.discussionFragment"
+        android:label="fragment_discussion"
+        tools:layout="@layout/fragment_discussion" />
+    <fragment
+        android:id="@+id/evaluationFragment"
+        android:name="com.database2.android.studentinfo.evaluationFragment"
+        android:label="fragment_evaluation"
+        tools:layout="@layout/fragment_evaluation" />
+    <fragment
+        android:id="@+id/transcriptFragment"
+        android:name="com.database2.android.studentinfo.transcriptFragment"
+        android:label="fragment_transcript"
+        tools:layout="@layout/fragment_transcript" />
+    <fragment
+        android:id="@+id/registerFragment"
+        android:name="com.database2.android.studentinfo.registerFragment"
+        android:label="fragment_register"
+        tools:layout="@layout/fragment_register" />
+</navigation>
