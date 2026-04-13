@@ -7,6 +7,7 @@ import android.view.ViewGroup;
 import android.util.Log;
 
 import androidx.fragment.app.Fragment;
+import androidx.navigation.fragment.NavHostFragment;
 
 
 import com.database2.android.studentinfo.databinding.FragmentLoginBinding;
@@ -98,7 +99,7 @@ public class loginFragment extends Fragment {
             while ((line = reader.readLine()) != null) sb.append(line);
             reader.close();
 
-            Log.d("checkLoginTag", "Successfully logged in!");
+            NavHostFragment.findNavController(loginFragment.this).navigate(R.id.action_loginFragment_to_mainMenuFragment);
 
             return sb.toString().replaceAll("<[^>]+>", "").trim();
 
