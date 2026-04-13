@@ -4,8 +4,10 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.util.Log;
 
 import androidx.fragment.app.Fragment;
+
 
 import com.database2.android.studentinfo.databinding.FragmentLoginBinding;
 
@@ -95,6 +97,8 @@ public class loginFragment extends Fragment {
             String line;
             while ((line = reader.readLine()) != null) sb.append(line);
             reader.close();
+
+            Log.d("checkLoginTag", "Successfully logged in!");
 
             return sb.toString().replaceAll("<[^>]+>", "").trim();
 
