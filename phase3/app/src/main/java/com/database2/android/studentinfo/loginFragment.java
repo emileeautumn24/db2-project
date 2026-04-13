@@ -98,8 +98,9 @@ public class loginFragment extends Fragment {
             String line;
             while ((line = reader.readLine()) != null) sb.append(line);
             reader.close();
-
-            NavHostFragment.findNavController(loginFragment.this).navigate(R.id.action_loginFragment_to_mainMenuFragment);
+            if (buttonKey == "log_btn") {
+                NavHostFragment.findNavController(loginFragment.this).navigate(R.id.action_loginFragment_to_mainMenuFragment);
+            }
 
             return sb.toString().replaceAll("<[^>]+>", "").trim();
 
