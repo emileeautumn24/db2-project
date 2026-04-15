@@ -24,6 +24,12 @@ public class mainMenuFragment extends Fragment {
         binding.evaluationButton.setOnClickListener(v -> NavHostFragment.findNavController(mainMenuFragment.this).navigate(R.id.action_mainMenuFragment_to_evaluationFragment));
         binding.registerButton.setOnClickListener(v -> NavHostFragment.findNavController(mainMenuFragment.this).navigate(R.id.action_mainMenuFragment_to_registerFragment));
         binding.transcriptButton.setOnClickListener(v -> NavHostFragment.findNavController(mainMenuFragment.this).navigate(R.id.action_mainMenuFragment_to_transcriptFragment));
+        Bundle args = getArguments();
+        if (args != null) {
+            String username = args.getString("username", "");
+            String role = args.getString("role", "");
+            binding.resultText.setText(String.format("Welcome, %s (%s)", username, role));
+        }
         return binding.getRoot();
     }
 

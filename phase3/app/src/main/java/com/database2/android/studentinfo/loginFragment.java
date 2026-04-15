@@ -98,11 +98,33 @@ public class loginFragment extends Fragment {
             String line;
             while ((line = reader.readLine()) != null) sb.append(line);
             reader.close();
+            /*
             if (buttonKey == "log_btn") {
                 NavHostFragment.findNavController(loginFragment.this).navigate(R.id.action_loginFragment_to_mainMenuFragment);
             }
 
             return sb.toString().replaceAll("<[^>]+>", "").trim();
+
+            */
+
+            String responseText = sb.toString().replaceAll("<[^>]+>", "").trim();
+
+            // Navigate only on successful login, on the UI thread
+            if (buttonKey.equals("log_btn")) {
+                if (getActivity() != null) {
+                    requireActivity().runOnUiThread(() -> {
+                        if (binding != null) {
+                            Bundle args = new Bundle();
+                            args.putString("username", username);
+                            args.putString("role", role);
+                            NavHostFragment.findNavController(loginFragment.this)
+                                    .navigate(R.id.action_loginFragment_to_mainMenuFragment, args);
+                        }
+                    });
+                }
+            }
+
+            return responseText;
 
         } catch (Exception e) {
             return "Connection error: " + e.getMessage();

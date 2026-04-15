@@ -32,11 +32,13 @@
             android:id="@+id/action_mainMenuFragment_to_evaluationFragment"
             app:destination="@id/evaluationFragment" />
         <argument
-            android:name="userID"
-            app:argType="string" />
+            android:name="username"
+            app:argType="string"
+            android:defaultValue="" />
         <argument
-            android:name="userType"
-            app:argType="string" />
+            android:name="role"
+            app:argType="string"
+            android:defaultValue="" />
     </fragment>
     <fragment
         android:id="@+id/discussionFragment"
