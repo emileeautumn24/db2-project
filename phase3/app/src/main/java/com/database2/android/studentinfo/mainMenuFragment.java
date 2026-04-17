@@ -14,22 +14,33 @@ import com.database2.android.studentinfo.databinding.FragmentMainMenuBinding;
 public class mainMenuFragment extends Fragment {
 
     private FragmentMainMenuBinding binding;
+    private String username = "";  // ADD
+    private String role = "";      // ADD
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         binding = FragmentMainMenuBinding.inflate(inflater, container, false);
+
+        Bundle args = getArguments();
+        if (args != null) {
+            username = args.getString("username", "");  // no "String" prefix
+            role = args.getString("role", "");           // no "String" prefix
+            binding.resultText.setText(String.format("Welcome, %s (%s)", username, role));
+        }
+
         binding.discussionButton.setOnClickListener(v -> NavHostFragment.findNavController(mainMenuFragment.this).navigate(R.id.action_mainMenuFragment_to_discussionFragment));
         binding.evaluationButton.setOnClickListener(v -> NavHostFragment.findNavController(mainMenuFragment.this).navigate(R.id.action_mainMenuFragment_to_evaluationFragment));
         binding.registerButton.setOnClickListener(v -> NavHostFragment.findNavController(mainMenuFragment.this).navigate(R.id.action_mainMenuFragment_to_registerFragment));
-        binding.transcriptButton.setOnClickListener(v -> NavHostFragment.findNavController(mainMenuFragment.this).navigate(R.id.action_mainMenuFragment_to_transcriptFragment));
-        Bundle args = getArguments();
-        if (args != null) {
-            String username = args.getString("username", "");
-            String role = args.getString("role", "");
-            binding.resultText.setText(String.format("Welcome, %s (%s)", username, role));
-        }
+        binding.transcriptButton.setOnClickListener(v -> {
+            Bundle transcriptArgs = new Bundle();
+            transcriptArgs.putString("username", username);
+            transcriptArgs.putString("role", role);
+            NavHostFragment.findNavController(mainMenuFragment.this)
+                    .navigate(R.id.action_mainMenuFragment_to_transcriptFragment, transcriptArgs);
+        });
+
         return binding.getRoot();
     }
 
