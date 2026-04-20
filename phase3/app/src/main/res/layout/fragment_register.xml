@@ -1,14 +1,96 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".registerFragment">
+    android:orientation="vertical"
+    android:padding="16dp">
 
-    <!-- TODO: Update blank fragment layout -->
     <TextView
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment" />
+        android:layout_height="wrap_content"
+        android:text="Browse &amp; Register"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        android:layout_marginBottom="16dp"/>
 
-</FrameLayout>
+    <!-- Semester input -->
+    <EditText
+        android:id="@+id/semesterInput"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Semester (e.g. Spring)"
+        android:inputType="text"
+        android:layout_marginBottom="8dp"/>
+
+    <!-- Year input -->
+    <EditText
+        android:id="@+id/yearInput"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Year (e.g. 2026)"
+        android:inputType="number"
+        android:layout_marginBottom="8dp"/>
+
+    <!-- View Courses button -->
+    <Button
+        android:id="@+id/viewCoursesButton"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="View Courses"
+        android:layout_marginBottom="8dp"/>
+
+    <!-- Scrollable results area -->
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:layout_marginBottom="8dp">
+
+        <TextView
+            android:id="@+id/coursesText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Enter a semester and year, then tap View Courses."
+            android:textSize="14sp"/>
+    </ScrollView>
+
+    <!-- Enroll section -->
+    <EditText
+        android:id="@+id/courseIdInput"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Course ID to register"
+        android:inputType="number"
+        android:layout_marginBottom="8dp"/>
+
+    <EditText
+        android:id="@+id/sectionIdInput"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Section ID"
+        android:inputType="number"
+        android:layout_marginBottom="8dp"/>
+
+    <Button
+        android:id="@+id/enrollButton"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Register"
+        android:layout_marginBottom="8dp"/>
+
+    <TextView
+        android:id="@+id/enrollResultText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text=""
+        android:textSize="14sp"/>
+
+    <!-- Back button -->
+    <Button
+        android:id="@+id/backButton"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Back"
+        android:layout_marginTop="8dp"/>
+
+</LinearLayout>

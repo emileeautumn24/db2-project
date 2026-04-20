@@ -32,7 +32,14 @@ public class mainMenuFragment extends Fragment {
 
         binding.discussionButton.setOnClickListener(v -> NavHostFragment.findNavController(mainMenuFragment.this).navigate(R.id.action_mainMenuFragment_to_discussionFragment));
         binding.evaluationButton.setOnClickListener(v -> NavHostFragment.findNavController(mainMenuFragment.this).navigate(R.id.action_mainMenuFragment_to_evaluationFragment));
-        binding.registerButton.setOnClickListener(v -> NavHostFragment.findNavController(mainMenuFragment.this).navigate(R.id.action_mainMenuFragment_to_registerFragment));
+
+        binding.registerButton.setOnClickListener(v -> {
+            Bundle registerArgs = new Bundle();
+            registerArgs.putString("username", username);
+            NavHostFragment.findNavController(mainMenuFragment.this)
+                    .navigate(R.id.action_mainMenuFragment_to_registerFragment, registerArgs);
+        });
+
         binding.transcriptButton.setOnClickListener(v -> {
             Bundle transcriptArgs = new Bundle();
             transcriptArgs.putString("username", username);
