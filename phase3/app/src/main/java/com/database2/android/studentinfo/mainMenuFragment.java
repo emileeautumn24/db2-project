@@ -31,7 +31,13 @@ public class mainMenuFragment extends Fragment {
         }
 
         binding.discussionButton.setOnClickListener(v -> NavHostFragment.findNavController(mainMenuFragment.this).navigate(R.id.action_mainMenuFragment_to_discussionFragment));
-        binding.evaluationButton.setOnClickListener(v -> NavHostFragment.findNavController(mainMenuFragment.this).navigate(R.id.action_mainMenuFragment_to_evaluationFragment));
+        binding.evaluationButton.setOnClickListener(v -> {
+            Bundle evaluationArgs = new Bundle();
+            evaluationArgs.putString("username", username);
+            evaluationArgs.putString("role", role);
+            NavHostFragment.findNavController(mainMenuFragment.this)
+                    .navigate(R.id.action_mainMenuFragment_to_evaluationFragment, evaluationArgs);
+        });
 
         binding.registerButton.setOnClickListener(v -> {
             Bundle registerArgs = new Bundle();
