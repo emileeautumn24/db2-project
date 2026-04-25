@@ -30,7 +30,13 @@ public class mainMenuFragment extends Fragment {
             binding.resultText.setText(String.format("Welcome, %s (%s)", username, role));
         }
 
-        binding.discussionButton.setOnClickListener(v -> NavHostFragment.findNavController(mainMenuFragment.this).navigate(R.id.action_mainMenuFragment_to_discussionFragment));
+        binding.discussionButton.setOnClickListener(v -> {
+            Bundle discussionArgs = new Bundle();
+            discussionArgs.putString("username", username);
+            discussionArgs.putString("role", role);
+            NavHostFragment.findNavController(mainMenuFragment.this)
+                    .navigate(R.id.action_mainMenuFragment_to_discussionFragment, discussionArgs);
+        });
         binding.evaluationButton.setOnClickListener(v -> {
             Bundle evaluationArgs = new Bundle();
             evaluationArgs.putString("username", username);

@@ -68,7 +68,7 @@ public class registerFragment extends Fragment {
             return;
         }
 
-        coursesText.setText("Loading...");
+        coursesText.setText("Loading");
         executor.execute(() -> {
             String response = postToPhp(username, "", "", semester, year, "view_btn");
             if (getActivity() != null) {
@@ -88,7 +88,7 @@ public class registerFragment extends Fragment {
             return;
         }
 
-        enrollResultText.setText("Registering...");
+        enrollResultText.setText("Registering");
         executor.execute(() -> {
             String response = postToPhp(username, courseId, sectionId, semester, year, "enroll_btn");
             if (getActivity() != null) {
