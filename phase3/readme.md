@@ -10,7 +10,7 @@ Group 9
 
 ## Environment Information
 
-## Project Reproduction Instructions
+## Project Instructions
 
 ### Prerequisites
 1. Install [Android Studio](https://developer.android.com/studio)
