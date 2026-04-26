@@ -7,6 +7,7 @@ import android.view.ViewGroup;
 import android.util.Log;
 
 import androidx.fragment.app.Fragment;
+import androidx.navigation.fragment.NavHostFragment;
 
 
 import com.database2.android.studentinfo.databinding.FragmentTranscriptBinding;
@@ -31,11 +32,18 @@ public class transcriptFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         binding = FragmentTranscriptBinding.inflate(inflater, container, false);
+        binding.backButton.setOnClickListener(v ->
+                NavHostFragment.findNavController(transcriptFragment.this).popBackStack());
 
         Bundle args = getArguments();
         if (args != null) {
             String username = args.getString("username", "");
-            sendRequest(username);
+            String role = args.getString("role", "");
+            if (role.equals("STUDENT")) {
+                sendRequest(username);
+            } else {
+                binding.transcript.setText("Only students can see their transcript.");
+            }
         }
 
         return binding.getRoot();

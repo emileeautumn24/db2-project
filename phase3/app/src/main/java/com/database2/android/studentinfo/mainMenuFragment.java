@@ -60,6 +60,9 @@ public class mainMenuFragment extends Fragment {
                     .navigate(R.id.action_mainMenuFragment_to_transcriptFragment, transcriptArgs);
         });
 
+        binding.backButton.setOnClickListener(v ->
+                NavHostFragment.findNavController(mainMenuFragment.this).popBackStack());
+
         return binding.getRoot();
     }
 

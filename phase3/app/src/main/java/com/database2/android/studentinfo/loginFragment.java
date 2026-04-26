@@ -110,7 +110,7 @@ public class loginFragment extends Fragment {
             String responseText = sb.toString().replaceAll("<[^>]+>", "").trim();
 
             // Navigate only on successful login, on the UI thread
-            if (buttonKey.equals("log_btn")) {
+            if (buttonKey.equals("log_btn") && responseText.contains("You're logged in!")) {
                 if (getActivity() != null) {
                     requireActivity().runOnUiThread(() -> {
                         if (binding != null) {

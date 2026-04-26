@@ -7,6 +7,7 @@ import android.view.ViewGroup;
 import android.util.Log;
 
 import androidx.fragment.app.Fragment;
+import androidx.navigation.fragment.NavHostFragment;
 
 
 import com.database2.android.studentinfo.databinding.FragmentEvaluationBinding;
@@ -32,6 +33,8 @@ public class evaluationFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         binding = FragmentEvaluationBinding.inflate(inflater, container, false);
+        binding.backButton.setOnClickListener(v ->
+                NavHostFragment.findNavController(evaluationFragment.this).popBackStack());
 
         Bundle args = getArguments();
         String username = "";
