@@ -7,6 +7,7 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.RadioGroup;
 
 import androidx.fragment.app.Fragment;
 import androidx.navigation.fragment.NavHostFragment;
@@ -30,7 +31,9 @@ public class discussionFragment extends Fragment {
     private final ExecutorService executor = Executors.newSingleThreadExecutor();
 
     private String username = "";
-    private String role = "STUDENT"; // "STUDENT", "TA", or "GRADER"
+    private String role = "";
+
+    private RadioGroup roleRadioGroup;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -47,6 +50,15 @@ public class discussionFragment extends Fragment {
         discResultText       = view.findViewById(R.id.discResultText);
         deleteLabel          = view.findViewById(R.id.deleteLabel);
 
+        roleRadioGroup = view.findViewById(R.id.roleRadioGroup);
+
+        // Set initial role based on whichever button is checked at launch
+        updateRoleFromRadioGroup(roleRadioGroup.getCheckedRadioButtonId());
+
+        // Update role whenever the user changes the selection
+        roleRadioGroup.setOnCheckedChangeListener((group, checkedId) ->
+                updateRoleFromRadioGroup(checkedId));
+
         // Get username and role passed from main menu
         Bundle args = getArguments();
         if (args != null) {
@@ -58,6 +70,7 @@ public class discussionFragment extends Fragment {
 
         Button deletePostButton = view.findViewById(R.id.deletePostButton);
 
+        /*
         if (role.equals("TA") || role.equals("GRADER")) {
             deleteLabel.setVisibility(View.VISIBLE);
             deleteStudentIdInput.setVisibility(View.VISIBLE);
@@ -67,6 +80,7 @@ public class discussionFragment extends Fragment {
             deleteStudentIdInput.setVisibility(View.GONE);
             deletePostButton.setVisibility(View.GONE);
         }
+         */
 
         view.findViewById(R.id.postButton).setOnClickListener(v -> postMessage());
         deletePostButton.setOnClickListener(v -> deletePost());
@@ -169,6 +183,16 @@ public class discussionFragment extends Fragment {
 
         } catch (Exception e) {
             return "Connection error: " + e.getMessage();
+        }
+    }
+
+    private void updateRoleFromRadioGroup(int checkedId) {
+        if (checkedId == R.id.taRadioButton) {
+            role = "TA";
+        } else if (checkedId == R.id.graderRadioButton) {
+            role = "GRADER";
+        } else {
+            role = "STUDENT"; // nothing selected — fallback
         }
     }
 }
