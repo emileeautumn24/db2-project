@@ -33,7 +33,7 @@
         android:id="@+id/discSemesterInput"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="Semester (e.g. Fall)"
+        android:hint="Semester (e.g. Spring)"
         android:inputType="text"
         android:layout_marginBottom="8dp"/>
 
@@ -41,7 +41,7 @@
         android:id="@+id/discYearInput"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="Year (e.g. 2025)"
+        android:hint="Year (e.g. 2026)"
         android:inputType="number"
         android:layout_marginBottom="16dp"/>
 
@@ -63,6 +63,14 @@
         android:layout_marginBottom="16dp"/>
 
     <!-- Delete section - only visible to TA/Grader -->
+    <TextView
+        android:id="@+id/deleteLabel"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Delete a student post (TA/Grader only):"
+        android:textStyle="bold"
+        android:layout_marginBottom="4dp"/>
+
     <EditText
         android:id="@+id/deleteStudentIdInput"
         android:layout_width="match_parent"

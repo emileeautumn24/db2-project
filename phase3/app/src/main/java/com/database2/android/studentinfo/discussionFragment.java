@@ -26,7 +26,7 @@ public class discussionFragment extends Fragment {
 
     private EditText discCourseIdInput, discSectionIdInput, discSemesterInput,
             discYearInput, postContentInput, deleteStudentIdInput;
-    private TextView discussionPostsText, discResultText;
+    private TextView discussionPostsText, discResultText, deleteLabel;
     private final ExecutorService executor = Executors.newSingleThreadExecutor();
 
     private String username = "";
@@ -45,6 +45,7 @@ public class discussionFragment extends Fragment {
         deleteStudentIdInput = view.findViewById(R.id.deleteStudentIdInput);
         discussionPostsText  = view.findViewById(R.id.discussionPostsText);
         discResultText       = view.findViewById(R.id.discResultText);
+        deleteLabel          = view.findViewById(R.id.deleteLabel);
 
         // Get username and role passed from main menu
         Bundle args = getArguments();
@@ -53,9 +54,16 @@ public class discussionFragment extends Fragment {
             role     = args.getString("role", "STUDENT");
         }
 
-        // Hide delete fields if user is not TA or GRADER
+        // Only show delete section for TA or GRADER
+
         Button deletePostButton = view.findViewById(R.id.deletePostButton);
-        if (!role.equals("TA") && !role.equals("GRADER")) {
+
+        if (role.equals("TA") || role.equals("GRADER")) {
+            deleteLabel.setVisibility(View.VISIBLE);
+            deleteStudentIdInput.setVisibility(View.VISIBLE);
+            deletePostButton.setVisibility(View.VISIBLE);
+        } else {
+            deleteLabel.setVisibility(View.GONE);
             deleteStudentIdInput.setVisibility(View.GONE);
             deletePostButton.setVisibility(View.GONE);
         }
