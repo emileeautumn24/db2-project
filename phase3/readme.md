@@ -23,6 +23,11 @@ Intel i9-12900k, AMD RX 6700 XT, 64GB RAM
 
 ### Database Setup
 
+1. Launch the XAMPP app and run Apache and MySQL.
+2. Visit `http://localhost/phpmyadmin/`
+3. Copy all contents of `phase2/sql/DB2-tables.sql` from GitHub, go to the SQL tab of `http://localhost/phpmyadmin/`, paste the contents of the file in the textbox and press "go" to create tables.
+4. Go to the "db2" database, copy all contents of `phase2/sql/DB2-data.sql` from GitHub, go to the SQL tab, paste the contents of the file in the textbox and press "go" to fill tables with data. The database should have all data needed for the tables.
+
 ### Backend Setup
 1. Copy all PHP files from the `phase2/` directory into:
    ```
@@ -32,7 +37,10 @@ Intel i9-12900k, AMD RX 6700 XT, 64GB RAM
 
 ### Android App Setup
 
-
+1. Launch the Android Studio app.
+2. Open the `phase3\` directory as a project inside the app.
+3. Click `build` to allow the project to build the necessary files to allow the project to run on the emulator as an app. This will take a few minutes if build is run for the first time.
+4. Click `run` to test the app.
 
 ## Phase 2 Directory Modifications
 
