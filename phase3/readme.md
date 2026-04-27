@@ -9,7 +9,11 @@ Group 9
 <br><br>
 
 ## Environment Information
+Live Demo:
+Apple M4 Pro (12/16), 24GB RAM
 
+Pre-recorded Demo:
+Intel i9-12900k, AMD RX 6700 XT, 64GB RAM
 ## Project Instructions
 
 ### Prerequisites
@@ -27,6 +31,7 @@ Group 9
 2. Verify Apache is running and test by visiting `http://localhost/phase2/login.php` in a browser
 
 ### Android App Setup
+
 
 
 ## Phase 2 Directory Modifications
