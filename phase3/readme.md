@@ -48,12 +48,47 @@ No existing Phase 2 files were modified. The Android app reuses the existing PHP
  
 ---
 
+## Directory Structure
+
+```
+DB2-project
+├── phase2/                  # Phase 2 web app (unchanged)
+│   ├── sql/                 # SQL files
+│   ├── README.md
+│   └── ...
+├── phase3/                  # Phase 3 Android app
+│   └── app/
+│       └── src/main/
+│           ├── java/com/database2/android/studentinfo/
+│           │   ├── MainActivity.java
+│           │   ├── loginFragment.java
+│           │   ├── mainMenuFragment.java
+│           │   ├── registerFragment.java
+│           │   ├── transcriptFragment.java
+│           │   ├── discussionFragment.java
+│           │   └── evaluationFragment.java
+│           └── res/
+│               ├── layout/         # XML UI layouts
+│               └── navigation/     # Nav graph
+└── README.md
+```
+
 ## App Features
 
-| Task | Description |
-|---|---|
-| Login | Pre-created accounts for students, instructors, and admin. Supports forgot username/password. |
-| Browse & Register | Students can browse current semester offerings and register for a section if space is available (max 15 per section). |
-| Student Transcript | Students can view courses taken, total credits earned, and cumulative GPA. |
-| Discussion Board | Enrolled students can post. TA and Grader roles can delete student posts. |
-| Course Evaluation | Students must submit a course evaluation before viewing their grade for that course. |
+| Task | Feature | Inputs | Outcome                                                   |
+|:---|:---|:---|:----------------------------------------------------------|
+| **1** | **Login** | Username: `00000000` / Password: `Izuku Midoriya` | Logged in successfully, navigates to Main Menu            |
+| **1** | **Forgot Username** | Leave username blank, use Forgot Username | Returns username for account                              |
+| **1** | **Forgot Password** | Leave password blank, use Forgot Password | Returns password for account                              |
+| **2** | **Browse & Register** | Student: `00000042` / Password: `Mikasa Ackermann` → Course: `27`, Section: `0`, Semester: `Spring`, Year: `2026` | Student successfully enrolled!                            |
+| **3** | **Student Transcript** | Student: `6` / Password: `Yuji Itadori` | Shows courses taken, cumulative GPA, total credits earned |
+| **4** | **Discussion Board (Post)** | Student: `0` / Password: `Izuku Midoriya` → Course: `0`, Section: `0`, Semester: `Spring`, Year: `2026`, Post: `this class is exhausting`, Type: `Student` | Post submitted, board updated                             |
+| **4** | **Discussion Board (Delete)** | Student: `21` / Password: `Keigo Takami` → Course: `0`, Section: `0`, Semester: `Spring`, Year: `2026`, Student ID to delete: `0`, Type: `TA` | Post by student `0` deleted                               |
+| **5** | **Course Evaluation** | Student: `00000001` / Password: `Tanjiro Kamado` → Course: `1`, Section: `0`, Semester: `Spring`, Year: `2026`, Rating: `5`, Comment: `Very easy to understand the lectures and material.` | `Success! Evaluation Submitted.` — grade is then visible  |
+
+## Notes
+
+- All HTTP requests are made asynchronously using `ExecutorService` so the UI never freezes during database calls.
+- HTML tags returned by PHP responses are stripped using regex before displaying in TextViews.
+- The delete post button on the Discussion Board is visible to all users — permission enforcement is handled by the PHP backend, consistent with Phase 2 behavior.
+- Role-based navigation is supported: the app passes `username` and `role` arguments between fragments using Android's Navigation Component Bundle system.
