@@ -101,6 +101,19 @@ CREATE TABLE instructor (
     ON DELETE SET NULL
 );
 
+-- The `instructor_account` table stores instructor account usernames and passwords in the system.
+CREATE TABLE instructor_account (
+    instructor_id VARCHAR(8)
+    COMMENT 'The ID of the instructor.',
+
+    password VARCHAR(20)
+    COMMENT 'The password of the account.',
+
+    PRIMARY KEY (instructor_id),
+    FOREIGN KEY (instructor_id) REFERENCES instructor (instructor_id)
+    ON DELETE CASCADE
+);
+
 -- The `section` table stores specific course offerings by term.
 CREATE TABLE section (
     course_id VARCHAR(8)
@@ -181,6 +194,19 @@ CREATE TABLE student (
     PRIMARY KEY (student_id),
     FOREIGN KEY (dept_name) REFERENCES department (dept_name)
     ON DELETE SET NULL
+);
+
+-- The `student_account` table stores student account usernames and passwords in the system.
+CREATE TABLE student_account (
+    student_id VARCHAR(8)
+    COMMENT 'The ID of the student.',
+
+    password VARCHAR(20)
+    COMMENT 'The password of the account.',
+
+    PRIMARY KEY (student_id),
+    FOREIGN KEY (student_id) REFERENCES student (student_id)
+    ON DELETE CASCADE
 );
 
 -- The `takes` table maps students to sections they take.
