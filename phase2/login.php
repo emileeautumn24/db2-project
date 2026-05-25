@@ -20,7 +20,7 @@ if (isset($_POST["log_btn"])) {
     // Log In was clicked
 
     if ($user_type == "STUDENT") {
-        $query0 = "SELECT student_id, name FROM student WHERE student_id = " . $username . " AND name = '" . $password . "'";
+        $query0 = "SELECT A.student_id, S.name, A.password FROM student S, student_account A WHERE A.student_id = " . $username . " AND A.password = '" . $password . "' AND A.student_id = S.student_id";
         $result0 = mysqli_query($connection, $query0) or die ("Log in attempt failed." . mysqli_error($connection));
         if ($row = mysqli_fetch_array($result0, MYSQLI_ASSOC)) {
             echo "<strong>You're logged in! Welcome " . $row["name"] . "!</strong><br>";
@@ -30,7 +30,7 @@ if (isset($_POST["log_btn"])) {
         }
         mysqli_free_result($result0);
     } elseif ($user_type == "INSTRUCTOR") {
-        $query0 = "SELECT instructor_id, name FROM instructor WHERE instructor_id = " . $username . " AND name = '" . $password . "'";
+        $query0 = "SELECT A.instructor_id, I.name, A.password FROM instructor I, instructor_account A WHERE A.instructor_id = " . $username . " AND A.password = '" . $password . "' AND A.instructor_id = I.instructor_id";
         $result0 = mysqli_query($connection, $query0) or die ("Log in attempt failed." . mysqli_error($connection));
         if ($row = mysqli_fetch_array($result0, MYSQLI_ASSOC)) {
             echo "<strong>You're logged in! Welcome " . $row["name"] . "!</strong><br>";
@@ -40,7 +40,7 @@ if (isset($_POST["log_btn"])) {
         }
         mysqli_free_result($result0);
     } elseif ($user_type == "ADMIN") {
-        if ($username == 00000000 && $password == 1234) {
+        if ($username == 00000000 && $password == "admin1234") {
             echo "<strong>You're logged in! Welcome admin!</strong><br>";
             echo "<strong>Admin ID: 00000000</strong><br>";
         } else {
@@ -52,7 +52,7 @@ if (isset($_POST["log_btn"])) {
     // Forgot Username was clicked, password entered
 
     if ($user_type == "STUDENT") {
-        $query1 = "SELECT student_id, name FROM student WHERE name = '" . $password . "'";
+        $query1 = "SELECT student_id, password FROM student_account WHERE password = '" . $password . "'";
         $result1 = mysqli_query($connection, $query1) or die ("Forgot username failed." . mysqli_error($connection));
         if ($row = mysqli_fetch_array($result1, MYSQLI_ASSOC)) {
             echo "Your username is " . $row["student_id"] . "<br>";
@@ -61,7 +61,7 @@ if (isset($_POST["log_btn"])) {
         }
         mysqli_free_result($result1);
     } elseif ($user_type == "INSTRUCTOR") {
-        $query1 = "SELECT instructor_id, name FROM instructor WHERE name = '" . $password . "'";
+        $query1 = "SELECT instructor_id, password FROM instructor_account WHERE password = '" . $password . "'";
         $result1 = mysqli_query($connection, $query1) or die ("Forgot username failed." . mysqli_error($connection));
         if ($row = mysqli_fetch_array($result1, MYSQLI_ASSOC)) {
             echo "Your username is " . $row["instructor_id"] . "<br>";
@@ -77,26 +77,26 @@ if (isset($_POST["log_btn"])) {
     // Forgot Password was clicked, username entered
 
     if ($user_type == "STUDENT") {
-        $query2 = "SELECT student_id, name FROM student WHERE student_id = " . $username;
+        $query2 = "SELECT student_id, password FROM student_account WHERE student_id = " . $username;
         $result2 = mysqli_query($connection, $query2) or die ("Forgot password failed." . mysqli_error($connection));
         if ($row = mysqli_fetch_array($result2, MYSQLI_ASSOC)) {
-            echo "Your password is " . $row["name"] . "<br>";
+            echo "Your password is " . $row["password"] . "<br>";
         } else {
             die ("Forgot password failed.");
         }
         mysqli_free_result($result2);
     } elseif ($user_type == "INSTRUCTOR") {
-        $query2 = "SELECT instructor_id, name FROM instructor WHERE instructor_id = " . $username;
+        $query2 = "SELECT instructor_id, password FROM instructor_account WHERE instructor_id = " . $username;
         $result2 = mysqli_query($connection, $query2) or die ("Forgot password failed." . mysqli_error($connection));
         if ($row = mysqli_fetch_array($result2, MYSQLI_ASSOC)) {
-            echo "Your password is " . $row["name"] . "<br>";
+            echo "Your password is " . $row["password"] . "<br>";
         } else {
             die ("Forgot password failed.");
         }
         mysqli_free_result($result2);
     } elseif ($user_type == "ADMIN") {
         if ($username == 00000000) {
-            echo "Your password is 1234<br>";
+            echo "Your password is admin1234<br>";
         } else {
             die ("Forgot password failed.");
         }
