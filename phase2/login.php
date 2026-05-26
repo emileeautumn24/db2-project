@@ -23,8 +23,30 @@ if (isset($_POST["log_btn"])) {
         $query0 = "SELECT A.student_id, S.name, A.password FROM student S, student_account A WHERE A.student_id = " . $username . " AND A.password = '" . $password . "' AND A.student_id = S.student_id";
         $result0 = mysqli_query($connection, $query0) or die ("Log in attempt failed." . mysqli_error($connection));
         if ($row = mysqli_fetch_array($result0, MYSQLI_ASSOC)) {
-            echo "<strong>You're logged in! Welcome " . $row["name"] . "!</strong><br>";
-            echo "<strong>Student ID: " . $row["student_id"] . "</strong><br>";
+            echo "<h2>You're logged in! Welcome " . $row["name"] . "!</h2><br>";
+            echo "<h3>Student ID: " . $row["student_id"] . "</h3><br>";
+            echo '<table style="border: 0">';
+            echo '<tr>';
+            echo '<td>';
+            echo '<a href="browse_register.html">Browse and Register</a>';
+            echo '</td>';
+            echo '</tr>';
+            echo '<tr>';
+            echo '<td>';
+            echo '<a href="student_transcript.html">Student Transcript</a>';
+            echo '</td>';
+            echo '</tr>';
+            echo '<tr>';
+            echo '<td>';
+            echo '<a href="discussion_board.html">Discussion Board</a>';
+            echo '</td>';
+            echo '</tr>';
+            echo '<tr>';
+            echo '<td>';
+            echo '<a href="course_evaluation.html">Course Evaluation</a>';
+            echo '</td>';
+            echo '</tr>';
+            echo '</table>';
         } else {
             die ("Log in attempt failed.");
         }
@@ -33,16 +55,45 @@ if (isset($_POST["log_btn"])) {
         $query0 = "SELECT A.instructor_id, I.name, A.password FROM instructor I, instructor_account A WHERE A.instructor_id = " . $username . " AND A.password = '" . $password . "' AND A.instructor_id = I.instructor_id";
         $result0 = mysqli_query($connection, $query0) or die ("Log in attempt failed." . mysqli_error($connection));
         if ($row = mysqli_fetch_array($result0, MYSQLI_ASSOC)) {
-            echo "<strong>You're logged in! Welcome " . $row["name"] . "!</strong><br>";
-            echo "<strong>Instructor ID: " . $row["instructor_id"] . "</strong><br>";
+            echo "<h2>You're logged in! Welcome " . $row["name"] . "!</h2><br>";
+            echo "<h3>Instructor ID: " . $row["instructor_id"] . "</h3><br>";
+            echo '<table style="border: 0">';
+            echo '<tr>';
+            echo '<td>';
+            echo '<a href="advising.html">Advising</a>';
+            echo '</td>';
+            echo '</tr>';
+            echo '<tr>';
+            echo '<td>';
+            echo '<a href="instructor_records.html">Instructor Teaching Records</a>';
+            echo '</td>';
+            echo '</tr>';
+            echo '</table>';
         } else {
             die ("Log in attempt failed.");
         }
         mysqli_free_result($result0);
     } elseif ($user_type == "ADMIN") {
         if ($username == 00000000 && $password == "admin1234") {
-            echo "<strong>You're logged in! Welcome admin!</strong><br>";
-            echo "<strong>Admin ID: 00000000</strong><br>";
+            echo "<h2>You're logged in! Welcome admin!</h2><br>";
+            echo "<h3>Admin ID: 00000000</h3><br>";
+            echo '<table style="border: 0">';
+            echo '<tr>';
+            echo '<td>';
+            echo '<a href="create_section.html">Create Course Sections</a>';
+            echo '</td>';
+            echo '</tr>';
+            echo '<tr>';
+            echo '<td>';
+            echo '<a href="ta_assignments.html">TA Assignments</a>';
+            echo '</td>';
+            echo '</tr>';
+            echo '<tr>';
+            echo '<td>';
+            echo '<a href="grader_assignments.html">Grader Assignments</a>';
+            echo '</td>';
+            echo '</tr>';
+            echo '</table>';
         } else {
             die ("Log in attempt failed.");
         }
