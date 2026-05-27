@@ -125,8 +125,9 @@ if (isset($_POST["log_btn"])) {
     }
 
 } elseif (isset($_POST["forgot_pass_btn"])) {
-    // Forgot Password was clicked, username entered
+    // Forgot Password was clicked
 
+    /*
     if ($user_type == "STUDENT") {
         $query2 = "SELECT student_id, password FROM student_account WHERE student_id = " . $username;
         $result2 = mysqli_query($connection, $query2) or die ("Forgot password failed." . mysqli_error($connection));
@@ -136,6 +137,8 @@ if (isset($_POST["log_btn"])) {
             die ("Forgot password failed.");
         }
         mysqli_free_result($result2);
+        echo "<h2>Forgot Password</h2>";
+        echo "";
     } elseif ($user_type == "INSTRUCTOR") {
         $query2 = "SELECT instructor_id, password FROM instructor_account WHERE instructor_id = " . $username;
         $result2 = mysqli_query($connection, $query2) or die ("Forgot password failed." . mysqli_error($connection));
@@ -145,6 +148,49 @@ if (isset($_POST["log_btn"])) {
             die ("Forgot password failed.");
         }
         mysqli_free_result($result2);
+    }
+    */
+
+    if ($user_type == "STUDENT" || $user_type == "INSTRUCTOR") {
+        echo '<h2>Forgot Password</h2>';
+        echo '<form action="forgot_password.php" method="post">';
+        echo '<table style="border: 0">';
+        echo '<tr>';
+        echo '<td>Username</td>';
+        echo '<td>';
+        echo '<input type="text" id="username" name="user_input"/>';
+        echo '</td>';
+        echo '</tr>';
+        echo '<tr>';
+        echo '<td>New Password</td>';
+        echo '<td>';
+        echo '<input type="password" id="new_password" name="new_password_input"/>';
+        echo '</td>';
+        echo '</tr>';
+        echo '<tr>';
+        echo '<td>Retype New Password</td>';
+        echo '<td>';
+        echo '<input type="password" id="retype_new_password" name="retype_new_password_input"/>';
+        echo '</td>';
+        echo '</tr>';
+        echo '<tr>';
+        echo '<td>I am a: </td>';
+        echo '<td>';
+        echo '<input type="radio" id="student" name="roleSelector" value="STUDENT"/>';
+        echo '<label for="student">Student</label>';
+        echo '<input type="radio" id="instructor" name="roleSelector" value="INSTRUCTOR"/>';
+        echo '<label for="instructor">Instructor</label>';
+        echo '</td>';
+        echo '</tr>';
+        echo '<tr><td></td></tr>';
+        echo '<tr>';
+        echo '<td colspan="2" style="align-items: center">';
+        echo '<input type="submit" value="Reset Password" id="resetButton" name="reset_btn"/>';
+        echo '</td>';
+        echo '</tr>';
+        echo '</table>';
+        echo '</form>';
+
     } elseif ($user_type == "ADMIN") {
         if ($username == 00000000) {
             echo "Your password is admin1234<br>";
