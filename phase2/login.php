@@ -1,8 +1,8 @@
 <?php /** @noinspection SqlNoDataSourceInspection */
 
-$username = $_POST["user_input"];
-$password = $_POST["password_input"];
-$user_type = isset($_POST["roleSelector"]) ? $_POST["roleSelector"] : null;
+$username = $_POST["user_input"] ?? "";
+$password = $_POST["password_input"] ?? "";
+$user_type = $_POST["roleSelector"] ?? null;
 if ($user_type === null) {
     die("Please select user type.");
 }
@@ -20,81 +20,61 @@ if (isset($_POST["log_btn"])) {
     // Log In was clicked
 
     if ($user_type == "STUDENT") {
-        $query0 = "SELECT A.student_id, S.name, A.password FROM student S, student_account A WHERE A.student_id = " . $username . " AND A.password = '" . $password . "' AND A.student_id = S.student_id";
-        $result0 = mysqli_query($connection, $query0) or die ("Log in attempt failed." . mysqli_error($connection));
-        if ($row = mysqli_fetch_array($result0, MYSQLI_ASSOC)) {
-            echo "<h2>You're logged in! Welcome " . $row["name"] . "!</h2><br>";
-            echo "<h3>Student ID: " . $row["student_id"] . "</h3><br>";
-            echo '<table style="border: 0">';
-            echo '<tr>';
-            echo '<td>';
-            echo '<a href="browse_register.html">Browse and Register</a>';
-            echo '</td>';
-            echo '</tr>';
-            echo '<tr>';
-            echo '<td>';
-            echo '<a href="student_transcript.html">Student Transcript</a>';
-            echo '</td>';
-            echo '</tr>';
-            echo '<tr>';
-            echo '<td>';
-            echo '<a href="discussion_board.html">Discussion Board</a>';
-            echo '</td>';
-            echo '</tr>';
-            echo '<tr>';
-            echo '<td>';
-            echo '<a href="course_evaluation.html">Course Evaluation</a>';
-            echo '</td>';
-            echo '</tr>';
-            echo '</table>';
-        } else {
-            die ("Log in attempt failed.");
+        $stmt = mysqli_prepare($connection,
+            "SELECT A.student_id, S.name
+               FROM student S
+               JOIN student_account A ON A.student_id = S.student_id
+              WHERE A.student_id = ? AND A.password = ?");
+        mysqli_stmt_bind_param($stmt, "ss", $username, $password);
+        mysqli_stmt_execute($stmt);
+        $result = mysqli_stmt_get_result($stmt);
+        $row    = mysqli_fetch_assoc($result);
+ 
+        if ($row) { ?>
+            <h2>You're logged in! Welcome <?= htmlspecialchars($row["name"]) ?>!</h2>
+            <h3>Student ID: <?= htmlspecialchars($row["student_id"]) ?></h3>
+            <table style="border:0">
+                <tr><td><a href="browse_register.html">Browse and Register</a></td></tr>
+                <tr><td><a href="student_transcript.html">Student Transcript</a></td></tr>
+                <tr><td><a href="discussion_board.html">Discussion Board</a></td></tr>
+                <tr><td><a href="course_evaluation.html">Course Evaluation</a></td></tr>
+            </table>
+        <?php } else {
+            die("Log in attempt failed.");
         }
-        mysqli_free_result($result0);
+        mysqli_stmt_close($stmt);
     } elseif ($user_type == "INSTRUCTOR") {
-        $query0 = "SELECT A.instructor_id, I.name, A.password FROM instructor I, instructor_account A WHERE A.instructor_id = " . $username . " AND A.password = '" . $password . "' AND A.instructor_id = I.instructor_id";
-        $result0 = mysqli_query($connection, $query0) or die ("Log in attempt failed." . mysqli_error($connection));
-        if ($row = mysqli_fetch_array($result0, MYSQLI_ASSOC)) {
-            echo "<h2>You're logged in! Welcome " . $row["name"] . "!</h2><br>";
-            echo "<h3>Instructor ID: " . $row["instructor_id"] . "</h3><br>";
-            echo '<table style="border: 0">';
-            echo '<tr>';
-            echo '<td>';
-            echo '<a href="advising.html">Advising</a>';
-            echo '</td>';
-            echo '</tr>';
-            echo '<tr>';
-            echo '<td>';
-            echo '<a href="instructor_records.html">Instructor Teaching Records</a>';
-            echo '</td>';
-            echo '</tr>';
-            echo '</table>';
-        } else {
-            die ("Log in attempt failed.");
+        $stmt = mysqli_prepare($connection,
+            "SELECT A.instructor_id, I.name
+               FROM instructor I
+               JOIN instructor_account A ON A.instructor_id = I.instructor_id
+              WHERE A.instructor_id = ? AND A.password = ?");
+        mysqli_stmt_bind_param($stmt, "ss", $username, $password);
+        mysqli_stmt_execute($stmt);
+        $result = mysqli_stmt_get_result($stmt);
+        $row    = mysqli_fetch_assoc($result);
+ 
+        if ($row) { ?>
+            <h2>You're logged in! Welcome <?= htmlspecialchars($row["name"]) ?>!</h2>
+            <h3>Instructor ID: <?= htmlspecialchars($row["instructor_id"]) ?></h3>
+            <table style="border:0">
+                <tr><td><a href="advising.html">Advising</a></td></tr>
+                <tr><td><a href="instructor_records.html">Instructor Teaching Records</a></td></tr>
+            </table>
+        <?php } else {
+            die("Log in attempt failed.");
         }
-        mysqli_free_result($result0);
+        mysqli_stmt_close($stmt);
     } elseif ($user_type == "ADMIN") {
-        if ($username == 00000000 && $password == "admin1234") {
-            echo "<h2>You're logged in! Welcome admin!</h2><br>";
-            echo "<h3>Admin ID: 00000000</h3><br>";
-            echo '<table style="border: 0">';
-            echo '<tr>';
-            echo '<td>';
-            echo '<a href="create_section.html">Create Course Sections</a>';
-            echo '</td>';
-            echo '</tr>';
-            echo '<tr>';
-            echo '<td>';
-            echo '<a href="ta_assignments.html">TA Assignments</a>';
-            echo '</td>';
-            echo '</tr>';
-            echo '<tr>';
-            echo '<td>';
-            echo '<a href="grader_assignments.html">Grader Assignments</a>';
-            echo '</td>';
-            echo '</tr>';
-            echo '</table>';
-        } else {
+        if ($username === "00000000" && $password === "admin1234") { ?>
+            <h2>You're logged in! Welcome admin!</h2>
+            <h3>Admin ID: 00000000</h3>
+            <table style="border:0">
+                <tr><td><a href="create_section.html">Create Course Sections</a></td></tr>
+                <tr><td><a href="ta_assignments.html">TA Assignments</a></td></tr>
+                <tr><td><a href="grader_assignments.html">Grader Assignments</a></td></tr>
+            </table>
+        <?php } else {
             die ("Log in attempt failed.");
         }
     }
@@ -102,100 +82,80 @@ if (isset($_POST["log_btn"])) {
 } elseif (isset($_POST["forgot_user_btn"])) {
     // Forgot Username was clicked, password entered
 
-    if ($user_type == "STUDENT") {
-        $query1 = "SELECT student_id, password FROM student_account WHERE password = '" . $password . "'";
-        $result1 = mysqli_query($connection, $query1) or die ("Forgot username failed." . mysqli_error($connection));
-        if ($row = mysqli_fetch_array($result1, MYSQLI_ASSOC)) {
-            echo "Your username is " . $row["student_id"] . "<br>";
+    if ($user_type === "STUDENT") {
+        $stmt = mysqli_prepare($connection,
+            "SELECT student_id FROM student_account WHERE password = ?");
+        mysqli_stmt_bind_param($stmt, "s", $password);
+        mysqli_stmt_execute($stmt);
+        $result = mysqli_stmt_get_result($stmt);
+        $row    = mysqli_fetch_assoc($result);
+ 
+        if ($row) {
+            echo "Your username is " . htmlspecialchars($row["student_id"]);
         } else {
-            die ("Forgot username failed.");
+            die("Forgot username failed.");
         }
-        mysqli_free_result($result1);
-    } elseif ($user_type == "INSTRUCTOR") {
-        $query1 = "SELECT instructor_id, password FROM instructor_account WHERE password = '" . $password . "'";
-        $result1 = mysqli_query($connection, $query1) or die ("Forgot username failed." . mysqli_error($connection));
-        if ($row = mysqli_fetch_array($result1, MYSQLI_ASSOC)) {
-            echo "Your username is " . $row["instructor_id"] . "<br>";
+        mysqli_stmt_close($stmt);
+ 
+    } elseif ($user_type === "INSTRUCTOR") {
+        $stmt = mysqli_prepare($connection,
+            "SELECT instructor_id FROM instructor_account WHERE password = ?");
+        mysqli_stmt_bind_param($stmt, "s", $password);
+        mysqli_stmt_execute($stmt);
+        $result = mysqli_stmt_get_result($stmt);
+        $row    = mysqli_fetch_assoc($result);
+ 
+        if ($row) {
+            echo "Your username is " . htmlspecialchars($row["instructor_id"]);
         } else {
-            die ("Forgot username failed.");
+            die("Forgot username failed.");
         }
-        mysqli_free_result($result1);
-    } elseif ($user_type == "ADMIN") {
-        echo "Your username is 00000000<br>";
+        mysqli_stmt_close($stmt);
+ 
+    } elseif ($user_type === "ADMIN") {
+        echo "Your username is 00000000";
     }
 
 } elseif (isset($_POST["forgot_pass_btn"])) {
     // Forgot Password was clicked
 
-    /*
-    if ($user_type == "STUDENT") {
-        $query2 = "SELECT student_id, password FROM student_account WHERE student_id = " . $username;
-        $result2 = mysqli_query($connection, $query2) or die ("Forgot password failed." . mysqli_error($connection));
-        if ($row = mysqli_fetch_array($result2, MYSQLI_ASSOC)) {
-            echo "Your password is " . $row["password"] . "<br>";
+    if ($user_type === "STUDENT" || $user_type === "INSTRUCTOR") { ?>
+        <h2>Forgot Password</h2>
+        <form action="forgot_password.php" method="post">
+            <table style="border:0">
+                <tr>
+                    <td>Username</td>
+                    <td><input type="text" id="username" name="user_input"/></td>
+                </tr>
+                <tr>
+                    <td>New Password</td>
+                    <td><input type="password" id="new_password" name="new_password_input"/></td>
+                </tr>
+                <tr>
+                    <td>Retype New Password</td>
+                    <td><input type="password" id="retype_new_password" name="retype_new_password_input"/></td>
+                </tr>
+                <tr>
+                    <td>I am a:</td>
+                    <td>
+                        <input type="radio" id="student"    name="roleSelector" value="STUDENT"/>
+                        <label for="student">Student</label>
+                        <input type="radio" id="instructor" name="roleSelector" value="INSTRUCTOR"/>
+                        <label for="instructor">Instructor</label>
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="2" style="text-align:center">
+                        <input type="submit" value="Reset Password" id="resetButton" name="reset_btn"/>
+                    </td>
+                </tr>
+            </table>
+        </form>
+    <?php } elseif ($user_type === "ADMIN") {
+        if ($username === "00000000") {
+            echo "Your password is admin1234";
         } else {
-            die ("Forgot password failed.");
-        }
-        mysqli_free_result($result2);
-        echo "<h2>Forgot Password</h2>";
-        echo "";
-    } elseif ($user_type == "INSTRUCTOR") {
-        $query2 = "SELECT instructor_id, password FROM instructor_account WHERE instructor_id = " . $username;
-        $result2 = mysqli_query($connection, $query2) or die ("Forgot password failed." . mysqli_error($connection));
-        if ($row = mysqli_fetch_array($result2, MYSQLI_ASSOC)) {
-            echo "Your password is " . $row["password"] . "<br>";
-        } else {
-            die ("Forgot password failed.");
-        }
-        mysqli_free_result($result2);
-    }
-    */
-
-    if ($user_type == "STUDENT" || $user_type == "INSTRUCTOR") {
-        echo '<h2>Forgot Password</h2>';
-        echo '<form action="forgot_password.php" method="post">';
-        echo '<table style="border: 0">';
-        echo '<tr>';
-        echo '<td>Username</td>';
-        echo '<td>';
-        echo '<input type="text" id="username" name="user_input"/>';
-        echo '</td>';
-        echo '</tr>';
-        echo '<tr>';
-        echo '<td>New Password</td>';
-        echo '<td>';
-        echo '<input type="password" id="new_password" name="new_password_input"/>';
-        echo '</td>';
-        echo '</tr>';
-        echo '<tr>';
-        echo '<td>Retype New Password</td>';
-        echo '<td>';
-        echo '<input type="password" id="retype_new_password" name="retype_new_password_input"/>';
-        echo '</td>';
-        echo '</tr>';
-        echo '<tr>';
-        echo '<td>I am a: </td>';
-        echo '<td>';
-        echo '<input type="radio" id="student" name="roleSelector" value="STUDENT"/>';
-        echo '<label for="student">Student</label>';
-        echo '<input type="radio" id="instructor" name="roleSelector" value="INSTRUCTOR"/>';
-        echo '<label for="instructor">Instructor</label>';
-        echo '</td>';
-        echo '</tr>';
-        echo '<tr><td></td></tr>';
-        echo '<tr>';
-        echo '<td colspan="2" style="align-items: center">';
-        echo '<input type="submit" value="Reset Password" id="resetButton" name="reset_btn"/>';
-        echo '</td>';
-        echo '</tr>';
-        echo '</table>';
-        echo '</form>';
-
-    } elseif ($user_type == "ADMIN") {
-        if ($username == 00000000) {
-            echo "Your password is admin1234<br>";
-        } else {
-            die ("Forgot password failed.");
+            die("Forgot password failed.");
         }
     }
 }
