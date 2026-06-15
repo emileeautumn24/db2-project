@@ -3,11 +3,9 @@
 $conn = mysqli_connect('localhost', 'root', '', 'db2') or die(mysqli_error($conn));
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    // This part is the "Magic": it converts "00000001" to "1" 
-    // so it matches your data.sql exactly.
-    $cid  = strval(intval($_POST['course_id'])); 
-    $sid  = strval(intval($_POST['section_id']));
-    $iid  = strval(intval($_POST['instructor_id']));
+    $cid  = $_POST['course_id']; 
+    $sid  = $_POST['section_id'];
+    $iid  = $_POST['instructor_id'];
 
     $bld  = $_POST['building'];      
     $room = $_POST['room_number'];
@@ -34,6 +32,47 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     
     if (mysqli_num_rows($inst_res) >= 2) {
         die("Error: Instructor $iid is already teaching 2 sections.");
+    }
+
+    // Check if the instructor already has 1 class, and make sure the new class is consecutive
+    if (mysqli_num_rows($inst_res) == 1) {
+        // query new time code data from time slot table
+        $row = mysqli_fetch_array($inst_res, MYSQLI_ASSOC);
+        $res_time_code_id = $row["time_slot_id"];
+        $new_time_query = "SELECT day, start_hour, start_min, end_hour, end_min FROM time_slot t
+                            WHERE time_slot_id = '$tid'";
+        $new_time_res = mysqli_query($conn, $new_time_query);
+        $new_row = mysqli_fetch_array($new_time_res, MYSQLI_ASSOC);
+
+        // query org time code data from time slot table
+        $org_time_query = "SELECT day, start_hour, start_min, end_hour, end_min FROM time_slot t
+                            WHERE time_slot_id = '$res_time_code_id'";
+        $org_time_res = mysqli_query($conn, $org_time_query);
+        $org_row = mysqli_fetch_array($org_time_res, MYSQLI_ASSOC);
+
+        if ($new_row["day"] != $org_row["day"]) {
+            die("Error: New class is not consecutive to the professor's existing class.");
+        }
+
+        // calculate start and end times as minutes
+        $new_start_calc = (60 * $new_row["start_hour"]) + $new_row["start_min"];
+        $new_end_calc = (60 * $new_row["end_hour"]) + $new_row["end_min"];
+        $org_start_calc = (60 * $org_row["start_hour"]) + $org_row["start_min"];
+        $org_end_calc = (60 * $org_row["end_hour"]) + $org_row["end_min"];
+
+        if ($new_start_calc > $org_end_calc) {
+            $time_difference = $new_start_calc - $org_end_calc;
+            if ($time_difference > 30) {
+                die("Error: New class is not consecutive to the professor's existing class.");
+            }
+        } else if ($org_start_calc > $new_end_calc) {
+            $time_difference = $org_start_calc - $new_end_calc;
+            if ($time_difference > 30) {
+                die("Error: New class is not consecutive to the professor's existing class.");
+            }
+        } else {
+            die("Error: New class is not consecutive to the professor's existing class.");
+        }
     }
 
     // Check if this time slot is already used by 2 sections
