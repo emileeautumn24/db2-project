@@ -58,7 +58,7 @@ if (isset($_POST["log_btn"])) {
             <h2>You're logged in! Welcome <?= htmlspecialchars($row["name"]) ?>!</h2>
             <h3>Instructor ID: <?= htmlspecialchars($row["instructor_id"]) ?></h3>
             <table style="border:0">
-                <tr><td><a href="advising.html">Advising</a></td></tr>
+                <tr><td><a href="advising.html?instructor_id=<?= urlencode($row["instructor_id"]) ?>">Advising</a></td></tr>
                 <tr><td><a href="instructor_records.html">Instructor Teaching Records</a></td></tr>
             </table>
         <?php } else {

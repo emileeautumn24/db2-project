@@ -39,6 +39,16 @@
     </table>
 </form>
 
+<script>
+    const params = new URLSearchParams(window.location.search);
+    const instructorId = params.get('instructor_id');
+    if (instructorId) {
+        const field = document.getElementById('instructor');
+        field.value = instructorId;
+        field.readOnly = true; // prevent editing since it came from login
+    }
+</script>
+
 </body>
 </html>
 
