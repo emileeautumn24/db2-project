@@ -6,95 +6,106 @@ $instructor_id = $_POST['instructor_id'];
 $student_id = $_POST['student_id'];
 $type = $_POST['typeSelector'];  // Gets "UNDERGRAD", "MS", or "PHD"
 
-// checks connection
 $connection = mysqli_connect('localhost', 'root', '')
-or die ('Could not connect: ' . mysqli_error($connection));
+    or die('Could not connect: ' . mysqli_error($connection));
 
-// checks if database exists
-$db = mysqli_select_db($connection, 'db2') or die ('Could not select database');
+mysqli_select_db($connection, 'db2') or die('Could not select database');
 
-// get student and instructor names for display
-$query0 = 'SELECT I.name AS i_name, S.name AS s_name FROM advising A, instructor I, student S WHERE A.instructor_id = ' . $instructor_id . ' AND A.student_id = ' . $student_id . ' AND A.instructor_id = I.instructor_id AND A.student_id = S.student_id';
-$result0 = mysqli_query($connection, $query0) or die ('Query #0 failed: ' . mysqli_error($connection));
+// --- Get student and instructor names ---
+$stmt = mysqli_prepare($connection,
+    'SELECT I.name AS i_name, S.name AS s_name
+       FROM advising A, instructor I, student S
+      WHERE A.instructor_id = ? AND A.student_id = ?
+        AND A.instructor_id = I.instructor_id AND A.student_id = S.student_id');
+mysqli_stmt_bind_param($stmt, 'ss', $instructor_id, $student_id);
+mysqli_stmt_execute($stmt);
+$result0 = mysqli_stmt_get_result($stmt);
+$names = mysqli_fetch_assoc($result0);
+mysqli_stmt_close($stmt);
 
-if ($row = mysqli_fetch_array($result0, MYSQLI_ASSOC)) {
-    echo '<strong>Instructor ID: </strong>' . $instructor_id . '<br>';
-    echo '<strong>Instructor Name: </strong>' . $row["i_name"] . '<br><br>';
-    echo '<strong>Student ID: </strong>' . $student_id . '<br>';
-    echo '<strong>Student Name: </strong>' . $row["s_name"] . '<br><br>';
-} else {
-    die ('Instructor ID ' . $instructor_id . ' may not have Student ID ' . $student_id. ' as their advisee.');
+if (!$names) {
+    die("Instructor ID $instructor_id may not have Student ID $student_id as their advisee.");
 }
+?>
 
-mysqli_free_result($result0);
+<strong>Instructor ID: </strong><?= htmlspecialchars($instructor_id) ?><br>
+<strong>Instructor Name: </strong><?= htmlspecialchars($names['i_name']) ?><br><br>
+<strong>Student ID: </strong><?= htmlspecialchars($student_id) ?><br>
+<strong>Student Name: </strong><?= htmlspecialchars($names['s_name']) ?><br><br>
 
-// gets list of courses the student had taken
-$query1 = 'SELECT C.title FROM course C, takes T, advising A WHERE A.instructor_id = ' . $instructor_id . ' AND A.student_id = ' . $student_id . ' AND A.student_id = T.student_id AND T.course_id = C.course_id';
-$result1 = mysqli_query($connection, $query1) or die ('Query #1 failed: ' . mysqli_error($connection));
+<?php
+// --- Get list of courses taken ---
+$stmt = mysqli_prepare($connection,
+    'SELECT C.title
+       FROM course C, takes T, advising A
+      WHERE A.instructor_id = ? AND A.student_id = ?
+        AND A.student_id = T.student_id AND T.course_id = C.course_id');
+mysqli_stmt_bind_param($stmt, 'ss', $instructor_id, $student_id);
+mysqli_stmt_execute($stmt);
+$result1 = mysqli_stmt_get_result($stmt);
+$courses = mysqli_fetch_all($result1, MYSQLI_ASSOC);
+mysqli_stmt_close($stmt);
+?>
 
-echo '<strong><u>Courses Taken</u></strong><br>';
+<strong><u>Courses Taken</u></strong><br>
+<?php foreach ($courses as $course): ?>
+    <?= htmlspecialchars($course['title']) ?><br>
+<?php endforeach; ?>
+<br>
 
-while ($row = mysqli_fetch_array($result1, MYSQLI_ASSOC)) {
-    echo $row["title"];
-    echo '<br>';
-}
-echo '<br>';
-
-mysqli_free_result($result1);
-
-// gets grades of courses the student had taken
-$cumulative_gpa = 0.0;
-
-$query2 = 'SELECT T.grade, C.credits FROM takes T, advising A, course C WHERE A.instructor_id = ' . $instructor_id . ' AND A.student_id = ' . $student_id . ' AND A.student_id = T.student_id AND T.course_id = C.course_id';
-$result2 = mysqli_query($connection, $query2) or die ('Query #2 failed: ' . mysqli_error($connection));
-
-echo '<strong><u>Cumulative GPA</u></strong><br>';
-
-// calculate GPA
+<?php
+// --- Get grades and calculate GPA ---
+$stmt = mysqli_prepare($connection,
+    'SELECT T.grade, C.credits
+       FROM takes T, advising A, course C
+      WHERE A.instructor_id = ? AND A.student_id = ?
+        AND A.student_id = T.student_id AND T.course_id = C.course_id');
+mysqli_stmt_bind_param($stmt, 'ss', $instructor_id, $student_id);
+mysqli_stmt_execute($stmt);
+$result2 = mysqli_stmt_get_result($stmt);
 $cumulative_gpa = calculate_gpa($connection, $result2);
+mysqli_stmt_close($stmt);
+?>
 
-echo $cumulative_gpa;
-echo '<br><br>';
+<strong><u>Cumulative GPA</u></strong><br>
+<?= $cumulative_gpa ?><br><br>
 
-mysqli_free_result($result2);
+<?php
+// --- Calculate remaining credits to graduate depending on student type ---
+$credit_requirements = [
+    'UNDERGRAD' => ['table' => 'undergraduate', 'required' => 120, 'label' => 'undergrad'],
+    'MS'        => ['table' => 'master',        'required' => 30,  'label' => 'MS'],
+    'PHD'       => ['table' => 'phd',           'required' => 42,  'label' => 'PhD'],
+];
 
-// calculate remaining credits to graduate depending on student type
-$remaining_credits = 0;
-if ($type === 'UNDERGRAD') {
-    $query3 = 'SELECT S.total_credit FROM advising A, student S, undergraduate U WHERE A.instructor_id = ' . $instructor_id . ' AND A.student_id = ' . $student_id . ' AND A.student_id = S.student_id AND A.student_id = U.student_id AND S.student_id = U.student_id';
-    $result3 = mysqli_query($connection, $query3) or die ('Query #3 failed: ' . mysqli_error($connection));
-    if ($row = mysqli_fetch_array($result3, MYSQLI_ASSOC)) {
-        $remaining_credits = 120 - $row["total_credit"];
-    } else {
-        die ('Student ID ' . $student_id. ' is not an undergrad.');
-    }
-} elseif ($type === 'MS') {
-    $query3 = 'SELECT S.total_credit FROM advising A, student S, master M WHERE A.instructor_id = ' . $instructor_id . ' AND A.student_id = ' . $student_id . ' AND A.student_id = S.student_id AND A.student_id = M.student_id AND S.student_id = M.student_id';
-    $result3 = mysqli_query($connection, $query3) or die ('Query #3 failed: ' . mysqli_error($connection));
-    if ($row = mysqli_fetch_array($result3, MYSQLI_ASSOC)) {
-        $remaining_credits = 30 - $row["total_credit"];
-    } else {
-        die ('Student ID ' . $student_id. ' is not an MS.');
-    }
-} elseif ($type === 'PHD') {
-    $query3 = 'SELECT S.total_credit FROM advising A, student S, phd P WHERE A.instructor_id = ' . $instructor_id . ' AND A.student_id = ' . $student_id . ' AND A.student_id = S.student_id AND A.student_id = P.student_id AND S.student_id = P.student_id';
-    $result3 = mysqli_query($connection, $query3) or die ('Query #3 failed: ' . mysqli_error($connection));
-    if ($row = mysqli_fetch_array($result3, MYSQLI_ASSOC)) {
-        $remaining_credits = 42 - $row["total_credit"];
-    } else {
-        die ('Student ID ' . $student_id. ' is not a PhD.');
-    }
-} else {
+if (!isset($credit_requirements[$type])) {
     die('Please select a student type.');
 }
 
-echo '<strong><u>Remaining Credits to Graduate</u></strong><br>';
-if ($remaining_credits < 0) {
-    $remaining_credits = 0;
+$config = $credit_requirements[$type];
+
+// Table name comes from our own fixed array above, never from user input,
+// so it's safe to interpolate here — it can never be attacker-controlled.
+$stmt = mysqli_prepare($connection,
+    "SELECT S.total_credit
+       FROM advising A, student S, {$config['table']} X
+      WHERE A.instructor_id = ? AND A.student_id = ?
+        AND A.student_id = S.student_id AND A.student_id = X.student_id
+        AND S.student_id = X.student_id");
+mysqli_stmt_bind_param($stmt, 'ss', $instructor_id, $student_id);
+mysqli_stmt_execute($stmt);
+$result3 = mysqli_stmt_get_result($stmt);
+$row = mysqli_fetch_assoc($result3);
+mysqli_stmt_close($stmt);
+
+if (!$row) {
+    die("Student ID $student_id is not a {$config['label']}.");
 }
-echo $remaining_credits;
 
-mysqli_free_result($result3);
-mysqli_close($connection);
-
+$remaining_credits = max(0, $config['required'] - $row['total_credit']);
 ?>
+
+<strong><u>Remaining Credits to Graduate</u></strong><br>
+<?= $remaining_credits ?>
+
+<?php mysqli_close($connection); ?>
