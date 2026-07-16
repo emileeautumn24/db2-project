@@ -72,12 +72,12 @@ if (isset($_POST["view_btn"])) {
                         mysqli_free_result($result4);
 
                         // Prerequisite check complete, now enroll student
-                        $enrollStudent = "INSERT INTO takes VALUES (" . $student_id . ", " . $course_id . ", " . $section_id . ", '" . $semester_name . "', " . $year_id . ", 'A')";
+                        $enrollStudent = "INSERT INTO takes VALUES ('" . $student_id . "', '" . $course_id . "', '" . $section_id . "', '" . $semester_name . "', " . $year_id . ", NULL)";
                         $enrollResult = mysqli_query($connection, $enrollStudent) or die ('Enroll student failed ' . mysqli_error($connection));
                         echo "Student successfully enrolled!";
                     } else {
                         // No prerequisite check required
-                        $enrollStudent = "INSERT INTO takes VALUES (" . $student_id . ", " . $course_id . ", " . $section_id . ", '" . $semester_name . "', " . $year_id . ", 'A')";
+                        $enrollStudent = "INSERT INTO takes VALUES ('" . $student_id . "', '" . $course_id . "', '" . $section_id . "', '" . $semester_name . "', " . $year_id . ", NULL)";
                         $enrollResult = mysqli_query($connection, $enrollStudent) or die ('Enroll student failed ' . mysqli_error($connection));
                         echo "Student successfully enrolled!";
                     }
