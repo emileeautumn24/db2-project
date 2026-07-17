@@ -8,15 +8,15 @@
         <table style="border: 0">
             <tr>
                 <td>Student ID:</td>
-                <td><input type="text" name="student_id"></td>
+                <td><input type="text" id="student" name="student_id"></td>
             </tr>
             <tr>
                 <td>Course ID (For Enrolling):</td>
-                <td><input type="text" name="course_id"></td>
+                <td><input type="text" id="course" name="course_id"></td>
             </tr>
             <tr>
                 <td>Section ID (For Enrolling):</td>
-                <td><input type="text" name="section_id"></td>
+                <td><input type="text" id="section" name="section_id"></td>
             </tr>
             <tr>
                 <td>Year:</td>
@@ -50,5 +50,16 @@
             </tr>
         </table>
     </form>
+
+    <script>
+    const params = new URLSearchParams(window.location.search);
+    const studentId = params.get('student_id');
+    if (studentId) {
+        const field = document.getElementById('student');
+        field.value = studentId;
+        field.readOnly = true; // prevent editing since it came from login
+    }
+    </script>
+
 </body>
 </html>

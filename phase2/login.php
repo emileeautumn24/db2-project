@@ -34,7 +34,7 @@ if (isset($_POST["log_btn"])) {
             <h2>You're logged in! Welcome <?= htmlspecialchars($row["name"]) ?>!</h2>
             <h3>Student ID: <?= htmlspecialchars($row["student_id"]) ?></h3>
             <table style="border:0">
-                <tr><td><a href="browse_register.html">Browse and Register</a></td></tr>
+                <tr><td><a href="browse_register.html?student_id=<?= urlencode($row["student_id"]) ?>">Browse and Register</a></td></tr>
                 <tr><td><a href="student_transcript.html">Student Transcript</a></td></tr>
                 <tr><td><a href="discussion_board.html">Discussion Board</a></td></tr>
                 <tr><td><a href="course_evaluation.html">Course Evaluation</a></td></tr>
