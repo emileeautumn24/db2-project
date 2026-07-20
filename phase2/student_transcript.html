@@ -22,6 +22,16 @@
     </table>
 </form>
 
+    <script>
+    const params = new URLSearchParams(window.location.search);
+    const studentId = params.get('student_id');
+    if (studentId) {
+        const field = document.getElementById('student');
+        field.value = studentId;
+        field.readOnly = true; // prevent editing since it came from login
+    }
+    </script>
+
 </body>
 </html>
 

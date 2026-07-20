@@ -1,5 +1,7 @@
 <?php /** @noinspection SqlNoDataSourceInspection */
 
+require_once 'calculate_gpa.php';
+
 $student_id = $_POST['student_id'];
 
 // checks connection
@@ -38,7 +40,6 @@ mysqli_free_result($result1);
 
 // gets grades of courses the student had taken
 $cumulative_gpa = 0.0;
-$taken_courses = 0.0;
 
 $query2 = 'SELECT T.grade, C.credits FROM takes T, student S, course C WHERE S.student_id = ' . $student_id . ' AND S.student_id = T.student_id AND T.course_id = C.course_id';
 $result2 = mysqli_query($connection, $query2) or die ('Query #2 failed: ' . mysqli_error($connection));
@@ -46,48 +47,7 @@ $result2 = mysqli_query($connection, $query2) or die ('Query #2 failed: ' . mysq
 echo '<strong><u>Cumulative GPA</u></strong><br>';
 
 // calculate GPA
-while ($row = mysqli_fetch_array($result2, MYSQLI_ASSOC)) {
-    switch ($row["grade"]) {
-        case 'A':
-            $cumulative_gpa = $cumulative_gpa + (4.0 * $row["credits"]);
-            break;
-        case 'A-':
-            $cumulative_gpa = $cumulative_gpa + (3.7 * $row["credits"]);
-            break;
-        case 'B+':
-            $cumulative_gpa = $cumulative_gpa + (3.3 * $row["credits"]);
-            break;
-        case 'B':
-            $cumulative_gpa = $cumulative_gpa + (3.0 * $row["credits"]);
-            break;
-        case 'B-':
-            $cumulative_gpa = $cumulative_gpa + (2.7 * $row["credits"]);
-            break;
-        case 'C+':
-            $cumulative_gpa = $cumulative_gpa + (2.3 * $row["credits"]);
-            break;
-        case 'C':
-            $cumulative_gpa = $cumulative_gpa + (2.0 * $row["credits"]);
-            break;
-        case 'C-':
-            $cumulative_gpa = $cumulative_gpa + (1.7 * $row["credits"]);
-            break;
-        case 'D+':
-            $cumulative_gpa = $cumulative_gpa + (1.3 * $row["credits"]);
-            break;
-        case 'D':
-            $cumulative_gpa = $cumulative_gpa + (1.0 * $row["credits"]);
-            break;
-        default:
-        $cumulative_gpa = 0.0;
-    }
-    $taken_courses = $taken_courses + (4.0 * $row["credits"]);
-}
-
-if ($taken_courses > 0.0) {
-    $cumulative_gpa /= $taken_courses;
-    $cumulative_gpa *= 4.0;
-}
+$cumulative_gpa = calculate_gpa($connection, $result2);
 
 echo $cumulative_gpa;
 echo '<br><br>';
