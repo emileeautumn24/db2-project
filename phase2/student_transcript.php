@@ -6,66 +6,82 @@ $student_id = $_POST['student_id'];
 
 // checks connection
 $connection = mysqli_connect('localhost', 'root', '')
-or die ('Could not connect: ' . mysqli_error($connection));
+    or die('Could not connect: ' . mysqli_error($connection));
 
 // checks if database exists
-$db = mysqli_select_db($connection, 'db2') or die ('Could not select database');
+$db = mysqli_select_db($connection, 'db2') or die('Could not select database');
 
-// get student and instructor names for display
-$query0 = 'SELECT S.name AS s_name FROM student S WHERE S.student_id = ' . $student_id;
-$result0 = mysqli_query($connection, $query0) or die ('Query #0 failed: ' . mysqli_error($connection));
+// --- get student name -------------------------------------------------
+$stmt0 = mysqli_prepare($connection, 'SELECT S.name AS s_name FROM student S WHERE S.student_id = ?');
+mysqli_stmt_bind_param($stmt0, 's', $student_id);
+mysqli_stmt_execute($stmt0);
+$result0 = mysqli_stmt_get_result($stmt0);
 
-if ($row = mysqli_fetch_array($result0, MYSQLI_ASSOC)) {
-    echo '<strong>Student ID: </strong>' . $student_id . '<br>';
-    echo '<strong>Student Name: </strong>' . $row["s_name"] . '<br><br>';
-} else {
-    die ('Student ID ' . $student_id . ' does not exist.');
+if (!($row = mysqli_fetch_array($result0, MYSQLI_ASSOC))) {
+    die('Student ID ' . htmlspecialchars($student_id) . ' does not exist.');
 }
+$student_name = $row['s_name'];
+mysqli_stmt_close($stmt0);
 
-mysqli_free_result($result0);
+// --- get list of courses the student had taken -------------------------
+$stmt1 = mysqli_prepare(
+    $connection,
+    'SELECT C.title FROM course C, takes T, student S
+     WHERE S.student_id = ? AND S.student_id = T.student_id AND T.course_id = C.course_id'
+);
+mysqli_stmt_bind_param($stmt1, 's', $student_id);
+mysqli_stmt_execute($stmt1);
+$result1 = mysqli_stmt_get_result($stmt1);
 
-// gets list of courses the student had taken
-$query1 = 'SELECT C.title FROM course C, takes T, student S WHERE S.student_id = ' . $student_id . ' AND S.student_id = T.student_id AND T.course_id = C.course_id';
-$result1 = mysqli_query($connection, $query1) or die ('Query #1 failed: ' . mysqli_error($connection));
-
-echo '<strong><u>Courses Taken</u></strong><br>';
-
+$courses = [];
 while ($row = mysqli_fetch_array($result1, MYSQLI_ASSOC)) {
-    echo $row["title"];
-    echo '<br>';
+    $courses[] = $row['title'];
 }
-echo '<br>';
+mysqli_stmt_close($stmt1);
 
-mysqli_free_result($result1);
+// --- get grades of courses taken, calculate GPA -------------------------
+$stmt2 = mysqli_prepare(
+    $connection,
+    'SELECT T.grade, C.credits FROM takes T, student S, course C
+     WHERE S.student_id = ? AND S.student_id = T.student_id AND T.course_id = C.course_id'
+);
+mysqli_stmt_bind_param($stmt2, 's', $student_id);
+mysqli_stmt_execute($stmt2);
+$result2 = mysqli_stmt_get_result($stmt2);
 
-// gets grades of courses the student had taken
-$cumulative_gpa = 0.0;
-
-$query2 = 'SELECT T.grade, C.credits FROM takes T, student S, course C WHERE S.student_id = ' . $student_id . ' AND S.student_id = T.student_id AND T.course_id = C.course_id';
-$result2 = mysqli_query($connection, $query2) or die ('Query #2 failed: ' . mysqli_error($connection));
-
-echo '<strong><u>Cumulative GPA</u></strong><br>';
-
-// calculate GPA
 $cumulative_gpa = calculate_gpa($connection, $result2);
+mysqli_stmt_close($stmt2);
 
-echo $cumulative_gpa;
-echo '<br><br>';
+// --- get total credits earned -------------------------------------------
+$stmt3 = mysqli_prepare($connection, 'SELECT S.total_credit FROM student S WHERE S.student_id = ?');
+mysqli_stmt_bind_param($stmt3, 's', $student_id);
+mysqli_stmt_execute($stmt3);
+$result3 = mysqli_stmt_get_result($stmt3);
 
-mysqli_free_result($result2);
-
-// display total credits earned
 $credits_earned = 0;
-$query3 = 'SELECT S.total_credit FROM student S WHERE S.student_id = ' . $student_id;
-$result3 = mysqli_query($connection, $query3) or die ('Query #3 failed: ' . mysqli_error($connection));
 if ($row = mysqli_fetch_array($result3, MYSQLI_ASSOC)) {
-    $credits_earned = $row["total_credit"];
+    $credits_earned = $row['total_credit'];
 }
+mysqli_stmt_close($stmt3);
 
-echo '<strong><u>Total Credits Earned</u></strong><br>';
-echo $credits_earned;
-
-mysqli_free_result($result3);
 mysqli_close($connection);
 
+// --- render ---------------------------------------------------------------
+// All data is gathered above; the HTML is built once and echoed a single
+// time, instead of interleaving echo calls with the query logic.
+$courses_html = $courses
+    ? implode('<br>', array_map('htmlspecialchars', $courses))
+    : '<em>No courses on record.</em>';
 ?>
+<strong>Student ID: </strong><?= htmlspecialchars($student_id) ?><br>
+<strong>Student Name: </strong><?= htmlspecialchars($student_name) ?><br><br>
+
+<strong><u>Courses Taken</u></strong><br>
+<?= $courses_html ?>
+<br><br>
+
+<strong><u>Cumulative GPA</u></strong><br>
+<?= htmlspecialchars($cumulative_gpa) ?><br><br>
+
+<strong><u>Total Credits Earned</u></strong><br>
+<?= htmlspecialchars($credits_earned) ?>
