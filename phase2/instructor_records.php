@@ -2,14 +2,11 @@
 $connection = mysqli_connect('localhost', 'root', '', 'db2') 
     or die('Could not connect: ' . mysqli_error($connection));
 
-echo "<h2>Instructor Teaching Records</h2>";
-
-// Figure out if we already know the instructor ID (i.e. this is a re-submit
-// from a locked form) so we can keep it locked on redisplay.
 $iid_locked = isset($_POST['instructor_id']) ? $_POST['instructor_id'] : '';
 $readonly_attr = $iid_locked !== '' ? 'readonly' : '';
-// asking for Instructor ID and optionally a Section ID
 ?>
+<h2>Instructor Teaching Records</h2>
+
 <form method="post">
     Instructor ID: <input type="text" name="instructor_id" value="<?= htmlspecialchars($iid_locked) ?>" <?= $readonly_attr ?> required>
     Course ID (Optional): <input type="text" name="course_id">
@@ -18,44 +15,55 @@ $readonly_attr = $iid_locked !== '' ? 'readonly' : '';
 </form>
 <hr>
 
-<?php
-if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+<?php if ($_SERVER['REQUEST_METHOD'] == 'POST'):
     $iid = $_POST['instructor_id'];
     $cid = $_POST['course_id'];
     $sid = $_POST['section_id'];
 
-    // Case 1: Show all sections taught by this instructor
-    if (empty($sid)) {
-        echo "<h3>Sections Taught by Instructor $iid:</h3>";
-        $query = "SELECT course_id, section_id, semester, year 
-                  FROM teaches 
-                  WHERE instructor_id = $iid";
-        
-        $result = mysqli_query($connection, $query) or die('Query failed: ' . mysqli_error($connection));
-        
-        echo "<table border='1'><tr><th>Course</th><th>Section</th><th>Semester</th><th>Year</th></tr>";
-        while ($row = mysqli_fetch_array($result, MYSQLI_ASSOC)) {
-            echo "<tr><td>{$row['course_id']}</td><td>{$row['section_id']}</td><td>{$row['semester']}</td><td>{$row['year']}</td></tr>";
-        }
-        echo "</table>";
-    } 
-    // Case 2: Show specific roster for a section
-    else {
-        echo "<h3>Roster for Course $cid, Section $sid:</h3>";
-        $query = "SELECT S.name, T.grade 
-                  FROM takes T, student S 
-                  WHERE T.course_id = '$cid' AND T.section_id = '$sid' 
-                  AND T.student_id = S.student_id";
-        
-        $result = mysqli_query($connection, $query) or die('Roster query failed: ' . mysqli_error($connection));
-        
-        echo "<ul>";
-        while ($row = mysqli_fetch_array($result, MYSQLI_ASSOC)) {
-            $grade = $row['grade'] ? $row['grade'] : "In Progress";
-            echo "<li><strong>{$row['name']}</strong> - Grade: $grade</li>";
-        }
-        echo "</ul>";
-    }
-}
+    if (empty($sid)):
+        $stmt = mysqli_prepare($connection,
+            "SELECT course_id, section_id, semester, year FROM teaches WHERE instructor_id = ?");
+        mysqli_stmt_bind_param($stmt, "s", $iid);
+        mysqli_stmt_execute($stmt);
+        $result = mysqli_stmt_get_result($stmt);
+        ?>
+        <h3>Sections Taught by Instructor <?= htmlspecialchars($iid) ?>:</h3>
+        <table border="1">
+            <tr><th>Course</th><th>Section</th><th>Semester</th><th>Year</th></tr>
+            <?php while ($row = mysqli_fetch_assoc($result)): ?>
+                <tr>
+                    <td><?= htmlspecialchars($row['course_id']) ?></td>
+                    <td><?= htmlspecialchars($row['section_id']) ?></td>
+                    <td><?= htmlspecialchars($row['semester']) ?></td>
+                    <td><?= htmlspecialchars($row['year']) ?></td>
+                </tr>
+            <?php endwhile; ?>
+        </table>
+        <?php
+        mysqli_stmt_close($stmt);
+
+    else:
+        $stmt = mysqli_prepare($connection,
+            "SELECT S.name, T.grade
+               FROM takes T, student S
+              WHERE T.course_id = ? AND T.section_id = ?
+                AND T.student_id = S.student_id");
+        mysqli_stmt_bind_param($stmt, "ss", $cid, $sid);
+        mysqli_stmt_execute($stmt);
+        $result = mysqli_stmt_get_result($stmt);
+        ?>
+        <h3>Roster for Course <?= htmlspecialchars($cid) ?>, Section <?= htmlspecialchars($sid) ?>:</h3>
+        <ul>
+            <?php while ($row = mysqli_fetch_assoc($result)):
+                $grade = $row['grade'] ? $row['grade'] : "In Progress";
+                ?>
+                <li><strong><?= htmlspecialchars($row['name']) ?></strong> - Grade: <?= htmlspecialchars($grade) ?></li>
+            <?php endwhile; ?>
+        </ul>
+        <?php
+        mysqli_stmt_close($stmt);
+    endif;
+endif;
+
 mysqli_close($connection);
 ?>
