@@ -59,7 +59,7 @@ if (isset($_POST["log_btn"])) {
             <h3>Instructor ID: <?= htmlspecialchars($row["instructor_id"]) ?></h3>
             <table style="border:0">
                 <tr><td><a href="advising.html?instructor_id=<?= urlencode($row["instructor_id"]) ?>">Advising</a></td></tr>
-                <tr><td><a href="instructor_records.html">Instructor Teaching Records</a></td></tr>
+                <tr><td><a href="instructor_records.html?instructor_id=<?= urlencode($row["instructor_id"]) ?>">Instructor Teaching Records</a></td></tr>
             </table>
         <?php } else {
             die("Log in attempt failed.");

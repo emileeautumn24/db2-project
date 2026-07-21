@@ -4,10 +4,14 @@ $connection = mysqli_connect('localhost', 'root', '', 'db2')
 
 echo "<h2>Instructor Teaching Records</h2>";
 
+// Figure out if we already know the instructor ID (i.e. this is a re-submit
+// from a locked form) so we can keep it locked on redisplay.
+$iid_locked = isset($_POST['instructor_id']) ? $_POST['instructor_id'] : '';
+$readonly_attr = $iid_locked !== '' ? 'readonly' : '';
 // asking for Instructor ID and optionally a Section ID
 ?>
 <form method="post">
-    Instructor ID: <input type="text" name="instructor_id" required>
+    Instructor ID: <input type="text" name="instructor_id" value="<?= htmlspecialchars($iid_locked) ?>" <?= $readonly_attr ?> required>
     Course ID (Optional): <input type="text" name="course_id">
     Section ID (Optional): <input type="text" name="section_id">
     <input type="submit" value="View Records">
@@ -55,5 +59,3 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 }
 mysqli_close($connection);
 ?>
-
-<br><br><a href='instructor_records.html'>[ Back to Search ]</a>
