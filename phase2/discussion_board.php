@@ -38,11 +38,11 @@ if (isset($_POST["post_btn"])) {
     $safe_post_text = mysqli_real_escape_string($connection, $post_text);
 
     // insert new post/reply into discussion if student is enrolled in their specific class and section
-    $query1 = "INSERT INTO discussion SELECT " . $student_id . ", " . $course_id . ", " . $section_id .
-    ", '" . $semester_name . "', " . $year_num . ", '" . $safe_post_text . "' FROM takes T WHERE T.student_id = " . $student_id .
-    " AND T.course_id = " . $course_id . " AND T.section_id = " . $section_id . " AND T.semester = '" . $semester_name .
-    "' AND T.year = " . $year_num . " AND NOT EXISTS ( SELECT 1 FROM discussion D WHERE D.student_id = " .
-    $student_id . " AND D.course_id = " . $course_id . " AND D.section_id = " . $section_id ." AND D.semester = '" .
+    $query1 = "INSERT INTO discussion SELECT '" . $student_id . "', '" . $course_id . "', '" . $section_id .
+    "', '" . $semester_name . "', " . $year_num . ", '" . $safe_post_text . "' FROM takes T WHERE T.student_id = '" . $student_id .
+    "' AND T.course_id = '" . $course_id . "' AND T.section_id = '" . $section_id . "' AND T.semester = '" . $semester_name .
+    "' AND T.year = " . $year_num . " AND NOT EXISTS ( SELECT 1 FROM discussion D WHERE D.student_id = '" .
+    $student_id . "' AND D.course_id = '" . $course_id . "' AND D.section_id = '" . $section_id ."' AND D.semester = '" .
     $semester_name . "' AND D.year = " . $year_num . " ) LIMIT 1";
     $result1 = mysqli_query($connection, $query1) or die ("Query #1 failed: " . mysqli_error($connection));
     $was_inserted = mysqli_affected_rows($connection) > 0;
