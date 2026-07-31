@@ -37,7 +37,7 @@ if (isset($_POST["log_btn"])) {
                 <tr><td><a href="browse_register.html?student_id=<?= urlencode($row["student_id"]) ?>">Browse and Register</a></td></tr>
                 <tr><td><a href="student_transcript.html?student_id=<?= urlencode($row["student_id"]) ?>">Student Transcript</a></td></tr>
                 <tr><td><a href="discussion_board.html?student_id=<?= urlencode($row["student_id"]) ?>">Discussion Board</a></td></tr>
-                <tr><td><a href="course_evaluation.html">Course Evaluation</a></td></tr>
+                <tr><td><a href="course_evaluation.html?student_id=<?= urlencode($row["student_id"]) ?>">Course Evaluation</a></td></tr>
             </table>
         <?php } else {
             die("Log in attempt failed.");

@@ -3,9 +3,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $connection = mysqli_connect("localhost", "root", "", "db2") 
         or die("Could not connect: " . mysqli_error($connection));
 
-    $student_id = strval(intval($_POST["student_id"]));
-    $course_id  = strval(intval($_POST["course_id"]));
-    $section_id = strval(intval($_POST["section_id"]));
+    $student_id = $_POST["student_id"];
+    $course_id  = $_POST["course_id"];
+    $section_id = $_POST["section_id"];
     
     $semester   = $_POST["semesterSelector"];
     $year       = $_POST["year_id"];
