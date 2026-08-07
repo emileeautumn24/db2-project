@@ -63,7 +63,7 @@ Use the following credentials and inputs to verify the system's requirements:
 | **2** | **Create course Section** | Course: `00000013`, Section: `00000001`, Inst: `00000009`, Building: `Olsen` Room Number: `405`, Time Slot: `3283` | `Success! Section Created`<br>`Successfully created Section 00000001 for Course 00000013.` |
 | **3** | **Advising** | Student ID: `00000006`, Instructor ID: `00000006` (Undergrad) |`Instructor ID: 00000006`<br>`Instructor Name: Satoru Gojo`<br>`Student ID: 00000006`<br>`Student Name: Yuji Itadori`<br>`Courses Taken`<br>`Computing I Lab`<br>`Computing I`<br>`Cumulative GPA: 1.775`<br>`Remaining Credits to Graduate: 105` |
 | **4** | **Browse and Register** | Student: `00000042`, Course: `00000027`, Section: `00000000`, Spring 2026 | Student successfully enrolled!. |
-| **5** | **Student Transcript** | Student ID: `00000006` | `Student ID: 00000006`<br>`Student Name: Yuji Itadori`<br>`Courses Taken:Computing I Lab`,`Computing I`<br>`Cumulative GPA: 1.775`<br>`Total Credits Earned: 15` |
+| **5** | **Student Transcript** | Student ID: `00000006` | `Student ID: 00000006`<br>`Student Name: Yuji Itadori`<br>`Courses Taken: Computing I Lab`, `Computing I`<br>`Cumulative GPA: 1.775`<br>`Total Credits Earned: 15` |
 | **6** | **Instructor teaching Records** | Instructor ID: `00000000`, Course: `00000000`, Section: `00000000` | `Sections Taught by Instructor 00000000:`<br>`Course`,`Section`,`Semester`,`Year`<br>`00000000`,`00000000`,`Spring`,`2026` |
 | **7** | **TA Assignments** | TA: `00000030`, Course: `00000009`, Section: `00000001`, Spring 2026 | TA successfully assigned!. |
 | **8** | **Grader Assignments** | Grader: `00000042`, Course: `00000011`, Section: `00000001`, Spring 2026 | Grader successfully assigned!. |
