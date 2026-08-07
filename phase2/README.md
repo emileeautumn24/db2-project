@@ -59,16 +59,16 @@ Use the following credentials and inputs to verify the system's requirements:
 
 | Task | Feature | Test Cases / Inputs | Outcome |
 | :--- | :--- | :--- | :--- |
-| **1** | **Accounts and login** | User: `00000000` / Pass: `Izuku Midoriya` | `You're logged in! Welcome Izuku Midoriya!`<br>`Student ID: 0.` |
-| **2** | **Create course Section** | Course: `5`, Section: `98`, Inst: `0`, Building: `Shah` Room Number: `301`, Time Slot: `3112` | `Success! Section Created`<br>`Successfully created Section 98 for Course 5.` |
-| **3** | **Advising** | Student ID: `6`, Instructor ID: `6` (Undergrad) |`Instructor ID: 6`<br>`Instructor Name: Satoru Gojo`<br>`Student ID: 6`<br>`Student Name: Yuji Itadori`<br>`Courses Taken`<br>`Computing I Lab`<br>`Computing I`<br>`Cumulative GPA: 1.775`<br>`Remaining Credits to Graduate:105` |
-| **4** | **Browse and Register** | Student: `00000042`, Course: `27`, Section: `0`, Spring 2026 | Student successfully enrolled!. |
-| **5** | **Student Transcript** | Student ID: `6` | `Student ID: 6`<br>`Student Name: Yuji Itadori`<br>`Courses Taken:Computing I Lab`,`Computing I`<br>`Cumulative GPA: 1.775`<br>`Total Credits Earned:15` |
-| **6** | **Instructor teaching Records** | Instructor ID: `00000000`, Course: `0`, Section: `0` | `Sections Taught by Instructor 0:`<br>`Course`,`Section`,`Semester`,`Year`<br>`0`,`0`,`Spring`,`2026` |
-| **7** | **TA Assignments** | TA: `00000030`, Course: `9`, Section: `1`, Spring 2026 | TA successfully assigned!. |
-| **8** | **Grader Assignments** | Grader: `00000042`, Course: `11`, Section: `1`, Spring 2026 | Grader successfully assigned!. |
-| **9** | **Discussion Board** | **Post:** Student `0`, Course: `0`, Section: `0`, Spring 2026 / **Delete:** Student `21`,Course: `0`, Section: `0`, Spring 2026, Student ID to Delete Posts From `0` (TA role) |  |
-| **10**| **Course Evaluation** | Student: `00000001`, Course: `1`, Section: `0`,Semsster: Spring, Rating: `5` | `Success! Evaluation Submitted.`<br>`Course: Introduction to ECE`<br>`Your Final Grade: C-` |
+| **1** | **Accounts and login** | User: `00000000` / Pass: `constraint2238` | `You're logged in! Welcome Izuku Midoriya!`<br>`Student ID: 00000000.` |
+| **2** | **Create course Section** | Course: `00000013`, Section: `00000001`, Inst: `00000009`, Building: `Olsen` Room Number: `405`, Time Slot: `3283` | `Success! Section Created`<br>`Successfully created Section 00000001 for Course 00000013.` |
+| **3** | **Advising** | Student ID: `00000006`, Instructor ID: `00000006` (Undergrad) |`Instructor ID: 00000006`<br>`Instructor Name: Satoru Gojo`<br>`Student ID: 00000006`<br>`Student Name: Yuji Itadori`<br>`Courses Taken`<br>`Computing I Lab`<br>`Computing I`<br>`Cumulative GPA: 1.775`<br>`Remaining Credits to Graduate:105` |
+| **4** | **Browse and Register** | Student: `00000042`, Course: `00000027`, Section: `00000000`, Spring 2026 | Student successfully enrolled!. |
+| **5** | **Student Transcript** | Student ID: `00000006` | `Student ID: 00000006`<br>`Student Name: Yuji Itadori`<br>`Courses Taken:Computing I Lab`,`Computing I`<br>`Cumulative GPA: 1.775`<br>`Total Credits Earned:15` |
+| **6** | **Instructor teaching Records** | Instructor ID: `00000000`, Course: `00000000`, Section: `00000000` | `Sections Taught by Instructor 00000000:`<br>`Course`,`Section`,`Semester`,`Year`<br>`00000000`,`00000000`,`Spring`,`2026` |
+| **7** | **TA Assignments** | TA: `00000030`, Course: `00000009`, Section: `00000001`, Spring 2026 | TA successfully assigned!. |
+| **8** | **Grader Assignments** | Grader: `00000042`, Course: `00000011`, Section: `00000001`, Spring 2026 | Grader successfully assigned!. |
+| **9** | **Discussion Board** | **Post:** Student `00000000`, Course: `00000000`, Section: `00000000`, Spring 2026 / **Delete:** Student `00000021`,Course: `00000000`, Section: `00000000`, Spring 2026, Student ID to Delete Posts From `00000000` (TA role) |  |
+| **10**| **Course Evaluation** | Student: `00000001`, Course: `00000001`, Section: `00000000`, Spring 2026, Rating: `5` | `Success! Evaluation Submitted.`<br>`Course: Introduction to ECE`<br>`Your Final Grade: C-` |
 
 ## Notes
 
